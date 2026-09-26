@@ -1,11 +1,14 @@
 ## 🔴 HIGH
-- [ ] تشغيل TypeScript وESLint والتحقق من توافق Foundation وBUI وApp Shell.
-- [x] ربط `AppProviders` و`RouterProvider` مع `RootLayout` و`PublicLayout` و`HomeScreen`.
-- [x] مراجعة بنية `RootLayout` و`PublicLayout` و`AppHeader` و`PageContainer` و`HomeScreen`.
-- [ ] مراجعة تشغيل `NotFoundScreen` على مسار غير موجود.
-- [x] إضافة Aliases إلى إعداد Vite حتى تتطابق مع مسارات TypeScript.
+- [x] تشغيل TypeScript وESLint والتحقق من توافق Foundation وBUI وApp Shell (ناجح 100%).
+- [x] إصلاح أخطاء بناء TypeScript في `tsconfig.node.json` وملف `src/alias/icons.ts`.
+- [x] تثبيت وتفعيل Tailwind CSS 4 مع `@tailwindcss/vite` وضبط ملف `src/index.css`.
+- [x] إضافة حزم `clsx` و `tailwind-merge` ودالة `cn()` وربطها بنظام الـ Alias.
+- [x] تثبيت `react-i18next` وتفعيل `useTranslation` داخل نظام الـ Alias.
+- [x] تحويل استيرادات الصفحات والمكونات إلى الاستيراد المركزي `@a`.
+- [x] مراجعة تشغيل `NotFoundScreen` على مسار غير موجود والتأكد من خلو الـ Console من الأخطاء.
 
 ## 🟡 MED
+- [ ] استكمال شاشات النظام الأساسية المتبقية (SplashScreen, ErrorScreen) — المرحلة 4.
 - [ ] استكمال TanStack Router tree وربطه بالـ layouts الإضافية عند الحاجة.
 - [ ] إضافة Sidebar أو Mobile Navigation فقط عند ظهور احتياج منتج واضح.
 - [ ] استكمال إعداد Day.js helpers وQuery policies حسب احتياج الـ Features.

@@ -1,48 +1,210 @@
+@import "tailwindcss";
+
+/**
+ * ─────────────────────────────────────────────
+ * 📦 BomBa Design System Tokens (index.css)
+ * ─────────────────────────────────────────────
+ */
+
 :root {
-  --flip-l: 0%;
-  --ISD: -1;
+  /* Brand Hue and Saturation */
   --h: 210;
   --s: 80%;
-  --l: 40%;
+  --l: 42%;
+
+  /* Dynamic Theme Flipping */
+  --flip-l: 0%;
+  --ISD: -1;
+
+  /* Direction and Logical Props */
+  --ltr: 1;
+  --dir-start: left;
+  --dir-end: right;
+
+  /* Semantic Brand & State Colors */
   --color-py: hsl(var(--h) var(--s) var(--l));
+  --color-py-f: hsl(var(--h) 94% 98%);
   --color-sy: hsl(330 var(--s) var(--l));
-  --color-at: hsl(300 var(--s) var(--l));
-  --color-md: hsl(250 var(--s) var(--l));
-  --color-ok: hsl(130 var(--s) var(--l));
-  --color-err: hsl(5 var(--s) var(--l));
-  --color-war: hsl(60 var(--s) var(--l));
+  --color-sy-f: hsl(40 0% 98%);
+  --color-at: hsl(280 var(--s) var(--l));
+  --color-at-f: hsl(200 80% 98%);
+  --color-md: hsl(var(--h) 15% 60%);
+  --color-md-f: hsl(var(--h) 15% 10%);
+  --color-ok: hsl(140 var(--s) 38%);
+  --color-ok-f: hsl(40 0% 98%);
+  --color-err: hsl(0 80% 50%);
+  --color-err-f: hsl(40 0% 98%);
+  --color-war: hsl(45 90% 45%);
+  --color-war-f: hsl(40 0% 10%);
   --color-inf: hsl(200 var(--s) var(--l));
-  --color-bg: hsl(var(--h) var(--s) calc(var(--flip-l) - 98% * var(--ISD)));
-  --color-te: hsl(var(--h) var(--s) calc(var(--flip-l) - 10% * var(--ISD)));
-  --color-tt: hsl(var(--h) var(--s) calc(var(--flip-l) - 2% * var(--ISD)));
-  --color-sn: hsl(var(--h) var(--s) calc(var(--flip-l) - 20% * var(--ISD)));
-  --color-br: hsl(var(--h) var(--s) 80%);
-  --ffy: "Inter", system-ui, sans-serif;
+  --color-inf-f: hsl(40 0% 98%);
+
+  /* Surface, Background and Text Colors */
+  --color-bg: hsl(var(--h) 25% calc(var(--flip-l) - 98% * var(--ISD)));
+  --color-te: hsl(var(--h) 40% calc(var(--flip-l) - 10% * var(--ISD)));
+  --color-tt: hsl(var(--h) 20% calc(var(--flip-l) - 2% * var(--ISD)));
+  --color-sn: hsl(var(--h) 15% calc(var(--flip-l) - 35% * var(--ISD)));
+  --color-br: hsl(var(--h) 15% calc(var(--flip-l) - 82% * var(--ISD)));
+  --color-surface: hsl(var(--h) 25% calc(var(--flip-l) - 100% * var(--ISD)));
+  --color-surface-f: hsl(var(--h) 25% calc(var(--flip-l) - 4% * var(--ISD)));
+
+  /* Typography, Radius & Shadows */
+  --ffy: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --radius: 1;
   --shadow: 1;
+
+  /* Z-Index Layers */
+  --z-base: 0;
+  --z-above: 10;
+  --z-sticky: 100;
+  --z-overlay: 200;
   --z-modal: 999;
-  --z-tooltip: 1000;
+  --z-toast: 1000;
+  --z-tooltip: 1001;
 }
 
-[data-theme="dark"], .dark { --flip-l: 100%; --ISD: 1; }
+[data-theme="dark"], .dark {
+  --flip-l: 100%;
+  --ISD: 1;
+  --l: 48%;
+}
 
-/* Keep this stylesheet plain CSS so it works without a Tailwind/PostCSS plugin. */
+[dir="rtl"] {
+  --ltr: -1;
+  --dir-start: right;
+  --dir-end: left;
+}
 
-*, *::before, *::after { box-sizing: border-box; }
-html { min-block-size: 100%; }
-body { min-block-size: 100vh; margin: 0; background: var(--color-bg); color: var(--color-tt); font-family: var(--ffy); }
+@theme {
+  --color-py: var(--color-py);
+  --color-py-f: var(--color-py-f);
+  --color-sy: var(--color-sy);
+  --color-sy-f: var(--color-sy-f);
+  --color-at: var(--color-at);
+  --color-at-f: var(--color-at-f);
+  --color-md: var(--color-md);
+  --color-md-f: var(--color-md-f);
+  --color-ok: var(--color-ok);
+  --color-ok-f: var(--color-ok-f);
+  --color-err: var(--color-err);
+  --color-err-f: var(--color-err-f);
+  --color-war: var(--color-war);
+  --color-war-f: var(--color-war-f);
+  --color-inf: var(--color-inf);
+  --color-inf-f: var(--color-inf-f);
 
-#root { min-height: 100vh; }
-input, button, select, textarea { font: inherit; }
-input:focus-visible, button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 0.125em solid var(--color-py); outline-offset: 0.125em; }
+  --color-bg: var(--color-bg);
+  --color-te: var(--color-te);
+  --color-tt: var(--color-tt);
+  --color-sn: var(--color-sn);
+  --color-br: var(--color-br);
+  --color-surface: var(--color-surface);
+  --color-surface-f: var(--color-surface-f);
 
+  --font-sans: var(--ffy);
+
+  --z-base: var(--z-base);
+  --z-above: var(--z-above);
+  --z-sticky: var(--z-sticky);
+  --z-overlay: var(--z-overlay);
+  --z-modal: var(--z-modal);
+  --z-toast: var(--z-toast);
+  --z-tooltip: var(--z-tooltip);
+}
+
+/* ─────────────────────────────────────────────
+ * 🛡️ Browser Reset & Baseline
+ * ───────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-block-size: 100%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-block-size: 100vh;
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-tt);
+  font-family: var(--ffy);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+input, button, select, textarea {
+  font: inherit;
+}
+
+input:focus-visible,
+button:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 0.125em solid var(--color-py);
+  outline-offset: 0.125em;
+}
+
+/* ─────────────────────────────────────────────
+ * ⚡ BomBa Custom Utilities (B: Prefix)
+ * ───────────────────────────────────────────── */
 @layer utilities {
-  .B\\:font-var { font-family: var(--ffy); }
-  .B\\:rounded-2 { border-radius: calc(0.5em * var(--radius)); }
-  .B\\:shadow-md { box-shadow: 0 0.25em 1em hsl(from var(--color-py) h s l / calc(0.2 * var(--shadow))); }
-  .B\\:transition-smooth { transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease; }
+  .B\:font-var {
+    font-family: var(--ffy);
+  }
+
+  .B\:rounded-1 {
+    border-radius: calc(0.25em * var(--radius));
+  }
+
+  .B\:rounded-2 {
+    border-radius: calc(0.5em * var(--radius));
+  }
+
+  .B\:rounded-3 {
+    border-radius: calc(0.75em * var(--radius));
+  }
+
+  .B\:rounded-4 {
+    border-radius: calc(1em * var(--radius));
+  }
+
+  .B\:rounded-full {
+    border-radius: 9999px;
+  }
+
+  .B\:shadow-sm {
+    box-shadow: 0 0.0625em 0.125em hsla(var(--h) 10% calc(var(--flip-l) - 10% * var(--ISD)) / calc(0.08 * var(--shadow)));
+  }
+
+  .B\:shadow-md {
+    box-shadow: 0 0.25em 0.75em hsla(var(--h) 10% calc(var(--flip-l) - 10% * var(--ISD)) / calc(0.12 * var(--shadow)));
+  }
+
+  .B\:shadow-lg {
+    box-shadow: 0 0.5em 1.5em hsla(var(--h) 10% calc(var(--flip-l) - 10% * var(--ISD)) / calc(0.16 * var(--shadow)));
+  }
+
+  .B\:transition-smooth {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .B\:transition-fast {
+    transition: all 150ms ease;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 1ms !important; transition-duration: 1ms !important; }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
 }

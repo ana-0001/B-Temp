@@ -1,4 +1,18 @@
-## [Unreleased] — 2026-09-24
+## [Unreleased] — 2026-09-26
+### Fixed
+- إصلاح أخطاء بناء TypeScript (`pnpm run build`) وتوافق `URL` في `tsconfig.node.json`.
+- تصدير الأيقونات الأساسية ببادئة `Icon` داخل `src/alias/icons.ts` لمنع خطأ `not a module`.
+- إصلاح سطر الخطأ في `index.html` بحذف المتغير غير المعرف `h`.
+- تحويل استيرادات الشاشات والـ Header إلى نظام الاستيراد المركزي `@a`.
+
+### Added
+- تثبيت وتفعيل Tailwind CSS 4 رسمياً مع `@tailwindcss/vite` داخل `vite.config.ts`.
+- بناء ملف `src/index.css` بنظام الـ Tokens الكامل وكلاسات `B:` utilities و `@theme`.
+- تثبيت `clsx` و `tailwind-merge` وإضافة دالة `cn()` في `src/utils/cn.ts` وتصديرها عبر `@a` و `@ui`.
+- تثبيت `react-i18next` وتحديث إعدادات `src/i18n/config.ts` وتصدير `useTranslation` في `@a`.
+- التحقق التام بالمتصفح من استقرار الواجهة وخلو الـ Console من أي أخطاء.
+
+## [0.1.0] — 2026-09-24
 ### Added
 - إنشاء ملفات الاستمرارية الأساسية: `AI_CONTEXT.md` و`AI_SESSION.md` و`TODO.md` و`CHANGELOG.md`.
 - تسجيل أن المشروع يبدأ من المرحلة `1.1 Foundation & Tooling`.
