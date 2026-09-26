@@ -6,10 +6,10 @@
  * ]
  */
 
-import type * as React from 'react'
+import { type HTMLAttributes } from '@a'
 import { Div1 } from '../BUI-1'
 
-export interface I_PageContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface I_PageContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'default' | 'wide'
 }
 

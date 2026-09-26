@@ -37,15 +37,15 @@ export function HomeScreen() {
         <Div1 className="flex flex-wrap items-center gap-2">
           <Badge2 tone="success" className="flex items-center gap-1">
             <IconCheck className="size-3.5" />
-            <Span>Tailwind CSS 4 Active</Span>
+            <Span>{t('foundation.statuses.tailwind')}</Span>
           </Badge2>
           <Badge2 tone="success" className="flex items-center gap-1">
             <IconCheck className="size-3.5" />
-            <Span>Alias System (@a) Ready</Span>
+            <Span>{t('foundation.statuses.alias')}</Span>
           </Badge2>
           <Badge2 tone="success" className="flex items-center gap-1">
             <IconCheck className="size-3.5" />
-            <Span>Design Tokens Synced</Span>
+            <Span>{t('foundation.statuses.tokens')}</Span>
           </Badge2>
         </Div1>
 
@@ -59,7 +59,7 @@ export function HomeScreen() {
           </Button2>
           <Button2 type="button" variant="secondary" className="flex items-center gap-1.5">
             <IconSettings className="size-4" />
-            <Span>Settings</Span>
+            <Span>{t('controls.settings')}</Span>
           </Button2>
         </Div1>
       </Card2>

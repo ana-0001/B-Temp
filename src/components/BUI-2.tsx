@@ -6,11 +6,11 @@
  * ]
  */
 
-import type * as React from 'react'
+import { type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes } from '@a'
 import { Button, Div1, Div5, Input, Label, Span } from './BUI-1'
 import { buildProps } from '../utils/build-props'
 
-export interface I_Button2Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface I_Button2Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger'
 }
 
@@ -32,7 +32,7 @@ export const Button2 = ({ variant = 'primary', className = '', ...restProps }: I
   )
 }
 
-export interface I_Input2Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface I_Input2Props extends InputHTMLAttributes<HTMLInputElement> {
   label?: string
   error?: string
   classGroup?: string
@@ -78,7 +78,7 @@ export const Input2 = ({
   )
 }
 
-export interface I_Card2Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface I_Card2Props extends HTMLAttributes<HTMLDivElement> {
   title?: string
 }
 
@@ -95,7 +95,7 @@ export const Card2 = ({ title, className = '', children, ...restProps }: I_Card2
   </Div1>
 )
 
-export interface I_Badge2Props extends React.HTMLAttributes<HTMLSpanElement> {
+export interface I_Badge2Props extends HTMLAttributes<HTMLSpanElement> {
   tone?: 'default' | 'success' | 'danger' | 'warning'
 }
 
@@ -111,7 +111,7 @@ export const Badge2 = ({ tone = 'default', className = '', ...restProps }: I_Bad
   return <Span {...buildProps({ ...restProps, className: `inline-flex px-2 py-1 text-sm B:rounded-full ${toneClassName} ${className}` })} />
 }
 
-export interface I_Spinner2Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface I_Spinner2Props extends HTMLAttributes<HTMLDivElement> {
   label?: string
 }
 
@@ -128,7 +128,7 @@ export const Spinner2 = ({ label, className = '', ...restProps }: I_Spinner2Prop
 )
 
 /** @description مساحة تحميل مؤقتة للمحتوى غير الجاهز. */
-export const Skeleton2 = ({ className = '', ...restProps }: React.HTMLAttributes<HTMLDivElement>) => (
+export const Skeleton2 = ({ className = '', ...restProps }: HTMLAttributes<HTMLDivElement>) => (
   <Div5
     {...buildProps({
       ...restProps,

@@ -1,4 +1,12 @@
 ## [Unreleased] — 2026-09-26
+### Changed
+- نقل أنواع HTML المستخدمة في مكونات BUI إلى `@a` لتطبيق قاعدة Alias المركزية بدون استيراد React مباشر.
+- نقل نصوص شاشة Home وأزرار Header إلى موارد i18n باللغتين.
+- إزالة fallback بصيغة `style` وألوان hardcoded من نقطة التشغيل وتوحيد ألوان HTML مع Design Tokens.
+
+### Added
+- إضافة `SplashScreen` و`ErrorScreen` كحالات نظام أساسية قابلة لإعادة الاستخدام.
+
 ### Fixed
 - إصلاح أخطاء بناء TypeScript (`pnpm run build`) وتوافق `URL` في `tsconfig.node.json`.
 - تصدير الأيقونات الأساسية ببادئة `Icon` داخل `src/alias/icons.ts` لمنع خطأ `not a module`.

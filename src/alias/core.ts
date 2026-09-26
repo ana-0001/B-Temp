@@ -20,8 +20,11 @@ export type {
   ReactNode,
   CSSProperties,
   HTMLAttributes,
+  AnchorHTMLAttributes,
   ButtonHTMLAttributes,
+  FormHTMLAttributes,
   InputHTMLAttributes,
+  LabelHTMLAttributes,
   PropsWithChildren,
 } from 'react'
 export { createRoot } from 'react-dom/client'

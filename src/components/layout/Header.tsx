@@ -26,7 +26,10 @@ export const AppHeader = () => {
   const setLanguage = useSettingsStore((state) => state.setLanguage)
   const setTheme = useSettingsStore((state) => state.setTheme)
 
+  /** @description يبدّل لغة التطبيق ويحافظ على القيم المدعومة فقط. */
   const toggleLanguage = () => setLanguage(language === 'en' ? 'ar' : 'en')
+
+  /** @description يبدّل الثيم الحالي بين الفاتح والداكن. */
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
 
   return (

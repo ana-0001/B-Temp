@@ -8,7 +8,7 @@
 - [x] مراجعة تشغيل `NotFoundScreen` على مسار غير موجود والتأكد من خلو الـ Console من الأخطاء.
 
 ## 🟡 MED
-- [ ] استكمال شاشات النظام الأساسية المتبقية (SplashScreen, ErrorScreen) — المرحلة 4.
+- [x] استكمال شاشات النظام الأساسية (SplashScreen, ErrorScreen, NotFoundScreen) — المرحلة 4.
 - [ ] استكمال TanStack Router tree وربطه بالـ layouts الإضافية عند الحاجة.
 - [ ] إضافة Sidebar أو Mobile Navigation فقط عند ظهور احتياج منتج واضح.
 - [ ] استكمال إعداد Day.js helpers وQuery policies حسب احتياج الـ Features.

@@ -11,12 +11,18 @@
   },
   "controls": {
     "language": "Change language",
-    "theme": "Change theme"
+    "theme": "Change theme",
+    "settings": "Settings"
   },
   "foundation": {
     "title": "Foundation is ready",
     "message": "The application shell and design system are connected.",
-    "action": "Continue"
+    "action": "Continue",
+    "statuses": {
+      "tailwind": "Tailwind CSS 4 active",
+      "alias": "Alias system (@a) ready",
+      "tokens": "Design tokens synced"
+    }
   },
   "errors": {
     "generic": "Something went wrong.",
@@ -26,5 +32,13 @@
   "notFound": {
     "title": "Page not found",
     "message": "The page you requested does not exist."
+  },
+  "system": {
+    "splash": "Preparing your workspace…",
+    "error": {
+      "title": "Something went wrong",
+      "message": "We couldn't load this screen. Try again.",
+      "retry": "Try again"
+    }
   }
 }

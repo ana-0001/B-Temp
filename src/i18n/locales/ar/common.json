@@ -11,12 +11,18 @@
   },
   "controls": {
     "language": "تغيير اللغة",
-    "theme": "تغيير الثيم"
+    "theme": "تغيير الثيم",
+    "settings": "الإعدادات"
   },
   "foundation": {
     "title": "الأساس جاهز",
     "message": "تم ربط غلاف التطبيق ونظام التصميم.",
-    "action": "متابعة"
+    "action": "متابعة",
+    "statuses": {
+      "tailwind": "Tailwind CSS 4 شغال",
+      "alias": "نظام Alias (@a) جاهز",
+      "tokens": "Design Tokens متزامنة"
+    }
   },
   "errors": {
     "generic": "حصل خطأ غير متوقع.",
@@ -26,5 +32,13 @@
   "notFound": {
     "title": "الصفحة مش موجودة",
     "message": "الصفحة اللي طلبتها مش موجودة."
+  },
+  "system": {
+    "splash": "بنجهز مساحة العمل…",
+    "error": {
+      "title": "حصل خطأ",
+      "message": "مش قادرين نحمّل الشاشة دي. جرّب تاني.",
+      "retry": "جرّب تاني"
+    }
   }
 }

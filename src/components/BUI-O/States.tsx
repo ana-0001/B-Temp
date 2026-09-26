@@ -6,10 +6,10 @@
  * ]
  */
 
-import type * as React from 'react'
+import { type HTMLAttributes } from '@a'
 import { Button2, Card2, P, Span } from '../BUI-2'
 
-export interface I_EmptyStateProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface I_EmptyStateProps extends HTMLAttributes<HTMLDivElement> {
   title: string
   message?: string
   actionLabel?: string
@@ -40,7 +40,7 @@ export const EmptyState = ({
   </Card2>
 )
 
-export interface I_ErrorStateProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface I_ErrorStateProps extends HTMLAttributes<HTMLDivElement> {
   title: string
   message?: string
   actionLabel?: string
