@@ -1,0 +1,45 @@
+{
+  "version": 2,
+  "groups": [
+    {
+      "id": "moihjikd8xmz7uaqkq8",
+      "name": "Notes",
+      "icon": "folder",
+      "color": "",
+      "files": [],
+      "order": 0,
+      "createdBy": "BomBa-hp",
+      "collapsed": false,
+      "pinned": false,
+      "isGlobal": false
+    },
+    {
+      "id": "moii00lcmhbaqul3rb",
+      "name": "A:1",
+      "icon": "folder",
+      "color": "",
+      "files": [
+        {
+          "path": "apps/app-web-a/index.html",
+          "name": "index.html",
+          "isDirectory": false
+        },
+        {
+          "path": "apps/app-web-a/src/main.tsx",
+          "name": "main.tsx",
+          "isDirectory": false
+        },
+        {
+          "path": "apps/app-web-a/src/alias/index.ts",
+          "name": "index.ts",
+          "isDirectory": false
+        }
+      ],
+      "order": 1,
+      "createdBy": "BomBa-hp",
+      "collapsed": true,
+      "pinned": false,
+      "isGlobal": false
+    }
+  ]
+}

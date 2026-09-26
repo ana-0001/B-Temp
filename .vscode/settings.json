@@ -1,0 +1,260 @@
+{
+  "editor.formatOnSave": false,
+
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.enabledFrameworks": ["react", "i18next"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.languageIds": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "i18n-ally.namespace": true,
+  "i18n-ally.defaultNamespace": "translation",
+  "i18n-ally.experimental.i18nextParser": true,
+  "i18n-ally.extract.ignored": ["ال"],
+
+  "cSpell.ignoreRegExpList": ["/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDFF\\uFE70-\\uFEFF]+/g"],
+  "cSpell.enabledLanguageIds": [
+    "ini",
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "json5",
+    "markdown"
+  ],
+  "cSpell.words": ["Datepicker"],
+
+  "indentRainbow.includedLanguages": [],
+  "indentRainbow.excludedLanguages": ["plaintext", "markdown"],
+  "indentRainbow.updateDelay": 100,
+  "indentRainbow.colors": [
+    "hsla(60 , 80%, 70%, 0.3)",
+    "hsla(120, 80%, 70%, 0.3)",
+    "hsla(300, 80%, 70%, 0.3)",
+    "hsla(180, 80%, 70%, 0.3)"
+  ],
+  "indentRainbow.errorColor": "hsla(0, 80%, 60%, 0.6)",
+  "indentRainbow.indicatorStyle": "light",
+  "indentRainbow.lightIndicatorStyleLineWidth": 1,
+
+  "todo-tree.general.tags": [
+    "FIXME", "BUG", "fixme", "bug",
+    "FUTURE", "BACKLOG", "TODO", "DOING", "DONE", "future", "backlog", "todo", "doing", "done",
+    "[ ]", "[x]"
+  ],
+  "todo-tree.filtering.excludeGlobs": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.git/**"
+  ],
+  "todo-tree.general.periodicRefreshInteval": 5,
+  "todo-tree.general.automaticGitRefreshInterval": 30,
+  "todo-tree.tree.scanMode": "workspace",
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.highlights.highlightDelay": 300,
+  "todo-tree.general.revealBehaviour": "start of todo",
+  "todo-tree.general.statusBar": "total",
+  "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+  "todo-tree.general.showActivityBarBadge": true,
+  "todo-tree.tree.hideTreeWhenEmpty": true,
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.regex.enableMultiLine": true,
+
+  "todo-tree.highlights.defaultHighlight": {
+    "foreground": "hsla(0, 80%, 100%, 0.6)",
+    "background": "hsla(40, 80%, 60%, 0.6)",
+    "icon": "check",
+    "iconColour": "hsla(40, 80%, 60%, 1)",
+    "type": "whole-line",
+    "gutterIcon": true,
+    "rulerColour": "hsla(30, 80%, 60%, 1)",
+    "borderRadius": "2px"
+  },
+
+  "todo-tree.highlights.customHighlight": {
+    "[ ]": {
+      "background": "hsla(0, 80%, 60%, 0.2)",
+      "icon": "circle-slash",
+      "type": "whole-line"
+    },
+    "[x]": {
+      "background": "hsla(120, 80%, 60%, 0.2)",
+      "icon": "check",
+      "type": "whole-line"
+    },
+    "FIXME": {
+      "tags": ["FIXME", "fixme"],
+      "foreground": "hsla(120, 80%, 100%, 1)",
+      "background": "hsla(20, 80%, 60%, 0.5)",
+      "icon": "alert",
+      "type": "whole-line",
+      "fontWeight": "bold"
+    },
+    "BUG": {
+      "tags": ["TODO", "bug"],
+      "background": "hsla(0, 80%, 60%, 0.5)",
+      "icon": "bug",
+      "type": "text-and-comment"
+    },
+    "future": {
+      "tags": ["FUTURE", "future"],
+      "foreground": "hsla(120, 80%, 100%, 1)",
+      "background": "hsla(300, 80%, 60%, 0.4)",
+      "icon": "rocket",
+      "type": "whole-line",
+      "gutterIcon": true,
+      "borderRadius": "3px"
+    },
+    "backlog": {
+      "tags": ["BACKLOG", "backlog"],
+      "foreground": "hsla(120, 80%, 0%, 1)",
+      "background": "hsla(220, 80%, 60%, 0.4)",
+      "icon": "archive",
+      "type": "whole-line",
+      "gutterIcon": true,
+      "borderRadius": "3px"
+    },
+    "todo": {
+      "tags": ["TODO", "todo"],
+      "foreground": "hsla(120, 80%, 0%, 1)",
+      "background": "hsla(40, 100%, 60%, 0.4)",
+      "icon": "circle",
+      "type": "whole-line",
+      "gutterIcon": true,
+      "borderRadius": "3px",
+      "fontWeight": "bold"
+    },
+    "doing": {
+      "tags": ["DOING", "doing"],
+      "foreground": "hsla(120, 80%, 100%, 1)",
+      "background": "hsla(200, 80%, 60%, 0.4)",
+      "icon": "sync",
+      "type": "whole-line",
+      "gutterIcon": true,
+      "borderRadius": "3px",
+      "fontWeight": "bold",
+      "textDecoration": "underline"
+    },
+    "done": {
+      "tags": ["DONE", "done"],
+      "foreground": "hsla(120, 80%, 0%, 1)",
+      "background": "hsla(120, 80%, 60%, 0.4)",
+      "icon": "check",
+      "type": "whole-line",
+      "gutterIcon": true,
+      "borderRadius": "3px",
+      "textDecoration": "line-through"
+    }
+  },
+
+  "todo-tree.highlights.useColourScheme": false,
+  "todo-tree.highlights.backgroundColourScheme": [
+    "red", "orange", "yellow", "green", "blue", "indigo", "violet"
+  ],
+  "todo-tree.highlights.foreroundColourScheme": [
+    "white", "black", "black", "white", "white", "white", "black"
+  ],
+
+  "todo-tree.tree.labelFormat": "${tag}, ${subTag}, ${line}, ${column}, ${filename}, ${filepath}, ${after}, ${before}",
+  "todo-tree.tree.tooltipFormat": "${filepath}, خط ${line}",
+  "todo-tree.tree.sort": true,
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showScanModeButton": true,
+  "todo-tree.tree.buttons.refresh": true,
+  "todo-tree.tree.buttons.viewStyle": true,
+  "todo-tree.tree.buttons.groupByTag": true,
+  "todo-tree.tree.buttons.filter": true,
+  "todo-tree.tree.buttons.export": false,
+  "todo-tree.tree.hideIconsWhenGroupedByTag": false,
+  "todo-tree.general.exportPath": "${HOME}/todo-export-${Y}${m}${d}.txt",
+  "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000",
+  "todo-tree.ripgrep.ripgrepMaxBuffer": 500,
+
+  "todo-tree.filtering.scopes": [
+    {
+      "name": "Production",
+      "excludeGlobs": ["**/tests/**", "**/specs/**"]
+    },
+    {
+      "name": "Tests",
+      "includeGlobs": ["**/tests/**", "**/specs/**"]
+    },
+    {
+      "name": "All"
+    }
+  ],
+
+  "todo-tree.filtering.includeHiddenFiles": false,
+  "todo-tree.filtering.ignoreGitSubmodules": true,
+  "todo-tree.filtering.useBuiltInExcludes": "file excludes",
+  "todo-tree.regex.regexCaseSensitive": false,
+  "todo-tree.tree.sortTagsOnlyViewAlphabetically": true,
+  "todo-tree.tree.disableCompactFolders": false,
+
+  "better-comments.tags": [
+    {
+      "tags": ["!", "@"],
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "#",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+
+  "i18n-ally.localesPaths": [
+    "apps/app-web/src/features/i18n",
+    "apps/app-web/src/features/i18n/locales"
+  ]
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+  @file        : index.html
+  @description  : نقطة الدخول — بنحمّل خط Plus Jakarta Sans + الثيم المبدئي قبل ما React يشتغل علشان نتجنب وميض الثيم (FOUC).
+-->
+<html lang="en" dir="ltr" data-theme="light" class="bg-bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e9b949" />
+    <meta name="description" content="B-Temp — قالب جاهذ للتطوير." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>B-Temp</title>
+    <script>// تطبيق الثيم واللغة فوراً لتجنب وميض الشاشة (FOUC)
+      (() => {
+        try {
+          const { language: lang = "en", theme = "light" } = JSON.parse(localStorage.getItem('spa-settings'))?.state || {};
+          const doc = document.documentElement;
+          doc.lang = lang; doc.dir = lang === "ar" ? "rtl" : "ltr";
+          doc.dataset.theme = theme;
+          doc.style.setProperty("--h", h); // تأكد أن متغير h معرف مسبقاً
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

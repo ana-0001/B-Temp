@@ -1,0 +1,30 @@
+{
+  "appName": "SPA Frontend",
+  "loading": "Loading",
+  "languages": {
+    "en": "English",
+    "ar": "العربية"
+  },
+  "themes": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "controls": {
+    "language": "Change language",
+    "theme": "Change theme"
+  },
+  "foundation": {
+    "title": "Foundation is ready",
+    "message": "The application shell and design system are connected.",
+    "action": "Continue"
+  },
+  "errors": {
+    "generic": "Something went wrong.",
+    "network": "A network error occurred. Please try again.",
+    "cancelled": "The request was cancelled."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "The page you requested does not exist."
+  }
+}

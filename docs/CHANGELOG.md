@@ -1,0 +1,23 @@
+## [Unreleased] — 2026-09-24
+### Added
+- إنشاء ملفات الاستمرارية الأساسية: `AI_CONTEXT.md` و`AI_SESSION.md` و`TODO.md` و`CHANGELOG.md`.
+- تسجيل أن المشروع يبدأ من المرحلة `1.1 Foundation & Tooling`.
+- إنشاء Foundation أولي لمشروع React وTypeScript وVite.
+- إضافة Alias System، إعدادات TypeScript strict، ESLint Flat Config، وPrettier.
+- إضافة طبقات Router وQuery وAxios وZustand وi18n وDay.js UTC.
+- إضافة CSS Tokens أولية وReset وTailwind `@theme`.
+- إضافة Environment Config متحقق منه بـ Zod وملف `.env.example`.
+- إضافة موارد ترجمة أساسية للغتين `en` و`ar`.
+- إضافة تطبيع موحّد لأخطاء Axios ومعالجة الطلبات الملغاة.
+- إضافة Utility `buildProps` وطبقتي BUI-1 وBUI-2 بأول مكونات الواجهة الأساسية.
+- إضافة `EmptyState` و`ErrorState` كأول مكونات BUI-O.
+- ربط الشاشة الرئيسية المؤقتة بالـ Router وإضافة `RootLayout` لمزامنة اللغة والثيم مع HTML.
+- إضافة App Shell أولي يتضمن `AppHeader` و`PageContainer`.
+- إضافة تبديل اللغة والثيم مع موارد i18n للغتين.
+- إصلاح تركيب `HomeScreen` لإزالة تكرار عنصر `main` داخل `RootLayout`.
+- فصل مزامنة إعدادات HTML داخل `RootLayout` عن تخطيط الصفحات العامة.
+- إضافة `PublicLayout` وربط الصفحة الرئيسية به داخل شجرة TanStack Router.
+- إضافة `NotFoundScreen` وربطها كـ fallback للمسارات غير الموجودة مع ترجمتها.
+- إصلاح إعداد Vite بإضافة Aliases المطابقة لمسارات TypeScript، وإضافة fallback افتراضي للمسارات غير الموجودة في الراوتر.
+- عزل نقطة التشغيل والـ layouts والـ screens عن Alias `@a` لإزالة دورة الاستيراد المحتملة المسببة للصفحة البيضاء.
+- تفعيل App Shell من خلال `AppProviders` و`RouterProvider` وربط مزامنة اللغة والثيم بتغيير i18next.

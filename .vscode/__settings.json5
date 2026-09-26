@@ -1,0 +1,376 @@
+{
+  //#region  ✅ إعدادات عامة لـ - [i18n-ally]:-
+  // "i18n-ally.localesPaths": ["src/i18n/locales"], // 📁 المسار الصحيح لملفات الترجمة
+  "i18n-ally.sourceLanguage": "en", // 🌐 اللغات المدعومة
+  "i18n-ally.enabledFrameworks": ["react", "i18next"], // 🔑 أسلوب المفاتيح
+  "i18n-ally.keystyle": "nested", // ⚙️ أنواع الملفات التي تزودها الإضافة بالاقتراحات
+  "i18n-ally.languageIds": ["javascript", "typescript", "javascriptreact", "typescriptreact"], // 📦 تمكين الـ namespaces
+  "i18n-ally.namespace": true,
+  "i18n-ally.defaultNamespace": "translation", // ❗ إصلاح ضروري عند استخدام i18next مع ملفات JSON خارجية
+  "i18n-ally.experimental.i18nextParser": true, // 🔕 تجاهل الكلمات المشابهة للعربية مثل "ال..."
+  "i18n-ally.extract.ignored": ["ال"],
+  //#endregion
+
+  //#region  ✅ إعدادات عامة لـ - [cSpell]:-
+  "cSpell.ignoreRegExpList": [
+    "/[\\u0600-\\u06FF\\u0750-\\u077F\\u08A0-\\u08FF\\uFB50-\\uFDFF\\uFE70-\\uFEFF]+/g"
+  ],
+  "cSpell.enabledLanguageIds": [
+    "ini",
+    "html",
+    "css",
+    "scss",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "json5",
+    "markdown"
+  ],
+  "cSpell.words": ["Datepicker"],
+  //#endregion
+
+  //#region  ✅ إعدادات عامة لـ - [indentRainbow]:-
+
+  "indentRainbow.includedLanguages": [], // تحدد قائمة اللغات التي تعمل عليها الإضافة فقط, إذا كانت [] (فارغة) فهذا يعني: تعمل على كل اللغات (ما لم تُستثنَ في excluded).
+  // "indentRainbow.excludedLanguages": ["json", "plaintext", "markdown"], // تحدد اللغات التي لا تعمل عليها الإضافة.
+  "indentRainbow.excludedLanguages": ["plaintext", "markdown"], // تحدد اللغات التي لا تعمل عليها الإضافة.
+  "indentRainbow.updateDelay": 100, // تأخير بالمللي ثانية قبل أن تحدّث الإضافة الألوان بعد تغييراتك في الملف.
+  // هذه الألوان تُستخدم بالتناوب حسب مستوى التداخل (indent level), الفكرة: كل مستوى indent يأخذ لونًا مختلفًا لسهولة رؤية البنية
+  "indentRainbow.colors": [
+    "hsla(60 , 80%, 70%, 0.3)",
+    "hsla(120, 80%, 70%, 0.3)",
+    "hsla(300, 80%, 70%, 0.3)",
+    "hsla(180, 80%, 70%, 0.3)"
+  ],
+  "indentRainbow.errorColor": "hsla(0, 80%, 60%, 0.6)", // لون يظهر عندما يكون عدد المسافات في الـ indent ليس مضاعفًا لـ tabSize, مثال: tabSize = 2
+
+  "indentRainbow.indicatorStyle": "light", // بدل تلوين “خلفية” مساحات الـ indent، يستخدم خطوط عمودية (indicators) أكثر وضوحًا (خصوصًا في الثيمات الفاتحة).
+  "indentRainbow.lightIndicatorStyleLineWidth": 1, // سماكة الخط بالبيكسل (مثل 1px).
+
+  //#endregion
+
+  //#region  ✅ إعدادات عامة لـ - [todo-tree]:-
+    // 🔍 **العلامات (Tags) التي سيبحث عنها الامتداد**
+    // مثل TODO, FIXME, BUG... يمكن إضافة أي علامات مخصصة
+    "todo-tree.general.tags": [
+      "FIXME", "BUG", "fixme", "bug",
+      "FUTURE", "BACKLOG", "TODO", "DOING", "DONE", "future", "backlog", "todo", "doing", "done",
+      "[ ]", "[x]"
+    ],
+    // 📁 **استبعاد مجلدات/ملفات باستخدام glob patterns**, افتراضيًا يُستبعد `node_modules` تلقائيًا
+    "todo-tree.filtering.excludeGlobs": [
+      "**/node_modules/**",  // استبعاد node_modules
+      "**/dist/**",          // استبعاد مجلدات البناء
+      "**/build/**",         // استبعاد مجلدات البناء
+      "**/.git/**"           // استبعاد مجلدات Git
+    ],
+    // 🔄 **تحديث الشجرة تلقائيًا كل ؟ دقائق (0 = معطل)**, مفيد إذا كنت تعمل على ملفات خارج VS Code
+    "todo-tree.general.periodicRefreshInteval": 5,  // كل 5 دقائق
+    // 🔄 **تحديث تلقائي عند تغييرات Git (بالثواني، 0 = معطل)**, يراقب تغييرات HEAD في المستودع
+    "todo-tree.general.automaticGitRefreshInterval": 30,  // كل 30 ثانية
+    // 📂 **جذر البحث (افتراضيًا: مجلد المشروع الحالي)**
+    // يمكن تحديد مجلد فرعي مثل:
+    // "todo-tree.general.rootFolder": "${workspaceFolder}/src"
+
+    // 📄 **نمط البحث (workspace = كل المشروع، open-files = الملفات المفتوحة فقط)**
+    "todo-tree.tree.scanMode": "workspace",
+    // 🎨 **تفعيل تلوين العلامات في الملفات**
+    "todo-tree.highlights.enabled": true,
+    // ⏱ **تأخير قبل ظهور التلوين (مللي ثانية)**
+    "todo-tree.highlights.highlightDelay": 300,
+    // 📌 **سلوك النقر على علامة في الشجرة (حيث يضع المؤشر)**
+    // الخيارات: "start of todo" | "end of todo" | "start of line" | "leave focus in tree"
+    "todo-tree.general.revealBehaviour": "start of todo",
+    // 📊 **عرض عدد العلامات في شريط الحالة**
+    // الخيارات: "none" | "total" | "tags" | "top three" | "current file"
+    "todo-tree.general.statusBar": "total",
+    // 🏷 **عرض أيقونات بدلاً من نص العلامات في شريط الحالة**
+    "todo-tree.general.showIconsInsteadOfTagsInStatusBar": true,
+    // 🔴 **عرض badge في شريط النشاط بعدد العلامات**
+    "todo-tree.general.showActivityBarBadge": true,
+    // 📎 **إخفاء الشجرة إذا لم يتم العثور على أي علامات**
+    "todo-tree.tree.hideTreeWhenEmpty": true,
+    // 🔍 **العبارة النظامية (Regex) لاكتشاف العلامات**
+    // افتراضيًا يدعم التعليقات في معظم اللغات (+ Markdown)
+    // $TAGS سيستبدل تلقائيًا بالعلامات في `todo-tree.general.tags`
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^[ \\t]*(-|\\d+.))\\s*($TAGS)",
+
+    // 🔠 **دعم متعدد الأسطر (إذا كانت العلامة تمتد لأكثر من سطر)**
+    "todo-tree.regex.enableMultiLine": true,
+
+    // 🎭 **إعدادات تظليل العلامات الافتراضية**
+    // تنطبق على جميع العلامات ما لم تُعَرَّف إعدادات مخصصة لها
+    "todo-tree.highlights.defaultHighlight": {
+      "foreground": "hsla(0, 80%, 100%, 0.6)",  // لون النص
+      "background": "hsla(40, 80%, 60%, 0.6)",  // خلفية برتقالية شفافة
+      // "opacity": 50,  // شفافية الخلفية (0-100)
+      "icon": "check",  // أيقونة في الشجرة (يمكن استخدام أيقونات Octicon أو Codicon)
+      "iconColour": "hsla(40, 80%, 60%, 1)",  // لون الأيقونة
+      "type": "whole-line",  // نوع التظليل: "text" (النص بعد العلامة) | "line" (السطر كامل) | "whole-line" (السطر بالكامل بعرض المحرر)
+      "gutterIcon": true,  // عرض الأيقونة في هامش المحرر
+      "rulerColour": "hsla(30, 80%, 60%, 1)",  // لون العلامة في شريط التمرير الجانبي
+      "borderRadius": "2px"  // تقوس حواف التظليل
+    },
+
+    // 🎨 **إعدادات تظليل مخصصة لكل علامة**
+    // مثال: جعل TODO أخضر و FIXME أحمر
+    "todo-tree.highlights.customHighlight": {
+      "[ ]": {
+        "background": "hsla(0, 80%, 60%, 0.2)",
+        "icon": "circle-slash",
+        "type": "whole-line",
+      },
+      "[x]": {
+        "background": "hsla(120, 80%, 60%, 0.2)",
+        "icon": "check",
+        "type": "whole-line",
+      },
+      "FIXME": {
+        "tags": ["FIXME", "fixme"],
+        "foreground": "hsla(120, 80%, 100%, 1)",
+        "background": "hsla(20, 80%, 60%, 0.5)",
+        "icon": "alert",
+        "type": "whole-line",
+        "fontWeight": "bold"
+      },
+      "BUG": {
+        "tags": ["TODO", "bug"],
+        // "foreground": "hsla(120, 80%, 100%, 1)",
+        "background": "hsla(0, 80%, 60%, 0.5)",
+        "icon": "bug",
+        "type": "text-and-comment"
+      },
+      // ====== علامات Kanban الجديدة ======
+      // المستقبل | قائمة المهام المتراكمة | قائمة المهام | قيد التنفيذ | تم إنجازه
+      // future | backlog | todo | doing | done
+      "future": {
+        "tags": ["FUTURE", "future"],
+        "foreground": "hsla(120, 80%, 100%, 1)",
+        "background": "hsla(300, 80%, 60%, 0.4)",  // أزرق فاتح (مستقبلية)
+        "icon": "rocket",  // أيقونة صاروخ (رمز للمستقبل)
+        "type": "whole-line",
+        "gutterIcon": true,
+        "borderRadius": "3px",
+        // "fontWeight": "bold",
+        // "opacity": 70,  // شفافية إضافية
+        // "textDecoration": "underline",  // خط تحت النص
+        // "textDecoration": "line-through"  // خط على النص
+      },
+      "backlog": {
+        "tags": ["BACKLOG", "backlog"],
+        "foreground": "hsla(120, 80%, 0%, 1)",
+        "background": "hsla(220, 80%, 60%, 0.4)",  // أزرق فاتح جدًا (قائمة الانتظار)
+        "icon": "archive",  // أيقونة أرشيف
+        "type": "whole-line",
+        "gutterIcon": true,
+        "borderRadius": "3px",
+        // "fontWeight": "bold",
+        // "opacity": 70,  // شفافية إضافية
+        // "textDecoration": "underline",  // خط تحت النص
+        // "textDecoration": "line-through"  // خط على النص
+      },
+      "todo": {
+        "tags": ["TODO", "todo"],
+        "foreground": "hsla(120, 80%, 0%, 1)",
+        "background": "hsla(40, 100%, 60%, 0.4)",  // أصفر برتقالي (مهمات قادمة)
+        "icon": "circle",  // أيقونة دائرة (غير مكتملة)
+        "type": "whole-line",
+        "gutterIcon": true,
+        "borderRadius": "3px",
+        "fontWeight": "bold",
+        // "opacity": 70,  // شفافية إضافية
+        // "textDecoration": "underline",  // خط تحت النص
+        // "textDecoration": "line-through"  // خط على النص
+      },
+      "doing": {
+        "tags": ["DOING", "doing"],
+        "foreground": "hsla(120, 80%, 100%, 1)",
+        "background": "hsla(200, 80%, 60%, 0.4)",  // أزرق متوسط (قيد التنفيذ)
+        "icon": "sync",  // أيقونة مزامنة (رمز للعمل الجاري)
+        "type": "whole-line",
+        "gutterIcon": true,
+        "borderRadius": "3px",
+        "fontWeight": "bold",
+        // "opacity": 70,  // شفافية إضافية
+        "textDecoration": "underline",  // خط تحت النص
+        // "textDecoration": "line-through"  // خط على النص
+      },
+      "done": {
+        "tags": ["DONE", "done"],
+        "foreground": "hsla(120, 80%, 0%, 1)",
+        "background": "hsla(120, 80%, 60%, 0.4)",  // أخضر فاتح (مكتملة)
+        "icon": "check",  // أيقونة صح
+        "type": "whole-line",
+        "gutterIcon": true,
+        "borderRadius": "3px",
+        // "fontWeight": "bold",
+        // "opacity": 70,  // شفافية إضافية
+        // "textDecoration": "underline",  // خط تحت النص
+        "textDecoration": "line-through"  // خط على النص
+
+      }
+    },
+
+    // 🌈 **استخدام مخطط ألوان تلقائي للعلامات**
+    // بدلاً من تعريف ألوان يدويًا، يستخدم ألوانًا متسلسلة
+    "todo-tree.highlights.useColourScheme": false,
+    // 🎨 **مخطط ألوان الخلفية (إذا كان useColourScheme = true)**
+    "todo-tree.highlights.backgroundColourScheme": [
+      "red", "orange", "yellow", "green", "blue", "indigo", "violet"
+    ],
+    // ✅ **مخطط ألوان النص (مكمل لألوان الخلفية)**
+    "todo-tree.highlights.foreroundColourScheme": [
+      "white", "black", "black", "white", "white", "white", "black"
+    ],
+
+    // 📝 **تنسيق نص العلامة في الشجرة**
+    // المتغيرات المتاحة: ${tag}, ${subTag}, ${line}, ${column}, ${filename}, ${filepath}, ${after}, ${before}
+    "todo-tree.tree.labelFormat": "${tag}, ${subTag}, ${line}, ${column}, ${filename}, ${filepath}, ${after}, ${before}",
+
+    // 📌 **تنسيق نص التلميح (tooltip) عند التحويم على علامة في الشجرة**
+    "todo-tree.tree.tooltipFormat": "${filepath}, خط ${line}",
+
+    // 🔄 **فرز النتائج في الشجرة (لضمان استقرار الترتيب)**
+    "todo-tree.tree.sort": true,
+    // 📁 **إظهار أعداد العلامات في الشجرة**
+    "todo-tree.tree.showCountsInTree": true,
+    // 📂 **إظهار الأيقونات في الشجرة (مثل أيقونات Git)**
+    "todo-tree.tree.showBadges": true,
+    // 🔍 **إظهار زر تغيير نمط المسح (workspace/open files/current file)**
+    "todo-tree.tree.showScanModeButton": true,
+    // 🔄 **إظهار زر التحديث اليدوي**
+    "todo-tree.tree.buttons.refresh": true,
+    // 📂 **إظهار زر تغيير عرض الشجرة (شجرة/مسطحة/علامات فقط)**
+    "todo-tree.tree.buttons.viewStyle": true,
+    // 🏷 **إظهار زر تجميع العلامات حسب النوع**
+    "todo-tree.tree.buttons.groupByTag": true,
+    // 🔍 **إظهار زر التصفية بالنص**
+    "todo-tree.tree.buttons.filter": true,
+    // 📤 **إظهار زر تصدير الشجرة إلى ملف**
+    "todo-tree.tree.buttons.export": false,
+    // 📁 **إخفاء الأيقونات عند تجميع العلامات حسب النوع**
+    "todo-tree.tree.hideIconsWhenGroupedByTag": false,
+    // 📄 **مسار تصدير الشجرة (يمكن استخدام متغيرات بيئية مثل ${HOME})**
+    "todo-tree.general.exportPath": "${HOME}/todo-export-${Y}${m}${d}.txt",
+
+    // 🔧 **إعدادات ripgrep (أداة البحث المستخدمة)**
+    // يمكن إضافة خيارات مثل --no-ignore لإلغاء تجاهل ملفات .gitignore
+    "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000",
+
+    // 📡 **حجم Buffer لـ ripgrep (بالكيلوبايت)**
+    // زيادة إذا كانت نتائج البحث كبيرة جدًا
+    "todo-tree.ripgrep.ripgrepMaxBuffer": 500,
+
+    // 📂 **نطاقات مخصصة للتبديل بينها بسرعة**
+    // مثال: نطاقات "Production" و "Tests" و "All"
+    "todo-tree.filtering.scopes": [
+      {
+        "name": "Production",  // اسم النطاق
+        "excludeGlobs": ["**/tests/**", "**/specs/**"]  // استبعاد ملفات الاختبار
+      },
+      {
+        "name": "Tests",  // اسم النطاق
+        "includeGlobs": ["**/tests/**", "**/specs/**"]  // تضمين ملفات الاختبار فقط
+      },
+      {
+        "name": "All"  // جميع الملفات (بدون فلترة)
+      }
+    ],
+
+    // 📝 **دعم Markdown (علامات المهام مثل - [ ] و - [x])**
+    // تم تضمينها بالفعل في `todo-tree.general.tags` و `todo-tree.regex.regex`
+
+    // =============================================
+    // 🛠 إعدادات إضافية مفيدة
+    // =============================================
+
+    // 🔍 **تجاهل ملفات Git المخفية (مثل .gitignore)**
+    "todo-tree.filtering.includeHiddenFiles": false,
+    // 📁 **تجاهل Git Submodules**
+    "todo-tree.filtering.ignoreGitSubmodules": true,
+    // 📂 **استخدام إقصاءات VS Code المدمجة (مثل settings.json > Files: Exclude)**
+    "todo-tree.filtering.useBuiltInExcludes": "file excludes",
+    // 📄 **إظهار الملفات المفتوحة فقط في الشجرة**
+    // مفيد للمشاريع الكبيرة
+    // "todo-tree.tree.scanMode": "open-files",
+    // 🔍 **تجاهل حساسية الحروف في البحث**
+    "todo-tree.regex.regexCaseSensitive": false,
+    // 📌 **إظهار الشجرة بشكل مسطح (بدل الشجرة الهرمية)**
+    // "todo-tree.tree.flat": false,
+    // 🏷 **تجميع العلامات حسب النوع في الشجرة**
+    // "todo-tree.tree.grouped": true,
+    // 📊 **فرز العلامات أبجديًا عند عرض "العلامات فقط"**
+    "todo-tree.tree.sortTagsOnlyViewAlphabetically": true,
+    // 📁 **إخفاء المجلدات المدمجة (مثل VS Code افتراضيًا)**
+    "todo-tree.tree.disableCompactFolders": false,
+    // 🔗 **رابط للنقر على العلامات الفرعية (مثل GitHub Issues)**
+    // مثال: "todo-tree.tree.subTagClickUrl": "https://github.com/${subTag}"
+  //#endregion
+
+  //#region  ✅ إعدادات عامة لـ - [cSpell]:-
+  "better-comments.tags": [
+    {
+      "tags": ["!", "@"],
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#474747",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "#",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+  "i18n-ally.localesPaths": [
+    "apps/app-web/src/features/i18n",
+    "apps/app-web/src/features/i18n/locales"
+  ]
+  //#endregion
+
+}
