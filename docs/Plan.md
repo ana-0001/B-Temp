@@ -1,10 +1,21 @@
 
     # 📋 Plan.md — خطة تنفيذ مشروع SPA Frontend
 
-> **الحالة:** خطة معتمدة قبل التنفيذ — لسه مفيش كود اتكتب
+> **الحالة:** خطة معتمدة قيد التنفيذ — تم تنفيذ Foundation وApp Shell وStatus Bar MVP
 > **مصدر الدمج:** وثيقة متطلبات المشروع الأصلية + نظام قواعد BomBa (`rules` / `bomba-skills` / `design-rules` / `01-1-clean-code` / `01-2-eslint` / `central-alias-system` / `git-repo-master`)
-> **آخر تحديث:** 2026-09-22
+> **آخر تحديث:** 2026-09-28
 > **الإصدار:** 2.0.0 (نسخة مُحدَّثة ومُطابِقة لنظام BomBa)
+
+## 0.1 حالة التنفيذ الحالية
+
+- Foundation وAlias وBUI وApp Shell منفذة وتعمل.
+- `StatusBar` هو المكوّن الرسمي الوحيد ويعمل كـ Footer داخل `RootLayout`.
+- تم إضافة Logo مركزي قابل لإعادة الاستخدام من `src/components/branding/Logo.tsx`.
+- تم إضافة Live Clock بتوقيت القاهرة، Gregorian، وUmm al-Qura Hijri.
+- تم إضافة Language/Theme toggles وNotifications Popover وSettings Drawer فعلي بإعدادات الوقت والمنطقة الزمنية.
+- تم عزل Radix Popover/Dialog خلف `src/components/BUI/Overlays.tsx` و`src/alias/lib.ts` بحيث يمكن استبدال المكتبة من طبقة واحدة.
+- تم ربط Health Check دوري قابل للتبديل عبر `VITE_API_BASE_URL/health` مع حالات Checking/Online/Degraded/Offline.
+- الخطوات المتبقية: مصدر Notifications حقيقي، وإضافة اختبارات E2E.
 
 ---
 
@@ -321,7 +332,7 @@ import { Button2, Card2 } from '@ui'
 | `alias/ui.ts` | BUI-1 + BUI-2 + BUI-O + أي wrapper لـ shadcn/Radix |
 | `alias/icons.ts` | كل الأيقونات بـ `Icon` prefix (lucide-react + react-icons لـ Social) |
 | `alias/store.ts` | Zustand hooks/actions + TanStack Query client/hooks |
-| `alias/constants.ts` | `ROUTES`, Config, Assets, `SUPPORTED_LANGUAGES`, `DEFAULT_LANGUAGE`, `DEFAULT_THEME` |
+| `alias/constants.ts` | `ROUTES`, Config, Assets, `SUPPORTED_LANGUAGES`, `DEFAULT_LANGUAGE`, `DEFAULT_AppTheme` |
 | `alias/index.ts` | `export * from` كل الملفات فوق → دي نقطة `@a` |
 
 ### 7.2 قواعد صارمة
@@ -418,7 +429,7 @@ authStore/authRepository → مسؤولين عن حقن الـ Token والتع�
 | ملفات Components | `PascalCase.tsx` | `UserCard.tsx` |
 | ملفات Hooks | `camelCase.ts` | `useAuth.ts` |
 | ملفات Utils | `kebab-case.ts` | `format-date.ts` |
-| Types مخصصة | `PascalCase` + `T_` | `T_Theme`, `T_Language` |
+| Types مخصصة | `PascalCase` + `T_` | `T_AppTheme`, `T_Language` |
 | Interfaces | `PascalCase` + `I_` | `I_UserDTO` |
 
 ### 11.2 TypeScript — قواعد صارمة
@@ -860,4 +871,4 @@ Requirements → Types/Schemas (Zod) → API/Repository → Queries/Mutations
 
 الخطة دي بتحوّل وثيقة المتطلبات العامة الأصلية لخطة **منضبطة 100% بنظام BomBa** في كل ما يخص التصميم والبنية والجودة والـ Git، مع الحفاظ على القرارات الوظيفية المحددة صراحةً في الوثيقة الأصلية (Router/State/Forms/...) كقرارات مشروع موثّقة ومقصودة، مش تعارضات مسكوت عنها.
 
-**لسه محدش بدأ ينفذ أي كود.** الخطوة الجاية المنطقية هي حسم بنود § 18 مع صاحب المنتج/الباك اند، وبعدين فتح فرع `feature/1.1-foundation-setup`.
+**الحالة الحالية:** تم تنفيذ Foundation وApp Shell وStatus Bar Footer وLogo المركزي والساعة والإعدادات الأساسية. الخطوات التالية الخاصة بالمكوّن هي Health API، مصدر Notifications حقيقي، واختبارات E2E.

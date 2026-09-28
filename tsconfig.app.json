@@ -18,11 +18,8 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@a": ["src/alias/index.ts"],
-      "@ui": ["src/alias/ui.ts"],
-      "@icons": ["src/alias/icons.ts"],
-      "@store": ["src/alias/store.ts"],
-      "@const": ["src/alias/constants.ts"]
+      "@/*": ["./src/*"],
+      "@a": ["./src/alias/index.ts"]
     }
   },
   "include": ["src"]

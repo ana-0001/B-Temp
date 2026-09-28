@@ -6,11 +6,17 @@
  * ]
  */
 
-export * from '../components/BUI-1'
-export * from '../components/BUI-2'
-export * from '../components/BUI-O/States'
-export * from '../components/layout/Header'
-export * from '../components/layout/PageContainer'
-export * from '../app/layouts/PublicLayout'
-export { buildProps } from '../utils/build-props'
-export { cn } from '../utils/cn'
+export * from '@/components/BUI'
+export * from '@/components/branding'
+
+export * from '@/components/settings'
+export * from '@/components/status-bar'
+
+export * from '@/components/layout/Header'
+export * from '@/components/layout/PageContainer'
+
+
+
+export { buildProps } from '@/utils/build-props'
+export { cn } from '@/utils/cn'
+

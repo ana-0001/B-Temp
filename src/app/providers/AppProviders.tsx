@@ -2,13 +2,11 @@
  * @file        : src/app/providers/AppProviders.tsx
  * @description : مزودات التطبيق العامة مثل TanStack Query.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء مزودات التطبيق" }
+ *   { "date": "2026-09-26T16:45:00Z", "version": "1.3.0", "by": ["BomBa"], "comment": "توحيد استيراد مزود Query عبر Alias" }
  * ]
  */
 
-import type { PropsWithChildren } from 'react'
-import { QueryClientProvider } from '@tanstack/react-query'
-import { queryClient } from '../../lib/query/query-client'
+import { QueryClientProvider, queryClient, type PropsWithChildren } from '@a'
 
 /** @description يركّب مزودات الحالة المشتركة حول واجهة التطبيق. */
 export function AppProviders({ children }: PropsWithChildren) {

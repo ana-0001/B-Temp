@@ -1,5 +1,8 @@
 ## [Unreleased] — 2026-09-26
 ### Changed
+- تحديث `main` و`App` و`AppProviders` لاستخدام Alias المركزي للمكتبات الخارجية.
+- تحسين TanStack Router بإضافة preload عند intent واسترجاع scroll وربط حالات التحميل والخطأ العامة.
+
 - نقل أنواع HTML المستخدمة في مكونات BUI إلى `@a` لتطبيق قاعدة Alias المركزية بدون استيراد React مباشر.
 - نقل نصوص شاشة Home وأزرار Header إلى موارد i18n باللغتين.
 - إزالة fallback بصيغة `style` وألوان hardcoded من نقطة التشغيل وتوحيد ألوان HTML مع Design Tokens.

@@ -15,11 +15,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
       '@a': fileURLToPath(new URL('./src/alias/index.ts', import.meta.url)),
-      '@ui': fileURLToPath(new URL('./src/alias/ui.ts', import.meta.url)),
-      '@icons': fileURLToPath(new URL('./src/alias/icons.ts', import.meta.url)),
-      '@store': fileURLToPath(new URL('./src/alias/store.ts', import.meta.url)),
-      '@const': fileURLToPath(new URL('./src/alias/constants.ts', import.meta.url)),
     },
   },
 })

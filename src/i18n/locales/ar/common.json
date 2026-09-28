@@ -14,6 +14,21 @@
     "theme": "تغيير الثيم",
     "settings": "الإعدادات"
   },
+  "statusBar": {
+    "label": "شريط حالة النظام",
+    "online": "متصل",
+    "environment": "تجريبي",
+    "tagline": "نبني بوضوح",
+    "notifications": "الإشعارات",
+    "noNotifications": "مفيش إشعارات جديدة.",
+    "settingsHint": "إعدادات التطبيق هتكون متاحة من هنا.",
+    "close": "إغلاق",
+    "cairo24h": "توقيت القاهرة 24 ساعة:",
+    "timeFormat": "نظام الوقت",
+    "timeZone": "المنطقة الزمنية",
+    "timeZones": { "cairo": "القاهرة", "riyadh": "الرياض", "london": "لندن", "newYork": "نيويورك" },
+    "status": { "checking": "جاري الفحص", "ready": "متصل", "busy": "متدهور", "error": "غير متصل" }
+  },
   "foundation": {
     "title": "الأساس جاهز",
     "message": "تم ربط غلاف التطبيق ونظام التصميم.",

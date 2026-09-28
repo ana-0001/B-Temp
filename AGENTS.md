@@ -185,7 +185,7 @@ project/
 | Files (components) | `PascalCase.tsx` | `UserCard.tsx` |
 | Files (utils) | `kebab-case.ts` | `format-date.ts` |
 | DB columns | `snake_case` | `created_at` |
-| Types (custom) | `PascalCase` + `T_` | `T_Theme` |
+| Types (custom) | `PascalCase` + `T_` | `T_AppTheme` |
 | Interfaces | `PascalCase` + `I_` | `I_UserDTO` |
 
 ### TypeScript — قواعد صارمة

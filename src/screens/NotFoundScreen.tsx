@@ -7,14 +7,14 @@
  */
 
 import {
-  Card2,
   Button2,
-  Div1,
+  Card2,
+  Div as Div1,
   H1,
+  IconAlertTriangle,
+  Link,
   P,
   useTranslation,
-  Link,
-  IconAlertTriangle,
 } from '@a'
 
 /** @description تعرض رسالة مترجمة عند طلب مسار غير معروف مع زر عودة للرئيسية. */

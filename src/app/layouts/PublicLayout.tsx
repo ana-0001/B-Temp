@@ -6,10 +6,7 @@
  * ]
  */
 
-import { Outlet } from '@tanstack/react-router'
-import { Div1, Main } from '../../components/BUI-1'
-import { AppHeader } from '../../components/layout/Header'
-import { PageContainer } from '../../components/layout/PageContainer'
+import { AppHeader, Div as Div1, Main, Outlet, PageContainer } from '@a'
 
 /** @description يحدد التركيب المشترك للصفحات التي لا تحتاج جلسة مستخدم. */
 export function PublicLayout() {

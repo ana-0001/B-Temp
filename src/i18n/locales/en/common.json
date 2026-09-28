@@ -14,6 +14,21 @@
     "theme": "Change theme",
     "settings": "Settings"
   },
+  "statusBar": {
+    "label": "System status bar",
+    "online": "Online",
+    "environment": "DEV",
+    "tagline": "Build with clarity",
+    "notifications": "Notifications",
+    "noNotifications": "You are all caught up.",
+    "settingsHint": "Application settings are available here.",
+    "close": "Close",
+    "cairo24h": "Cairo 24h:",
+    "timeFormat": "Time format",
+    "timeZone": "Time zone",
+    "timeZones": { "cairo": "Cairo", "riyadh": "Riyadh", "london": "London", "newYork": "New York" },
+    "status": { "checking": "CHECKING", "ready": "ONLINE", "busy": "DEGRADED", "error": "OFFLINE" }
+  },
   "foundation": {
     "title": "Foundation is ready",
     "message": "The application shell and design system are connected.",

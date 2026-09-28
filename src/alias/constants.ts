@@ -14,5 +14,5 @@ export const ROUTES = {
 
 export const APP_NAME = 'SPA Frontend'
 export const DEFAULT_LANGUAGE = 'en' as const
-export const DEFAULT_THEME = 'light' as const
+export const DEFAULT_AppTheme = 'light' as const
 export const SUPPORTED_LANGUAGES = ['ar', 'en'] as const

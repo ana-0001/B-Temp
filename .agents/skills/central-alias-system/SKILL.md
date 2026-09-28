@@ -105,7 +105,7 @@ export { useTheme }    from '@/hooks/use-theme';
 // 🧱 BUI-1 — HTML Wrappers
 // ============================================================
 export {
-  Div1, Div2, Div3,
+    Div as Div1, Div  as Div2, Div  as Div3, Div  as Div4, Div as Div5,
   Span, SpanIcon,
   H1, H2, H3, H4,
   P,
@@ -301,7 +301,7 @@ import {
   // Hooks
   useSettings,
   // Components
-  Div1, H2, Button, Input, Modal,
+  Div as Div1, H2, Button, Input, Modal,
   // Icons
   IconPlus, IconSearch, IconDelete,
   // Types

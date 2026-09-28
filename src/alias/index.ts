@@ -7,7 +7,10 @@
  */
 
 export * from './core'
+export * from './lib'
 export * from './ui'
 export * from './icons'
 export * from './store'
 export * from './constants'
+
+export * from './paths'

@@ -6,7 +6,7 @@
  * ]
  */
 
-import { Card2, Div1, Spinner2, Span, useTranslation } from '@a'
+import { Card2, Div as Div1, Span, Spinner2, useTranslation } from '@a'
 
 /** @description تعرض حالة التحميل العامة بشكل متوافق مع الثيم واللغة. */
 export function SplashScreen() {

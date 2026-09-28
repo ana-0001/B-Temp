@@ -2,16 +2,15 @@
  * @file        : src/app/layouts/RootLayout.tsx
  * @description : الغلاف الجذري الذي يزامن إعدادات اللغة والثيم مع وثيقة HTML.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إضافة الغلاف الجذري" }
+ *   { "date": "2026-09-26T16:45:00Z", "version": "1.3.0", "by": ["BomBa"], "comment": "توحيد استيرادات الغلاف الجذري عبر Alias" },
+ *   { "date": "2026-09-27T08:30:00Z", "version": "1.4.0", "by": ["BomBa"], "comment": "إزالة الكود الميت وإصلاح أخطاء TypeScript" }
  * ]
  */
 
-import { useEffect } from 'react'
-import { Outlet } from '@tanstack/react-router'
-import { Div1 } from '../../components/BUI-1'
-import { i18next } from '../../i18n/config'
-import { useSettingsStore } from '../../stores/settingsStore'
+import { Main, Outlet, StatusBar, i18next, useEffect, useSettingsStore } from '@a'
+// import '../../components/layout/SystemStatusBar.css'
 
+/** @description يزامن اللغة والثيم مع وثيقة HTML ثم يعرض شجرة الراوتر. */
 export function RootLayout() {
   const language = useSettingsStore((state) => state.language)
   const theme = useSettingsStore((state) => state.theme)
@@ -25,8 +24,10 @@ export function RootLayout() {
   }, [language, theme])
 
   return (
-    <Div1 className="min-h-screen bg-bg text-tt">
+    <Main className="flex min-h-screen flex-col bg-bg text-tt">
       <Outlet />
-    </Div1>
+      {/* <SystemStatusBar /> */}
+      <StatusBar />
+    </Main>
   )
 }

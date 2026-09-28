@@ -6,9 +6,7 @@
  * ]
  */
 
-import { type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes } from '@a'
-import { Button, Div1, Div5, Input, Label, Span } from './BUI-1'
-import { buildProps } from '../utils/build-props'
+import { Button, Div as Div1, Div as Div5, Input, Label, Span, buildProps, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes } from '@a'
 
 export interface I_Button2Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger'
@@ -137,5 +135,3 @@ export const Skeleton2 = ({ className = '', ...restProps }: HTMLAttributes<HTMLD
     })}
   />
 )
-
-export { P, Span } from './BUI-1'

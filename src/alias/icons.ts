@@ -26,4 +26,6 @@ export {
   User as IconUser,
   Info as IconInfo,
   RefreshCw as IconRefreshCw,
+  Bell as IconBell,
+  Activity as IconActivity,
 } from 'lucide-react'

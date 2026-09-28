@@ -303,7 +303,7 @@ graph TD
 | Files (hooks)         | `camelCase.ts`      | `useSettings.ts`        |
 | Files (utils)         | `kebab-case.ts`     | `format-date.ts`        |
 | DB columns            | `snake_case`        | `created_at`            |
-| Types (custom)        | `PascalCase` + `T_` | `T_Theme`, `T_Language` |
+| Types (custom)        | `PascalCase` + `T_` | `T_AppTheme`, `T_Language` |
 | Interfaces            | `PascalCase` + `I_` | `I_UserDTO`             |
 
 
@@ -968,7 +968,7 @@ app-web/
 │   │   └── appRouter.tsx
 │   │
 │   ├── types/
-│   │   ├── common.types.ts       → T_Theme, T_Language, ...
+│   │   ├── common.types.ts       → T_AppTheme, T_Language, ...
 │   │   ├── api.types.ts          → API Request/Response types
 │   │   └── env.d.ts              → Vite env declarations
 │   │
@@ -1106,7 +1106,7 @@ export { clsx } from 'clsx'
 export {
   H1, H2, H3, H4, H5, H6,
   P, Span, A, I,
-  Div1, Div2, Div3, Div4, Div5,
+  Div as Div1, Div  as Div2, Div  as Div3, Div  as Div4, Div as Div5,
   Header, Main, Footer, Nav,
   Section, Article, Aside,
   Hr, Br, Img,
@@ -1246,7 +1246,7 @@ export const IMG_AVATAR_DEFAULT = '/images/avatar-default.png'
 
 export const APP_NAME            = 'BomBa'
 export const DEFAULT_LANGUAGE    = 'en' as const
-export const DEFAULT_THEME       = 'system' as const
+export const DEFAULT_AppTheme       = 'system' as const
 export const SUPPORTED_LANGUAGES = ['ar', 'en'] as const
 ```
 
@@ -1332,7 +1332,7 @@ export const Span    = (p: React.HTMLAttributes<HTMLSpanElement>)         => <sp
 export const A       = (p: React.AnchorHTMLAttributes<HTMLAnchorElement>) => <a {...buildProps(p)} />
 export const I       = (p: React.HTMLAttributes<HTMLElement>)             => <i {...buildProps(p)} />
 
-export const Div1    = (p: React.HTMLAttributes<HTMLDivElement>) => <div data-level="1" {...buildProps(p)} />
+export const Div    = (p: React.HTMLAttributes<HTMLDivElement>) => <div data-level="1" {...buildProps(p)} />
 export const Div2    = (p: React.HTMLAttributes<HTMLDivElement>) => <div data-level="2" {...buildProps(p)} />
 export const Div3    = (p: React.HTMLAttributes<HTMLDivElement>) => <div data-level="3" {...buildProps(p)} />
 export const Div4    = (p: React.HTMLAttributes<HTMLDivElement>) => <div data-level="4" {...buildProps(p)} />
@@ -1883,7 +1883,7 @@ packages/types/
 │
 ├── common/
 │   ├── primitives.ts     ← T_ID, T_Timestamp, T_Nullable, ...
-│   ├── theme.ts          ← T_Theme, T_Language, T_Direction
+│   ├── theme.ts          ← T_AppTheme, T_Language, T_Direction
 │   └── pagination.ts     ← I_Pagination, I_PagedResult<T>
 │
 ├── api/
@@ -1946,12 +1946,12 @@ export type T_VoidCallback        = () => void
  * ]
  */
 
-export type T_Theme     = 'light' | 'dark' | 'system'
+export type T_AppTheme     = 'light' | 'dark' | 'system'
 export type T_Language  = 'ar' | 'en'
 export type T_Direction = 'ltr' | 'rtl'
 export type T_ColorMode = 'light' | 'dark'
 
-export const THEMES    : T_Theme[]     = ['light', 'dark', 'system']
+export const THEMES    : T_AppTheme[]     = ['light', 'dark', 'system']
 export const LANGUAGES : T_Language[]  = ['ar', 'en']
 export const DIRECTIONS: T_Direction[] = ['ltr', 'rtl']
 
@@ -2157,13 +2157,13 @@ export interface I_VerifyEmailDTO     { token: string }
 
 import type {
   // theme:
-  T_Theme, T_Language,
+  T_AppTheme, T_Language,
   // user:
   I_UserResponse,
   } from '@a';
 
 export interface I_SettingsState {
-  theme            : T_Theme
+  theme            : T_AppTheme
   language         : T_Language
   sidebarCollapsed : boolean
 }
@@ -2205,7 +2205,7 @@ export * from './store/slices'
 import type {
   I_User, I_CreateUserDTO,
   I_ApiResponse, I_PagedResponse,
-  T_Theme, T_Language,
+  T_AppTheme, T_Language,
   I_SettingsState,
 } from '@shared/types'
 ```
@@ -2381,7 +2381,7 @@ import type {
   // @reduxjs/toolkit:
   createSlice, type PayloadAction,
   // @shared/types:
-  type { I_SettingsState, T_Theme, T_Language},
+  type { I_SettingsState, T_AppTheme, T_Language},
   } from '@a';
 
 const initialState: I_SettingsState = {
@@ -2394,7 +2394,7 @@ const settingsSlice = createSlice({
   name: 'settings',
   initialState,
   reducers: {
-    setTheme: (state, action: PayloadAction<T_Theme>) => {
+    setTheme: (state, action: PayloadAction<T_AppTheme>) => {
       state.theme = action.payload
       document.documentElement.setAttribute('data-theme', action.payload)
     },
@@ -2434,7 +2434,7 @@ import type {
   // @store:
   setTheme, setLanguage, type { RootState, AppDispatch },
   // @shared/types:
-  type { T_Theme, T_Language },
+  type { T_AppTheme, T_Language },
   } from '@a';
 
 export const useSettings = () => {
@@ -2442,7 +2442,7 @@ export const useSettings = () => {
   const dispatch     = useDispatch<AppDispatch>()
   const { theme, language, sidebarCollapsed } = useSelector((state: RootState) => state.settings)
 
-  const changeTheme    = (v: T_Theme)    => dispatch(setTheme(v))
+  const changeTheme    = (v: T_AppTheme)    => dispatch(setTheme(v))
   const changeLanguage = (v: T_Language) => {
     dispatch(setLanguage(v))
     i18n.changeLanguage(v)

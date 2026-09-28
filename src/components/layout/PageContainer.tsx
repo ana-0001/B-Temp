@@ -6,9 +6,7 @@
  * ]
  */
 
-import { type HTMLAttributes } from '@a'
-import { Div1 } from '../BUI-1'
-
+import { Div as Div1, type HTMLAttributes } from '@a'
 export interface I_PageContainerProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'default' | 'wide'
 }

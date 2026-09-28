@@ -2,13 +2,11 @@
  * @file        : src/main.tsx
  * @description : نقطة تشغيل تطبيق React.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء نقطة التشغيل" }
+ *   { "date": "2026-09-26T16:45:00Z", "version": "1.3.0", "by": ["BomBa"], "comment": "توحيد استيرادات نقطة التشغيل عبر Alias" }
  * ]
  */
 
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App'
+import { createRoot, StrictMode, App } from '@a'
 import './index.css'
 
 const rootElement = document.getElementById('root')

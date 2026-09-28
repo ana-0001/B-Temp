@@ -7,17 +7,17 @@
  */
 
 import {
+  Badge2,
   Button2,
   Card2,
-  Badge2,
-  Div1,
+  Div as Div1,
   H1,
-  P,
-  Span,
-  useTranslation,
   IconCheck,
   IconHome,
   IconSettings,
+  P,
+  Span,
+  useTranslation,
 } from '@a'
 
 export function HomeScreen() {

@@ -435,7 +435,7 @@ export const ROUTES = {
 
 export const APP_NAME            = 'AppName'
 export const DEFAULT_LANGUAGE    = 'en' as const
-export const DEFAULT_THEME       = 'light' as const
+export const DEFAULT_AppTheme       = 'light' as const
 export const SUPPORTED_LANGUAGES = ['ar', 'en'] as const
 ```
 
@@ -459,7 +459,7 @@ Variables/Functions → camelCase        (getUserById)
 Hooks               → camelCase + use  (useAuth)
 Components           → PascalCase       (UserCard)
 Constants            → UPPER_SNAKE_CASE (MAX_RETRY_COUNT)
-Types مخصصة          → PascalCase + T_  (T_Theme)
+Types مخصصة          → PascalCase + T_  (T_AppTheme)
 Interfaces            → PascalCase + I_  (I_UserDTO)
 ملفات Components      → PascalCase.tsx
 ملفات Hooks           → camelCase.ts

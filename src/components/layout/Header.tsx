@@ -8,14 +8,14 @@
 
 import {
   Button2,
-  Div1,
+  Div as Div1,
   Header as Header1,
+  IconLanguages,
+  IconMoon,
+  IconSun,
   Span,
   useSettingsStore,
-  useTranslation,
-  IconSun,
-  IconMoon,
-  IconLanguages,
+  useTranslation
 } from '@a'
 
 /** @description رأس عام يوفّر أدوات الإعدادات المشتركة للتطبيق. */

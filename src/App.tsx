@@ -2,16 +2,14 @@
  * @file        : src/App.tsx
  * @description : جذر التطبيق الذي يربط المزودات بشجرة التوجيه.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "تفعيل App Shell والراوتر" }
+ *   { "date": "2026-09-26T16:45:00Z", "version": "1.3.0", "by": ["BomBa"], "comment": "توحيد مزود الراوتر عبر Alias" }
  * ]
  */
 
-import { RouterProvider } from '@tanstack/react-router'
-import { AppProviders } from './app/providers/AppProviders'
-import { appRouter } from './app/router/router'
+import { RouterProvider, AppProviders, appRouter } from '@a'
 
 /** @description يركّب مزودات التطبيق ثم يسلّم العرض لشجرة TanStack Router. */
-export default function App() {
+export function App() {
   return (
     <AppProviders>
       <RouterProvider router={appRouter} />

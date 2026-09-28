@@ -7,7 +7,8 @@
  */
 
 import { type HTMLAttributes } from '@a'
-import { Button2, Card2, P, Span } from '../BUI-2'
+import { P, Span } from './BUI-1'
+import { Button2, Card2 } from './BUI-2'
 
 export interface I_EmptyStateProps extends HTMLAttributes<HTMLDivElement> {
   title: string
@@ -70,3 +71,4 @@ export const ErrorState = ({
     )}
   </Card2>
 )
+

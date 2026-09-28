@@ -6,9 +6,9 @@
  * ]
  */
 
-export { queryClient } from '../lib/query/query-client'
-export { useSettingsStore } from '../stores/settingsStore'
-export { useUIStore } from '../stores/uiStore'
-export { useAuthStore } from '../stores/authStore'
-export { createHTTPClient } from '../services/http/axiosClient'
-export type { I_HTTPClientOptions, I_HTTPError } from '../services/http/axiosClient'
+export { queryClient } from '@/lib/query/query-client'
+// useSettingsStore — [NOTE] مُصدَّر من paths.ts ← @/components/settings لتجنب التضارب
+export { useUIStore } from '@/stores/uiStore'
+export { useAuthStore } from '@/stores/authStore'
+export { createHTTPClient } from '@/services/http/axiosClient'
+export type { I_HTTPClientOptions, I_HTTPError } from '@/services/http/axiosClient'

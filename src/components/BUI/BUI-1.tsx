@@ -6,20 +6,22 @@
  * ]
  */
 
-import { type AnchorHTMLAttributes, type ButtonHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes } from '@a'
-import { buildProps } from '../utils/build-props'
+import { buildProps, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes, type SelectHTMLAttributes } from '@a'
 
 /** @description غلاف عنصر div الأساسي في طبقة BUI-1. */
-export const Div1 = (props: HTMLAttributes<HTMLDivElement>) => <div {...buildProps(props)} />
-
-/** @description غلاف عنصر div العام للمكونات المركبة. */
-export const Div5 = (props: HTMLAttributes<HTMLDivElement>) => <div {...buildProps(props)} />
+export const Div = (props: HTMLAttributes<HTMLDivElement>) => <div {...buildProps(props)} />
 
 /** @description غلاف رأس التطبيق الدلالي. */
 export const Header = (props: HTMLAttributes<HTMLElement>) => <header {...buildProps(props)} />
 
+/** @description غلاف رأس التطبيق الدلالي. */
+export const Footer = (props: HTMLAttributes<HTMLElement>) => <footer {...buildProps(props)} />
+
 /** @description غلاف المنطقة الرئيسية الدلالية للتطبيق. */
 export const Main = (props: HTMLAttributes<HTMLElement>) => <main {...buildProps(props)} />
+
+/** @description غلاف القسم الدلالي. */
+export const Section = (props: HTMLAttributes<HTMLElement>) => <section {...buildProps(props)} />
 
 /** @description غلاف النص القصير. */
 export const Span = (props: HTMLAttributes<HTMLSpanElement>) => <span {...buildProps(props)} />
@@ -44,3 +46,6 @@ export const Form = (props: FormHTMLAttributes<HTMLFormElement>) => <form {...bu
 
 /** @description غلاف التسمية المرتبطة بحقل. */
 export const Label = (props: LabelHTMLAttributes<HTMLLabelElement>) => <label {...buildProps(props)} />
+
+/** @description غلاف عنصر الاختيار الأساسي في طبقة BUI-1. */
+export const Select = (props: SelectHTMLAttributes<HTMLSelectElement>) => <select {...buildProps(props)} />

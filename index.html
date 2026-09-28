@@ -1,14 +1,12 @@
 <!doctype html>
 <!--
   @file        : index.html
-  @description  : نقطة الدخول — بنحمّل خط Plus Jakarta Sans + الثيم المبدئي قبل ما React يشتغل علشان نتجنب وميض الثيم (FOUC).
+  @description  : نقطة الدخول — بنحمّل خط Plus Jakarta Sans + الثيم المبدئي قبل ما React يشتغل علشان نتجنب وميض الثيم.
 -->
 <html lang="en" dir="ltr" data-theme="light" class="bg-bg">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="hsl(210 80% 42%)" />
-    <meta name="description" content="B-Temp — قالب جاهز للتطوير." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +15,8 @@
       rel="stylesheet"
     />
     <title>B-Temp</title>
-    <script>// تطبيق الثيم واللغة فوراً لتجنب وميض الشاشة (FOUC)
+    <!-- cspell:ignore FOUC -->
+    <script>// تطبيق الثيم واللغة فوراً لتجنب وميض الشاشة
       (() => {
         try {
           const { language: lang = "en", theme = "light" } = JSON.parse(localStorage.getItem('spa-settings'))?.state || {};

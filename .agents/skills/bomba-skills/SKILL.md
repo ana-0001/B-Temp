@@ -387,7 +387,7 @@ Scope: Global
 | Files (hooks) | `camelCase.ts` | `useSettings.ts` |
 | Files (utils) | `kebab-case.ts` | `format-date.ts` |
 | DB columns | `snake_case` | `created_at` |
-| Types (custom) | `PascalCase` + `T_` | `T_Theme`, `T_Language` |
+| Types (custom) | `PascalCase` + `T_` | `T_AppTheme`, `T_Language` |
 | Interfaces | `PascalCase` + `I_` | `I_UserDTO` |
 
 ### المبادئ السبعة (مرتبة بالأولوية)
@@ -1053,7 +1053,7 @@ export { clsx } from 'clsx'
 ```typescript
 export {
   H1, H2, H3, H4, H5, H6, P, Span, A, I,
-  Div1, Div2, Div3, Div4, Div5,
+  Div as Div1, Div  as Div2, Div  as Div3, Div  as Div4, Div as Div5,
   Header, Main, Footer, Nav, Section, Article, Aside,
   Hr, Br, Img, Form, Label, Input, Select, Textarea, Button, Check, Radio,
 } from '@/components/BUI-1'
@@ -1188,12 +1188,11 @@ const buildProps = <T extends { className?: string; style?: React.CSSProperties 
 ```typescript
 export const H1   = (p: React.HTMLAttributes<HTMLHeadingElement>) => <h1 {...buildProps(p)} />
 export const Span = (p: React.HTMLAttributes<HTMLSpanElement>)    => <span {...buildProps(p)} />
-export const Div1 = (p: React.HTMLAttributes<HTMLDivElement>)     => <div data-level="1" {...buildProps(p)} />
-export const Div5 = (p: React.HTMLAttributes<HTMLDivElement>)     => <div data-level="5" {...buildProps(p)} />
+export const Div = (p: React.HTMLAttributes<HTMLDivElement>)     => <div data-level="1" {...buildProps(p)} />
 export const Button = (p: React.ButtonHTMLAttributes<HTMLButtonElement>) => <button {...buildProps(p)} />
 export const Input  = (p: React.InputHTMLAttributes<HTMLInputElement>)   => <input {...buildProps(p)} />
 export const Check  = (p: React.InputHTMLAttributes<HTMLInputElement>)   => <input type="checkbox" {...buildProps(p)} />
-// ... (القائمة الكاملة: H1-H6, P, A, I, Div1-Div5, Header/Main/Footer/Nav/Section/Article/Aside,
+// ... (القائمة الكاملة: H1-H6, P, A, I, Div, Header/Main/Footer/Nav/Section/Article/Aside,
 //      Hr, Br, Img, Form, Label, Select, Textarea, Radio — في rules.md الأصلي)
 ```
 
@@ -1230,7 +1229,7 @@ export const UserPage = () => (
   <div className="container"><h1 style={{color: 'red'}}>Profile</h1><input type="text" /></div>
 );
 // ✅ طريقة بومبا
-import { Div1, H1, Input2 } from '@ui';
+import { Div as Div1, H1, Input2 } from '@ui';
 export const UserPage = () => (
   <Div1 className="container"><H1>Profile</H1><Input2 label="Username" type="text" /></Div1>
 );
@@ -1538,7 +1537,7 @@ packages/types/
 ├── index.ts              ← export * from all
 ├── common/
 │   ├── primitives.ts     ← T_ID, T_Timestamp, T_Nullable<T>, T_Fn<...>, ...
-│   ├── theme.ts          ← T_Theme, T_Language, T_Direction + getDirection()/isRTL()
+│   ├── theme.ts          ← T_AppTheme, T_Language, T_Direction + getDirection()/isRTL()
 │   └── pagination.ts     ← I_Pagination, I_PagedResult<T>, I_QueryParams
 ├── api/
 │   ├── response.ts       ← I_ApiResponse<T>, I_ApiError, I_ValidationError
@@ -1558,7 +1557,7 @@ export type T_Nullable<T> = T | null
 export type T_Fn<TArgs extends unknown[] = [], TReturn = void> = (...args: TArgs) => TReturn
 
 // common/theme.ts
-export type T_Theme = 'light' | 'dark' | 'system'
+export type T_AppTheme = 'light' | 'dark' | 'system'
 export type T_Language = 'ar' | 'en'
 export type T_Direction = 'ltr' | 'rtl'
 export const getDirection = (lang: T_Language): T_Direction => lang === 'ar' ? 'rtl' : 'ltr'
@@ -1624,9 +1623,9 @@ src/store/
 // slices/settingsSlice.ts
 const settingsSlice = createSlice({
   name: 'settings',
-  initialState: { theme: 'system' as T_Theme, language: 'en' as T_Language },
+  initialState: { theme: 'system' as T_AppTheme, language: 'en' as T_Language },
   reducers: {
-    setTheme: (state, action: PayloadAction<T_Theme>) => { state.theme = action.payload },
+    setTheme: (state, action: PayloadAction<T_AppTheme>) => { state.theme = action.payload },
     setLanguage: (state, action: PayloadAction<T_Language>) => { state.language = action.payload },
   },
 })

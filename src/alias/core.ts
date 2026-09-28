@@ -6,6 +6,7 @@
  * ]
  */
 
+export { default as React } from 'react'
 export {
   StrictMode,
   useState,
@@ -24,10 +25,33 @@ export type {
   ButtonHTMLAttributes,
   FormHTMLAttributes,
   InputHTMLAttributes,
+  SelectHTMLAttributes,
   LabelHTMLAttributes,
   PropsWithChildren,
+  ImgHTMLAttributes,
+  Dispatch,
+  SetStateAction,
 } from 'react'
 export { createRoot } from 'react-dom/client'
-export { Outlet, RouterProvider, Link, useNavigate, useParams } from '@tanstack/react-router'
+export { QueryClientProvider } from '@tanstack/react-query'
+export {
+  Outlet,
+  RouterProvider,
+  Link,
+  useNavigate,
+  useParams,
+  createRootRoute,
+  createRoute,
+  createRouter,
+} from '@tanstack/react-router'
+
+// zustand
+export { create } from 'zustand'
+export { persist } from 'zustand/middleware'
+
+// i18n
 export { useTranslation } from 'react-i18next'
-export { i18next } from '../i18n/config'
+export { i18next } from '@/i18n/config'
+
+// tooltip — [DISABLED] @radix-ui/react-tooltip غير مثبتة حالياً
+// export * as Tooltip from '@radix-ui/react-tooltip'
