@@ -1,5 +1,5 @@
 ## 🤖 AI Context — SPA Frontend
-> آخر تحديث: 2026-09-24T00:00:00Z (تقريبي)
+> آخر تحديث: 2026-09-28T00:00:00Z
 
 ### Stack المعتمد
 - React 19 + TypeScript strict + Vite 6.
@@ -11,7 +11,8 @@
 ### قرارات معمارية مهمة
 - البنية Feature-based مع طبقات BUI: `BUI-1 → BUI-2 → BUI-O → Screens`.
 - الاستيراد العام يمر عبر Alias System، ونقطة الدخول الأساسية هي `@a`.
-- التصميم يعتمد CSS Variables و`em` وTailwind `@theme`، مع دعم Light افتراضيًا وRTL/LTR.
+- التصميم يعتمد Tailwind CSS + CSS Modules، مع CSS Variables و`em` وTailwind `@theme`، ودعم Light افتراضيًا وRTL/LTR.
+- `index.css` للـ reset والـ design tokens فقط، والأنماط المركبة داخل `*.module.css`.
 - Server State مسؤولية TanStack Query، وClient State مسؤولية Zustand فقط.
 - إعدادات البيئة تُقرأ وتُتحقق مركزيًا عبر `src/config/env.ts` باستخدام Zod.
 - أخطاء Axios تُحوّل إلى شكل موحّد داخل طبقة HTTP، مع إبقاء مصدر التوكن محقونًا من الخارج.

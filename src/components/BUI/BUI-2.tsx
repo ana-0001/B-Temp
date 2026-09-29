@@ -6,7 +6,7 @@
  * ]
  */
 
-import { Button, Div as Div1, Div as Div5, Input, Label, Span, buildProps, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes } from '@a'
+import { Button, Div as Div1, Div as Div5, Input, Label, Span, buildProps, cn, type ButtonHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes } from '@a'
 
 export interface I_Button2Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger'
@@ -135,3 +135,281 @@ export const Skeleton2 = ({ className = '', ...restProps }: HTMLAttributes<HTMLD
     })}
   />
 )
+
+
+// #region { Hr }
+// ==========================================
+// الأنواع والواجهات (Types & Interfaces)
+// ==========================================
+import styles from './styles/hr.module.css'
+
+/** @description النوع/ الاتجاه للفاصل */
+export type T_HrOrientation = 'horizontal' | 'vertical'
+/** @description النوع/ النمط للفاصل */
+export type T_HrVariant = 'solid' | 'dashed' | 'dotted' | 'double' | 'gradient' | 'glow' | 'shadow'
+/** @description النوع/ السماكة للفاصل */
+export type T_HrThickness = 'thin' | 'medium' | 'thick' | 'bold'
+/** @description النوع/ اللون للفاصل */
+export type T_HrColor = 'default' | 'primary' | 'success' | 'warning' | 'error' | 'info' | 'muted'
+/** @description النوع/ المسافات للفاصل */
+export type T_HrSpacing = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+/** @description النوع/ المحاذاة للفاصل */
+export type T_HrAlign = 'start' | 'center' | 'end'
+
+/** @description واجهة الفاصل */
+export interface I_Hr {
+  /** اتجاه الفاصل: أفقي أو رأسي */
+  orientation?: T_HrOrientation
+  /** نمط الفاصل البصري */
+  variant?: T_HrVariant
+  /** سماكة الفاصل */
+  thickness?: T_HrThickness
+  /** لون الفاصل */
+  color?: T_HrColor
+  /** المسافات حول الفاصل */
+  spacing?: T_HrSpacing
+  /** طول الفاصل (مثل: '100%', '200px', '50vh') */
+  length?: string | number
+  /** نص أو محتوى يظهر داخل الفاصل */
+  label?: React.ReactNode
+  /** محاذاة النص داخل الفاصل */
+  labelAlign?: T_HrAlign
+  /** أيقونة تظهر داخل الفاصل */
+  icon?: React.ReactNode
+  /** تفعيل تأثير الحركة عند الظهور */
+  animated?: boolean
+  /** لون مخصص (يطبق كـ CSS variable) */
+  customColor?: string
+  /** كلاسات إضافية */
+  className?: string
+  /** أنماط CSS inline إضافية */
+  style?: React.CSSProperties
+  /** تسمية الوصف لإمكانية الوصول */
+  'aria-label'?: string
+  /** إخفاء الفاصل من قارئات الشاشة */
+  decorative?: boolean
+}
+
+/**
+ * @description مكون فاصل احترافي متعدد الاستخدامات مع دعم أفقي ورأسي وتخصيص كامل
+ * @example
+ * // فاصل أفقي بسيط
+ * <Hr />
+ *
+ * @example
+ * // فاصل رأسي بين عناصر
+ * <Hr orientation="vertical" length="24px" />
+ *
+ * @example
+ * // فاصل مع نص وأيقونة
+ * <Hr label="أو" variant="gradient" color="primary" />
+ *
+ * @example
+ * // فاصل بتصميم متوهج
+ * <Hr variant="glow" color="success" thickness="thick" animated />
+ */
+export function Hr({
+  orientation = 'horizontal',
+  variant = 'solid',
+  thickness = 'thin',
+  color = 'default',
+  spacing = 'none',
+  length,
+  label,
+  labelAlign = 'center',
+  icon,
+  animated = false,
+  customColor,
+  className,
+  style,
+  'aria-label': ariaLabel,
+  decorative = true,
+}: I_Hr) {
+  const hasContent = Boolean(label || icon)
+  const isVertical = orientation === 'vertical'
+
+  // بناء أنماط CSS المخصصة
+  const customStyles: React.CSSProperties = {
+    ...style,
+    ...(length && { [isVertical ? 'height' : 'width']: typeof length === 'number' ? `${length}px` : length }),
+    ...(customColor && { ['--hr-custom-color' as string]: customColor }),
+  }
+
+  // بناء الكلاسات
+  const wrapperClasses = cn(
+    styles.hr,
+    styles[`orientation-${orientation}`],
+    styles[`variant-${variant}`],
+    styles[`thickness-${thickness}`],
+    styles[`color-${color}`],
+    styles[`spacing-${spacing}`],
+    hasContent && styles.withContent,
+    hasContent && styles[`align-${labelAlign}`],
+    animated && styles.animated,
+    customColor && styles.customColor,
+    className
+  )
+
+  // خصائص إمكانية الوصول
+  const a11yProps = decorative
+    ? { role: 'none' as const, 'aria-hidden': true }
+    : { role: 'separator' as const, 'aria-orientation': orientation, 'aria-label': ariaLabel }
+
+  // === حالة الفاصل مع محتوى (نص/أيقونة) ===
+  if (hasContent && !isVertical) {
+    return (
+      <Div1 className={wrapperClasses} style={customStyles} {...a11yProps}>
+        <Span className={styles.line} aria-hidden="true" />
+        <Span className={styles.content}>
+          {icon && <Span className={styles.icon}>{icon}</Span>}
+          {label && <Span className={styles.label}>{label}</Span>}
+        </Span>
+        <Span className={styles.line} aria-hidden="true" />
+      </Div1>
+    )
+  }
+
+  // === حالة الفاصل البسيط (بدون محتوى) ===
+  return <Div5 className={wrapperClasses} style={customStyles} {...a11yProps} />
+}
+
+// ==========================================
+// مكونات مساعدة اختصارية (Preset Components)
+// ==========================================
+
+/**
+ * @description فاصل رأسي جاهز مع إعدادات افتراضية مناسبة
+ */
+export function HrVertical(props: Omit<I_Hr, 'orientation'>) {
+  return <Hr orientation="vertical" spacing="sm" {...props} />
+}
+/**
+ * @description فاصل متوهج جاهز مع تأثيرات بصرية جذابة
+ */
+export function HrGlow(props: Omit<I_Hr, 'variant'>) {
+  return <Hr variant="glow" animated {...props} />
+}
+/**
+ * @description فاصل متدرج جاهز مع تأثير gradient
+ */
+export function HrGradient(props: Omit<I_Hr, 'variant'>) {
+  return <Hr variant="gradient" {...props} />
+}
+
+/*
+
+** حالات الاستخدام الشائعة:**
+// فاصل في نموذج تسجيل الدخول
+<div className="login-form">
+  <SocialLoginButtons />
+  <Hr label="أو سجل بالبريد الإلكتروني" variant="gradient" spacing="lg" />
+  <EmailLoginForm />
+</div>
+
+// فواصل رأسية في شريط الحالة
+<StatusBar>
+  <Version />
+  <HrVertical length="16px" spacing="sm" />
+  <Environment />
+  <HrVertical length="16px" spacing="sm" />
+  <Time />
+</StatusBar>
+
+// فاصل قسم بتصميم جذاب
+<Hr
+  label="الإعدادات المتقدمة"
+  icon={<IconSettings />}
+  variant="glow"
+  color="primary"
+  animated
+  thickness="medium"
+/>
+
+---
+
+### 📖 دليل الاستخدام الشامل:
+
+#### **1️⃣ الاستخدامات الأساسية:**
+
+```tsx
+// فاصل أفقي بسيط
+<Hr />
+
+// فاصل رأسي بين أزرار
+<div className="flex items-center gap-2">
+  <Button>حفظ</Button>
+  <Hr orientation="vertical" length="24px" />
+  <Button>إلغاء</Button>
+</div>
+
+// أو استخدام المكون المختصر
+<HrVertical length="24px" />
+```
+
+#### **2️⃣ التخصيص المتقدم:**
+
+```tsx
+// فاصل متدرج بلون أساسي
+<Hr variant="gradient" color="primary" thickness="medium" />
+
+// فاصل متقطع بمسافات كبيرة
+<Hr variant="dashed" spacing="lg" color="muted" />
+
+// فاصل متوهج مع حركة
+<Hr variant="glow" color="success" thickness="thick" animated />
+
+// فاصل بلون مخصص
+<Hr customColor="#ff6b6b" thickness="bold" />
+```
+
+#### **3️⃣ فواصل مع نص أو أيقونة:**
+
+```tsx
+// فاصل مع كلمة "أو"
+<Hr label="أو" variant="gradient" />
+
+// فاصل مع أيقونة
+<Hr icon={<IconStar />} color="warning" />
+
+// فاصل مع نص وأيقونة معاً
+<Hr icon={<IconCheck />} label="تم" color="success" variant="glow" />
+
+// محاذاة النص لليسار
+<Hr label="القسم الأول" labelAlign="start" />
+```
+
+#### **4️⃣ حالات الاستخدام الشائعة:**
+
+```tsx
+// فاصل في نموذج تسجيل الدخول
+<div className="login-form">
+  <SocialLoginButtons />
+  <Hr label="أو سجل بالبريد الإلكتروني" variant="gradient" spacing="lg" />
+  <EmailLoginForm />
+</div>
+
+// فواصل رأسية في شريط الحالة
+<StatusBar>
+  <Version />
+  <HrVertical length="16px" spacing="sm" />
+  <Environment />
+  <HrVertical length="16px" spacing="sm" />
+  <Time />
+</StatusBar>
+
+// فاصل قسم بتصميم جذاب
+<Hr
+  label="الإعدادات المتقدمة"
+  icon={<IconSettings />}
+  variant="glow"
+  color="primary"
+  animated
+  thickness="medium"
+/>
+```
+
+
+*/
+
+// #endregion
+

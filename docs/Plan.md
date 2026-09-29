@@ -27,7 +27,7 @@
 - أي حاجة تخص **اختيار مكتبة وظيفية محددة** (زي Router أو State Manager) كانت موجودة صراحةً في وثيقة المتطلبات الأصلية ومالهاش تعارض حقيقي مع فلسفة BomBa → **بتفضل زي ما هي** (لأنها قرار منتج/مشروع مش قرار تصميم)، وبتتنفّذ **جوه** طبقات BomBa (Alias, BUI, Tailwind Tokens) مش بجانبها.
 - أي تعارض حقيقي (زي Redux مقابل Zustand) بيتحل ويتوثّق صراحةً تحت في قسم **"القرارات المحسومة"** بدل ما يتسيب غامض.
 
-⚠️ **هذا الملف Plan فقط — لا يتضمن تنفيذ فعلي لأي كود.**
+⚠️ **هذا الملف يصف الخطة والقرارات؛ حالة التنفيذ الفعلية موثقة في `docs/AI_SESSION.md`.**
 
 ---
 
@@ -41,7 +41,7 @@
 - دعم كامل ثنائي اللغة (English LTR / Arabic RTL) عبر i18next مع Logical Properties.
 - فصل صارم بين Client State (Zustand) و Server State (TanStack Query).
 - التزام تام بـ UTC + ISO 8601 لكل التواريخ، وتحويل للـ Local Timezone وقت العرض فقط.
-- Design Tokens مبنية على **CSS Variables + em + Tailwind 4 `@theme`**، بدون قيم عشوائية أو ألوان Hardcoded.
+- Styling مبني على **Tailwind CSS 4 + CSS Modules**، مع Design Tokens عبر CSS Variables و`em` وTailwind `@theme`.
 - جودة كود صارمة: TypeScript Strict، ESLint Zero-Noise، تعليقات وJSDoc بالعربية المصرية، Git Workflow برقم شجري.
 
 ---
@@ -55,7 +55,7 @@
 | Build Tool | Vite 6 | الوثيقة الأصلية + BomBa | متطابقين |
 | Framework | React 19 | الوثيقة الأصلية + BomBa | متطابقين |
 | Language | TypeScript (Strict، بدون `any`) | BomBa (حاكم) | صارم غير قابل للتفاوض |
-| Styling | Tailwind CSS 4 + shadcn/ui + Radix (كنقطة انطلاق) | الوثيقة الأصلية | تُبنى فوقها طبقة BUI بأسلوب BomBa |
+| Styling | Tailwind CSS 4 + CSS Modules + shadcn/ui + Radix | قرار المشروع الحالي | Tailwind للـ utilities وCSS Modules للأنماط المركبة داخل BUI |
 | Design Tokens | CSS Variables + `em` + `@theme` + `B:` utilities | **BomBa (حاكم — Override)** | هذا هو نظام التصميم الملزم، مفيش استثناء |
 | نظام المكونات | طبقة **BUI** (BUI-1 → BUI-2 → BUI-O → Screens) فوق shadcn/Radix | **BomBa (حاكم)** | shadcn/Radix تُستخدم *داخل* BUI-2/BUI-O، مش تُستدعى مباشرة في الشاشات |
 | الاستيراد | **Alias System المركزي** (`@a`, `@ui`, `@icons`, `@store`, `@const`) | **BomBa (حاكم)** | ممنوع أي `import` مباشر في الصفحات |

@@ -5,6 +5,7 @@
  */
 
 import { type ImgHTMLAttributes } from '@a'
+import styles from './Logo.module.css'
 
 interface I_LogoProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'alt'> {
   alt?: string
@@ -15,9 +16,9 @@ interface I_LogoProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 
 /** @description بيعرض شعار النظام من مصدر واحد مع إمكانية إظهار الاسم والوصف. */
 export function Logo({ alt = 'BomBa', showName = false, tagline, className = '', ...props }: I_LogoProps) {
   return (
-    <span className={`app-logo ${className}`.trim()}>
-      <img {...props} src="/assets/Logo-favicon.svg" alt={alt} />
-      {showName ? <span className="app-logo__copy"><strong>BomBa</strong>{tagline ? <small>{tagline}</small> : null}</span> : null}
+    <span className={`${styles.logo} ${className}`.trim()}>
+      <img {...props} className={styles.image} src="/assets/Logo-favicon.svg" alt={alt} />
+      {showName ? <span className={styles.copy}><strong>BomBa</strong>{tagline ? <small>{tagline}</small> : null}</span> : null}
     </span>
   )
 }

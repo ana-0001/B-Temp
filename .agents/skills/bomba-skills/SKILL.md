@@ -1410,7 +1410,7 @@ Scope: Global — راجع SKILL-033 لنسخة override مخصصة لمشروع
   --color-dark  : hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
   --color-bg    : hsl(var(--h), var(--s), calc(var(--flip-l) - 98% * var(--ISD)));
   --color-te    : hsl(var(--h), var(--s), calc(var(--flip-l) - 10% * var(--ISD)));
-  --color-tt    : hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
+  --color-bg-f    : hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
   --color-sn    : hsl(var(--h), var(--s), calc(var(--flip-l) - 20% * var(--ISD)));
   /* ألوان خاصة */
   --color-trans : hsl(from var(--color-py) h s l / 0%);

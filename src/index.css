@@ -1,72 +1,171 @@
+/* 
+[ ]- ToDO: Fix:-
+  - Background color
+  - Border
+  - Border radius
+  - shadow
+  - Border styles
+  - Animation
+  - Z-index
+*/
 @import "tailwindcss";
 
 /**
- * ─────────────────────────────────────────────
- * 📦 BomBa Design System Tokens (index.css)
- * ─────────────────────────────────────────────
- */
+* ─────────────────────────────────────────────
+* 📦 BomBa Design System Tokens (index.css)
+* ─────────────────────────────────────────────
+*/
 
-:root {
+:root,
+[data-theme="light"] {
+
   /* Brand Hue and Saturation */
   --h: 210;
   --s: 80%;
   --l: 42%;
-
+  
   /* Dynamic Theme Flipping */
   --flip-l: 0%;
   --ISD: -1;
-
+  
   /* Direction and Logical Props */
   --ltr: 1;
   --dir-start: left;
   --dir-end: right;
 
-  /* Semantic Brand & State Colors */
-  --color-py: hsl(var(--h) var(--s) var(--l));
-  --color-py-f: hsl(var(--h) 94% 98%);
-  --color-sy: hsl(330 var(--s) var(--l));
-  --color-sy-f: hsl(40 0% 98%);
-  --color-at: hsl(280 var(--s) var(--l));
-  --color-at-f: hsl(200 80% 98%);
-  --color-md: hsl(var(--h) 15% 60%);
-  --color-md-f: hsl(var(--h) 15% 10%);
-  --color-ok: hsl(140 var(--s) 38%);
-  --color-ok-f: hsl(40 0% 98%);
-  --color-err: hsl(0 80% 50%);
-  --color-err-f: hsl(40 0% 98%);
-  --color-war: hsl(45 90% 45%);
-  --color-war-f: hsl(40 0% 10%);
-  --color-inf: hsl(200 var(--s) var(--l));
-  --color-inf-f: hsl(40 0% 98%);
+  /* Base */
+  --color-bg: hsl(40 0% 94%);
+  --color-bg-f: hsl(40 0% 4%);
 
-  /* Surface, Background and Text Colors */
-  --color-bg: hsl(var(--h) 25% calc(var(--flip-l) - 98% * var(--ISD)));
-  --color-te: hsl(var(--h) 40% calc(var(--flip-l) - 10% * var(--ISD)));
-  --color-tt: hsl(var(--h) 20% calc(var(--flip-l) - 2% * var(--ISD)));
-  --color-sn: hsl(var(--h) 15% calc(var(--flip-l) - 35% * var(--ISD)));
-  --color-br: hsl(var(--h) 15% calc(var(--flip-l) - 82% * var(--ISD)));
-  --color-surface: hsl(var(--h) 25% calc(var(--flip-l) - 100% * var(--ISD)));
-  --color-surface-f: hsl(var(--h) 25% calc(var(--flip-l) - 4% * var(--ISD)));
+  /* Brand */
+  --color-py: hsl(40 80% 60%);
+  --color-py-f: hsl(40 94% 4%);
+  --color-sy: hsl(340 80% 60%);
+  --color-sy-f: hsl(40 0% 4%);
+  --color-at: hsl(200 80% 60%);
+  --color-at-f: hsl(200 80% 4%);
+  --color-md: hsl(40 15% 60%);
+  --color-md-f: hsl(40 15% 4%);
+  --color-br: hsl(40 0% 85%);
+  --color-br-f: var(--color-py);
 
-  /* Typography, Radius & Shadows */
-  --ffy: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Status */
+  --color-ok: hsl(150 80% 60%);
+  --color-ok-f: hsl(40 0% 4%);
+  --color-err: hsl(0 80% 60%);
+  --color-err-f: hsl(40 0% 4%);
+  --color-war: hsl(50 80% 60%);
+  --color-war-f: hsl(40 0% 4%);
+  --color-inf: hsl(200 80% 60%);
+  --color-inf-f: hsl(40 0% 4%);
+
+  /* Surfaces */
+  --color-surface: hsl(40 0% 100%);
+  --color-surface-f: hsl(40 0% 4%);
+  --color-surface-alt: hsl(40 0% 97%);
+
+
+  /* Interactive */
+  --color-hover: hsla(40 0% 4% / 0.04);
+  --color-active: hsla(40 0% 4% / 0.08);
+  --color-overlay: hsla(40 0% 4% / 0.5);
+
+  /* Radius */
   --radius: 1;
-  --shadow: 1;
+  --radius-sm: 0.25em;
+  --radius-md: 0.5em;
+  --radius-lg: 0.75em;
+  --radius-xl: 1em;
+  --radius-full: 624.9375em;
 
-  /* Z-Index Layers */
+  /* Spacing */
+  --spacing-xs: 0.25em;
+  --spacing-sm: 0.5em;
+  --spacing-md: 1em;
+  --spacing-lg: 1.5em;
+  --spacing-xl: 2em;
+  --spacing-2xl: 3em;
+
+  /* Typography */
+  --ffy: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ffy-ar: "Segoe UI", "Cairo", "Tajawal", sans-serif;
+  --ffy-mono: "Cascadia Code", "Fira Code", "Consolas", monospace;
+
+  --fs-xs: 0.75em;
+  --fs-sm: 0.875em;
+  --fs-md: 1em;
+  --fs-lg: 1.125em;
+  --fs-xl: 1.25em;
+  --fs-2xl: 1.5em;
+  --fs-3xl: 2em;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --lh-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Elevation */
+  --shadow: 1;
+  --shadow-sm: 0 0.0625em 0.125em hsla(40 0% 4% / 0.08);
+  --shadow-md: 0 0.25em 0.75em hsla(40 0% 4% / 0.1);
+  --shadow-lg: 0 0.5em 1.5em hsla(40 0% 4% / 0.1);
+  --shadow-xl: 0 1em 2.5em hsla(40 0% 4% / 0.12);
+
+  /* Motion */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+
+  /* Layers */
   --z-base: 0;
   --z-above: 10;
   --z-sticky: 100;
   --z-overlay: 200;
-  --z-modal: 999;
-  --z-toast: 1000;
-  --z-tooltip: 1001;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-tooltip: 500;
 }
 
-[data-theme="dark"], .dark {
-  --flip-l: 100%;
-  --ISD: 1;
-  --l: 48%;
+[data-theme="dark"],
+.dark {
+  --color-bg: hsl(40 0% 4%);
+  --color-bg-f: hsl(40 0% 94%);
+
+  --color-py: hsl(40 80% 30%);
+  --color-py-f: hsl(40 94% 94%);
+  --color-sy: hsl(340 80% 30%);
+  --color-sy-f: hsl(40 0% 94%);
+  --color-at: hsl(200 80% 30%);
+  --color-at-f: hsl(200 80% 94%);
+  --color-md: hsl(40 15% 30%);
+  --color-md-f: hsl(40 15% 94%);
+
+  --color-ok: hsl(150 80% 30%);
+  --color-ok-f: hsl(40 0% 94%);
+  --color-err: hsl(0 80% 30%);
+  --color-err-f: hsl(40 0% 94%);
+  --color-war: hsl(50 80% 30%);
+  --color-war-f: hsl(40 0% 94%);
+  --color-inf: hsl(200 80% 30%);
+  --color-inf-f: hsl(40 0% 94%);
+
+  --color-surface: hsl(40 0% 8%);
+  --color-surface-f: hsl(40 0% 94%);
+  --color-surface-alt: hsl(40 0% 10%);
+  --color-br: hsl(40 0% 20%);
+
+  --color-hover: hsla(40 0% 94% / 0.05);
+  --color-active: hsla(40 0% 94% / 0.1);
+  --color-overlay: hsla(40 0% 4% / 0.7);
+
+  --shadow-sm: 0 0.0625em 0.125em hsla(40 0% 0% / 0.3);
+  --shadow-md: 0 0.25em 0.75em hsla(40 0% 0% / 0.4);
+  --shadow-lg: 0 0.5em 1.5em hsla(40 0% 0% / 0.5);
+  --shadow-xl: 0 1em 2.5em hsla(40 0% 0% / 0.6);
 }
 
 [dir="rtl"] {
@@ -95,7 +194,7 @@
 
   --color-bg: var(--color-bg);
   --color-te: var(--color-te);
-  --color-tt: var(--color-tt);
+  --color-bg-f: var(--color-bg-f);
   --color-sn: var(--color-sn);
   --color-br: var(--color-br);
   --color-surface: var(--color-surface);
@@ -115,29 +214,33 @@
 /* ─────────────────────────────────────────────
  * 🛡️ Browser Reset & Baseline
  * ───────────────────────────────────────────── */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+ *, *::before, *::after { box-sizing: border-box; }
 
-html {
+button, input, textarea, select { font: inherit; }
+input, textarea, select, [contenteditable="true"] { user-select: text; -webkit-user-select: text; }
+:focus, :focus-visible { outline: none; box-shadow: none; }
+html[data-focus-ring="visible"] :focus-visible { outline: 0.125em solid var(--color-border-focus); outline-offset: 0.125em; box-shadow: none; }
+html, body, #root {
+  margin: 0;
   min-block-size: 100%;
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
 body {
   min-block-size: 100vh;
   margin: 0;
   background-color: var(--color-bg);
-  color: var(--color-tt);
+  color: var(--color-bg-f);
   font-family: var(--ffy);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; user-select: none;
 }
-
 #root {
-  min-height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 input, button, select, textarea {
@@ -201,10 +304,65 @@ textarea:focus-visible {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 1ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 1ms !important;
-  }
+/* ─────────────────────────────────────────────
+ * ⚡ BomBa Global CSS Classes
+ * ───────────────────────────────────────────── */
+
+.B\:glass {
+  --color-glass: color-mix(in srgb, currentColor 5%, transparent);
+  background: var(--color-glass); 
+  backdrop-filter: blur(0.5em)  saturate(180%);
+  -webkit-backdrop-filter: blur(0.5em)  saturate(180%);
+  -moz-backdrop-filter: blur(0.5em)  saturate(180%);
 }
+.B\:glass\:hover:hover {
+  background: var(--color-glass); 
+  backdrop-filter: blur(0.5em)  saturate(180%);
+  -webkit-backdrop-filter: blur(0.5em)  saturate(180%);
+  -moz-backdrop-filter: blur(0.5em)  saturate(180%);
+}
+
+
+/* ==========================================
+    iconButton+closeButton
+   ========================================== */
+.iconButton { position: relative; display: grid; place-items: center; min-inline-size: 2em; min-block-size: 2em; border-radius: var(--radius-md); cursor: pointer; font-size: 1em; }
+.iconButton svg { inline-size: 1em; block-size: 1em; font-size: 1em; color: color-mix(in srgb, currentColor 60%, transparent); transition: all 0.2s ease; }
+.iconButton:hover svg,
+.iconButton:hover span { font-size: 1.1em; color: color-mix(in srgb, currentColor 90%, transparent); }
+.iconButton:hover span { font-size: 0.8em; font-weight: 700;}
+.closeButton { position: absolute; inset-block-start: 0.5em; inset-inline-end: 0.5em; }
+
+/* ==========================================
+    tooltip
+   ========================================== */
+.tooltip { z-index: var(--z-tooltip); display: grid; gap: var(--spacing-xs); max-inline-size: 16em; padding: var(--spacing-sm);
+  border: none; border-radius: var(--radius-md); box-shadow: var(--shadow-lg); }
+.tooltip-arrow { fill: var(--color-glass); }
+.tooltip-row { margin: 0; font-size: 0.8em; color: color-mix(in srgb, currentColor 60%, transparent); line-height: var(--line-height-normal); }
+.tooltip-row strong { color: var(--color-py); }
+/* ==========================================
+    Backdrop/Overlay/Backdrop Control - الخلفية الزجاجية الشفافة
+   ========================================== */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-bg) 50%, transparent);
+  backdrop-filter: blur(0.5em)  saturate(180%);
+  -webkit-backdrop-filter: blur(0.5em)  saturate(180%);
+  -moz-backdrop-filter: blur(0.5em)  saturate(180%);
+  animation: backdropFadeIn 0.25s ease-out;
+  cursor: pointer;
+}
+.backdrop[data-state='closed'] { animation: backdropFadeOut 0.2s ease-in; }
+.backdropLocked { cursor: not-allowed; background: color-mix(in srgb, var(--color-bg) 20%, transparent); }
+
+@keyframes backdropFadeIn { from { opacity: 0; backdrop-filter: blur(0px);} to { opacity: 1; backdrop-filter: blur(8px) saturate(180%); } }
+@keyframes backdropFadeOut { from { opacity: 1; } to { opacity: 0; } }
+/* ضمان أن المحتوى فوق الخلفية */
+.popover { display: grid; gap: 0.5em; min-inline-size: 15em; padding: 1em; border-radius: var(--radius-md); box-shadow: 0 0.5em 1.5em hsla(var(--h) 10% 10% / 0.16); }
+.popoverContent, .drawerContent { z-index: var(--z-overlay); }
+.drawer { position: fixed; inset-block: 0; inset-inline-end: 0; display: grid; align-content: start; gap: 0.75em; inline-size: min(24em, 100dvw); min-block-size: 100dvh; padding: 0; padding-block-start: .25em; padding-inline-start: .5em; border: 0; border-inline-start: 0.0625em solid var(--color-br); box-shadow: 0 0.5em 1.5em hsla(var(--h) 10% 10% / 0.16); }
+.drawerOverlay { position: fixed; inset: 0; z-index: var(--z-overlay); background: hsla(var(--h) 20% 10% / 0.35); }
+.drawerTitle { margin: 0; font-size: 1.25em; }
+.drawerDescription { margin-block-start: -1em; margin-inline-start: 1em; color: var(--color-md-f); font-size: 0.8em; }

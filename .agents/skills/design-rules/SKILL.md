@@ -13,6 +13,16 @@ Design Rules هو نظام تصميم عام ومحايد للهوية، مُص�
 
 الإصدار المرجعي: `v1.1.0` — آخر تحديث: 2026 (إضافة إجبار المكتبات الخارجية على الالتزام بالـ Tokens، وإضافة طبقات إجبار المتصفح على احترام التصميم).
 
+## قاعدة المشروع: Tailwind + CSS Modules
+
+في مشاريع BomBa المعتمدة على هذا الدليل:
+
+- Tailwind CSS هو الخيار الأول للـ layout، spacing، typography، responsive utilities، والحالات البسيطة.
+- CSS Modules (`*.module.css`) هي الخيار المعتمد للحالات المركبة، animations، pseudo-elements، overlays، والأنماط التي تحتاج عزلًا محليًا.
+- يمنع إنشاء ملفات component CSS عامة مثل `Component.css` أو أسماء كلاسات عامة قابلة للتصادم.
+- `index.css` يقتصر على reset، design tokens، وglobal browser rules؛ لا يوضع فيه تصميم مكوّن محدد.
+- كل مكتبة UI خارجية تُعزل خلف BUI/Adapter، ولا تستوردها الصفحات أو المكونات مباشرة.
+
 ## مبادئ التصميم العامة (إلزامية)
 
 هذه المبادئ تحكم أي واجهة أو مكوّن يُبنى باستخدام هذه المهارة، ولا يجوز مخالفتها:
@@ -78,9 +88,9 @@ Design Rules هو نظام تصميم عام ومحايد للهوية، مُص�
 | `--color-surface` | البطاقات والأسطح | `hsl(40 0% 100%)` |
 | `--color-surface-f` | Foreground فوق Surface | `hsl(40 0% 4%)` |
 | `--color-surface-alt` | سطح بديل | `hsl(40 0% 97%)` |
-| `--color-border` | الحدود والفواصل | `hsl(40 0% 85%)` |
+| `--color-br` | الحدود والفواصل | `hsl(40 0% 85%)` |
 
-`--color-border-focus` يساوي `var(--color-py)` افتراضياً.
+`--color-br-f` يساوي `var(--color-py)` افتراضياً.
 
 ### الوضع الداكن (Dark)
 
@@ -109,7 +119,7 @@ Design Rules هو نظام تصميم عام ومحايد للهوية، مُص�
 | `--color-surface` | `hsl(40 0% 8%)` |
 | `--color-surface-f` | `hsl(40 0% 94%)` |
 | `--color-surface-alt` | `hsl(40 0% 10%)` |
-| `--color-border` | `hsl(40 0% 20%)` |
+| `--color-br` | `hsl(40 0% 20%)` |
 
 ### الألوان التفاعلية (Interactive / Overlay)
 
@@ -364,7 +374,7 @@ Design Rules هو نظام تصميم عام ومحايد للهوية، مُص�
 
 ### حقول الإدخال (Inputs & Form Elements)
 
-- الحدود: `0.0625em solid var(--color-border)`.
+- الحدود: `0.0625em solid var(--color-br)`.
 - Radius: `var(--border-radius)`.
 - الحشو: `0.5em 0.75em`.
 - الخط: `var(--font-size-md)`.
@@ -392,7 +402,7 @@ Design Rules هو نظام تصميم عام ومحايد للهوية، مُص�
 ### البطاقات (Cards)
 
 - الخلفية: `--color-surface`.
-- الحدود: `0.0625em solid var(--color-border)`.
+- الحدود: `0.0625em solid var(--color-br)`.
 - Radius: `--border-radius-lg`.
 - الظل: `--shadow-sm`.
 - الحشو: `--spacing-lg`.
@@ -447,7 +457,7 @@ Hover اختياري فقط للبطاقات التفاعلية: `--shadow-md` �
 ### Dropdown / Select Menu
 
 - الخلفية: `--color-surface`.
-- الحدود: `0.0625em solid var(--color-border)`.
+- الحدود: `0.0625em solid var(--color-br)`.
 - Radius: `--border-radius`.
 - الظل: `--shadow-md`.
 - الحد الأدنى للعرض: `10em`.
@@ -542,7 +552,7 @@ html[dir="rtl"] {
   margin-inline-end: 1em;
   padding-inline-start: 1em;
   padding-inline-end: 1em;
-  border-inline-start: 0.0625em solid var(--color-border);
+  border-inline-start: 0.0625em solid var(--color-br);
   inset-inline-start: 0;
 }
 
@@ -623,7 +633,7 @@ module.exports = {
         war: 'var(--color-war)',
         inf: 'var(--color-inf)',
         surface: 'var(--color-surface)',
-        border: 'var(--color-border)',
+        border: 'var(--color-br)',
       },
       borderRadius: {
         sm: 'var(--border-radius-sm)',
@@ -663,7 +673,7 @@ Bootstrap يعتمد على متغيرات CSS خاصة به بصيغة `--bs-*`
   --bs-info: var(--color-inf);
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-bg-f);
-  --bs-border-color: var(--color-border);
+  --bs-border-color: var(--color-br);
   --bs-border-radius: var(--border-radius);
   --bs-border-radius-sm: var(--border-radius-sm);
   --bs-border-radius-lg: var(--border-radius-lg);
@@ -672,7 +682,7 @@ Bootstrap يعتمد على متغيرات CSS خاصة به بصيغة `--bs-*`
 [data-bs-theme="dark"] {
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-bg-f);
-  --bs-border-color: var(--color-border);
+  --bs-border-color: var(--color-br);
 }
 ```
 
@@ -786,7 +796,7 @@ input:focus-visible,
 button:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 0.125em solid var(--color-border-focus);
+  outline: 0.125em solid var(--color-br-f);
   outline-offset: 0.125em;
 }
 ```
@@ -841,7 +851,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 ### Custom Title Bar
 
-الارتفاع المرجعي `2.5em`، الخلفية `--color-bg`، والحد السفلي `0.0625em solid var(--color-border)`.
+الارتفاع المرجعي `2.5em`، الخلفية `--color-bg`، والحد السفلي `0.0625em solid var(--color-br)`.
 
 ```css
 .titlebar {
@@ -941,8 +951,8 @@ mainWindow.on('close', () => {
   --color-surface: hsl(40 0% 100%);
   --color-surface-f: hsl(40 0% 4%);
   --color-surface-alt: hsl(40 0% 97%);
-  --color-border: hsl(40 0% 85%);
-  --color-border-focus: var(--color-py);
+  --color-br: hsl(40 0% 85%);
+  --color-br-f: var(--color-py);
 
   /* Interactive */
   --color-hover: hsla(40 0% 4% / 0.04);
@@ -1033,7 +1043,7 @@ mainWindow.on('close', () => {
   --color-surface: hsl(40 0% 8%);
   --color-surface-f: hsl(40 0% 94%);
   --color-surface-alt: hsl(40 0% 10%);
-  --color-border: hsl(40 0% 20%);
+  --color-br: hsl(40 0% 20%);
 
   --color-hover: hsla(40 0% 94% / 0.05);
   --color-active: hsla(40 0% 94% / 0.1);

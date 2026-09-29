@@ -6,7 +6,7 @@
  * ]
  */
 
-import { createRoot, StrictMode, App } from '@a'
+import { App, createRoot, StrictMode } from '@a'
 import './index.css'
 
 const rootElement = document.getElementById('root')

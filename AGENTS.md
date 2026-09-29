@@ -601,6 +601,13 @@ const buildProps = <T extends { className?: string; style?: React.CSSProperties 
 
 ## 11. Tailwind CSS System 🎨
 
+### Tailwind + CSS Modules — سياسة المشروع الحالية
+
+- Tailwind هو الأساس لكل layout وspacing وtypography وresponsive utilities.
+- CSS Modules (`*.module.css`) للأنماط المركبة والـ overlays والـ pseudo-elements والـ animations.
+- ممنوع ملفات CSS عامة خاصة بمكوّن مثل `Component.css`؛ الاستثناء الوحيد هو `index.css` للـ reset والـ tokens العامة.
+- أي مكتبة UI خارجية تُعزل خلف BUI/Adapter مركزي قابل للاستبدال.
+
 ### الفلسفة
 
 ```
@@ -648,7 +655,7 @@ const buildProps = <T extends { className?: string; style?: React.CSSProperties 
 ❌ dark: prefix — المتغيرات تتغير تلقائياً
 ❌ ترتيب عشوائي — التزم بالترتيب أعلاه
 ❌ inline style للـ shadow/radius — استخدم B:shadow-* / B:rounded-*
-❌ tailwind.config.js في Tailwind 4 — استخدم @theme في globals.css
+❌ tailwind.config.js في Tailwind 4 — استخدم @theme في src/index.css
 ```
 
 ---

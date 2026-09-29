@@ -7,8 +7,7 @@
  * ]
  */
 
-import { Main, Outlet, StatusBar, i18next, useEffect, useSettingsStore } from '@a'
-// import '../../components/layout/SystemStatusBar.css'
+import { Div as Div1, Main, Outlet, StatusBar, i18next, useEffect, useSettingsStore } from '@a'
 
 /** @description يزامن اللغة والثيم مع وثيقة HTML ثم يعرض شجرة الراوتر. */
 export function RootLayout() {
@@ -24,10 +23,11 @@ export function RootLayout() {
   }, [language, theme])
 
   return (
-    <Main className="flex min-h-screen flex-col bg-bg text-tt">
-      <Outlet />
-      {/* <SystemStatusBar /> */}
+    <Div1 className="flex min-h-screen flex-col">
+      <Main className="flex-1">
+        <Outlet />
+      </Main>
       <StatusBar />
-    </Main>
+    </Div1>
   )
 }

@@ -6,7 +6,7 @@
  * ]
  */
 
-export { ENV } from '../config/env'
+export { ENV } from '@/config/env'
 
 export const ROUTES = {
   HOME: '/',

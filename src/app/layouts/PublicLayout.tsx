@@ -11,9 +11,9 @@ import { AppHeader, Div as Div1, Main, Outlet, PageContainer } from '@a'
 /** @description يحدد التركيب المشترك للصفحات التي لا تحتاج جلسة مستخدم. */
 export function PublicLayout() {
   return (
-    <Div1 className="min-h-screen bg-bg text-tt">
+    <Div1 className="flex min-h-0 flex-1 flex-col bg-bg text-tt">
       <AppHeader />
-      <Main>
+      <Main className="flex-1">
         <PageContainer>
           <Outlet />
         </PageContainer>

@@ -10,5 +10,7 @@
 export { queryClient } from '@/lib/query/query-client'
 
 // UI primitives: نقطة العزل الوحيدة لمكتبات الـ overlays الخارجية.
-export * as RadixPopover from '@radix-ui/react-popover'
 export * as RadixDialog from '@radix-ui/react-dialog'
+export * as RadixPopover from '@radix-ui/react-popover'
+export * as RadixTooltip from '@radix-ui/react-tooltip'
+

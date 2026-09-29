@@ -1,5 +1,7 @@
 ## [Unreleased] — 2026-09-26
 ### Changed
+- اعتماد Tailwind CSS + CSS Modules رسميًا، ونقل أنماط StatusBar وLogo وRadix Overlays إلى CSS Modules مع إبقاء `index.css` للـ tokens والـ reset فقط.
+### Changed
 - تحديث `main` و`App` و`AppProviders` لاستخدام Alias المركزي للمكتبات الخارجية.
 - تحسين TanStack Router بإضافة preload عند intent واسترجاع scroll وربط حالات التحميل والخطأ العامة.
 

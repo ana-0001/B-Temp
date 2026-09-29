@@ -1,0 +1,55 @@
+/* 
+[ ]- ToDO: Fix:-
+  - Background color
+  - Border
+  - Border radius
+  - shadow
+  - Border styles
+  - Animation
+  - Z-index
+*/
+/* status-bar.module.css — تصميم شريط الحالة (ألوان/حدود/ظلال عبر CSS Tokens) */
+
+.statusBar { 
+  position: relative; z-index: var(--z-sticky);
+  display: flex;
+  justify-content: space-between; align-items: center; gap: 0.5em;
+  min-block-size: 2.75em; 
+  margin-block-start: auto; 
+  padding: 0.25em 0.5em;
+  font-size: 1em;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  box-shadow: 0 0.25em 0.75em hsla(var(--h) 10% 10% / 0.12);
+}
+.zone { display: flex; align-items: center; min-inline-size: 0; gap: 0.5em; }
+.start { justify-content: flex-start; }
+.center { justify-content: center; }
+.end { justify-content: flex-end; gap: 0.25em; }
+
+/* --- start --- */
+
+.onlineBadge, .clock { display: inline-flex; align-items: center; gap: 0.25em; border-radius: var(--radius-sm); }
+.onlineBadge { padding: 0.25em 0.5em; }
+.pulse { inline-size: 0.5em; block-size: 0.5em; flex-shrink: 0; border-radius: 9999em; animation: pulse 2.4s ease-in-out infinite; }
+.pulseReady { background: var(--color-ok); }
+.pulseBusy { background: var(--color-war); }
+.pulseError { background: var(--color-err); }
+.version, .brand { font-size: 0.9em; }
+.environment { padding: 0.25em 0.5em; border-radius: 0.25em; color: var(--color-sy); font-size: 0.9em; font-weight: 700; }
+.clock { position: relative; padding: 0.25em 0.5em;font-family: var(--font-family-mono, monospace); font-size: 1.2em; cursor: help; }
+
+/* --- */
+
+.notificationDot { position: absolute; inset-block-start: 0.25em; inset-inline-end: 0.25em; inline-size: 0.35em; block-size: 0.35em; border-radius: 50%; background: var(--color-err); }
+.settingField { display: grid; gap: 0.25em; font-size: 0.8em; }
+.settingField select { min-block-size: 2em; padding-inline: 0.5em; border: 0.0625em solid var(--color-br); border-radius: 0.25em; background: var(--color-bg); color: var(--color-bg-f); }
+
+/* --- */
+
+@keyframes pulse { 50% { opacity: 0.45; } }
+@media (max-width: 43.75em) { .statusBar { grid-template-columns: minmax(0, 1fr) auto; } .center { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+
+/* --- */
+
+/* --- */

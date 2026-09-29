@@ -1,0 +1,5 @@
+.logo { display: inline-flex; align-items: center; gap: 0.35em; min-inline-size: 0; }
+.image { inline-size: 1.8em; block-size: 1.8em; object-fit: contain; }
+.copy { display: grid; line-height: 1.05; }
+.copy strong { font-size: 0.75em; }
+.copy small { color: var(--color-md); font-size: 0.55em; white-space: nowrap; }

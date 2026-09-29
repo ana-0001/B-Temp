@@ -6,7 +6,7 @@
  * ]
  */
 
-import { RouterProvider, AppProviders, appRouter } from '@a'
+import { AppProviders, appRouter, RouterProvider } from '@a'
 
 /** @description يركّب مزودات التطبيق ثم يسلّم العرض لشجرة TanStack Router. */
 export function App() {

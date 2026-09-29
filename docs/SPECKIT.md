@@ -76,7 +76,7 @@ G16. **آخر كل جلسة عمل، لازم تحديث docs/ بالتاريخ 
 Build        : Vite 6
 Framework    : React 19
 Language     : TypeScript (strict: true, "any" ممنوع)
-Styling      : Tailwind CSS 4 + shadcn/ui + Radix UI (تُستخدم فقط داخل طبقة BUI)
+Styling      : Tailwind CSS 4 + CSS Modules + shadcn/ui + Radix UI (تُستخدم فقط داخل طبقة BUI)
 Router       : TanStack Router
 Server State : @tanstack/react-query
 Client State : Zustand + persist middleware (انتقائي)
@@ -174,6 +174,13 @@ docs/
 
 ## 5. نظام التصميم (Design System) — كود جاهز للنسخ المباشر
 
+### سياسة الأنماط الحالية
+
+- Tailwind للـ layout والـ spacing والـ typography والـ responsive utilities.
+- CSS Modules (`*.module.css`) للأنماط المركبة والـ overlays والـ animations.
+- `src/index.css` للـ reset والـ tokens والـ browser rules العامة فقط.
+- ممنوع ملفات CSS عامة خاصة بمكوّن.
+
 > هذا القسم **حرفي** — أي AI لازم ينسخه زي ما هو في `src/index.css`، وممنوع يخترع Tokens جديدة من نفسه.
 
 ```css
@@ -202,7 +209,7 @@ docs/
 
   --color-bg    : hsl(var(--h), var(--s), calc(var(--flip-l) - 98% * var(--ISD)));
   --color-te    : hsl(var(--h), var(--s), calc(var(--flip-l) - 10% * var(--ISD)));
-  --color-tt    : hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
+  --color-bg-f    : hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
   --color-sn    : hsl(var(--h), var(--s), calc(var(--flip-l) - 20% * var(--ISD)));
 
   --color-trans : hsl(from var(--color-py) h s l / 0%);
@@ -254,7 +261,7 @@ docs/
   --color-inf: hsl(200, var(--s), var(--l));
   --color-bg: hsl(var(--h), var(--s), calc(var(--flip-l) - 98% * var(--ISD)));
   --color-te: hsl(var(--h), var(--s), calc(var(--flip-l) - 10% * var(--ISD)));
-  --color-tt: hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
+  --color-bg-f: hsl(var(--h), var(--s), calc(var(--flip-l) -  2% * var(--ISD)));
   --color-sn: hsl(var(--h), var(--s), calc(var(--flip-l) - 20% * var(--ISD)));
   --color-trans: hsl(from var(--color-py) h s l / 0%);
   --color-over: hsl(from var(--color-py) h s l / 50%);

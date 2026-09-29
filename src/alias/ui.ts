@@ -6,8 +6,8 @@
  * ]
  */
 
-export * from '@/components/BUI'
 export * from '@/components/branding'
+export * from '@/components/BUI'
 
 export * from '@/components/settings'
 export * from '@/components/status-bar'

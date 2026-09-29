@@ -1,5 +1,46 @@
 # 🤖 AI Session — 2026-09-28T00:10:00Z
 
+## 🤖 إصلاحات فحص StatusBar — 2026-09-29
+
+### ✅ اتعمل
+
+- استعادة `use-live-clock.ts` بعد اكتشاف أنه كان فارغًا ويسبب خطأ TypeScript.
+- تصحيح مفتاح ترجمة Cairo 24h داخل Tooltip.
+- عزل Tooltip داخل Adapter موحد بجانب Radix Popover وDrawer.
+- إزالة كلاسات Tooltip العامة واستبدالها بـ CSS Module داخل طبقة BUI.
+- التحقق بنجاح من TypeScript وESLint وProduction Build.
+
+### ⚠️ ملاحظات
+
+- تحذيرات Rollup الحالية مصدرها مكتبة Zod وحجم bundle النهائي، وليست أخطاء في StatusBar.
+
+## 🤖 فحص شامل واختبار بصري — 2026-09-29
+
+### ✅ اتعمل
+
+- تشغيل التطبيق محليًا وفحص الصفحة الرئيسية بصريًا.
+- اكتشاف وإصلاح سقوط التطبيق بسبب استخدام Tooltip بدون `TooltipProvider`.
+- اختبار Popover الإشعارات وDrawer الإعدادات والإغلاق وإعادة الفتح.
+- اختبار تبديل اللغة والثيم والتأكد من تحديث النصوص والاتجاه والساعة.
+- إصلاح عرض `Outlet` داخل RootLayout وإزالة تركيب HTML غير دلالي لـ `main` داخل `main`.
+- إعادة تشغيل TypeScript وESLint وProduction Build بنجاح.
+
+## 🤖 إصلاح خطأ Tooltip المرفق — 2026-09-29
+
+### ✅ اتعمل
+
+- تحليل Stack Trace وتحديد سبب الخطأ في `AppTooltip` داخل StatusBar.
+- إضافة `Tooltip.Provider` حول كل Tooltip خاص بساعة StatusBar.
+- اختبار تشغيل الصفحة بصريًا بعد الإصلاح والتأكد من اختفاء شاشة الخطأ.
+
+## 🤖 إصلاح exports الخاصة بـ Overlay — 2026-09-29
+
+### ✅ اتعمل
+
+- إضافة `Popover.Portal` و`Drawer.Portal` إلى Adapter الخاص بـ Radix.
+- إزالة الخاصية غير المدعومة `dismissible` من `Drawer.Root`.
+- نجاح فحص TypeScript وESLint.
+
 ## 🤖 استكمال مراجعة Status Bar — 2026-09-28
 
 ### ✅ اتعمل
@@ -57,13 +98,14 @@
 - تم تحديث ملف `src/components/status-bar/status-bar.css` بمتغيرات التصميم القياسية من `src/index.css` واستيراده بشكل سليم.
 - تم تصحيح أيقونة زر تبديل الثيم `src/components/settings/ToggleTheme.tsx` لاستخدام `IconMoon` و `IconSun` بدلاً من `IconGlobe` وتنسيقه بكلاسات Tailwind.
 - تم تحسين زر تبديل اللغة `src/components/settings/ToggleLanguage.tsx` وإظهار مؤشر اللغة الحالية بكلاسات Tailwind.
+- تم اعتماد Tailwind CSS + CSS Modules رسميًا؛ نُقلت أنماط Status Bar وLogo وOverlays إلى CSS Modules.
 - تم تشغيل `npm run lint` بنجاح كامل بدون أي خطأ أو تحذير (Zero Errors).
 - تم تشغيل `npm run build` بنجاح كامل (Exit code 0) وتوليد حزمة الإنتاج.
 
 ## 📁 الملفات المتأثرة
 
 - `src/components/status-bar/status-bar.tsx`
-- `src/components/status-bar/status-bar.css`
+- `src/components/status-bar/status-bar.module.css`
 - `src/components/settings/ToggleTheme.tsx`
 - `src/components/settings/ToggleLanguage.tsx`
 - `docs/AI_SESSION.md`

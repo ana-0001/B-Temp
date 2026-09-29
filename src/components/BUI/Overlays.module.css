@@ -1,0 +1,16 @@
+.popoverContent { z-index: var(--z-overlay); }
+.drawerOverlay { position: fixed; inset: 0; z-index: var(--z-overlay); }
+.drawerContent { z-index: var(--z-modal); }
+.tooltipContent {
+  z-index: var(--z-tooltip);
+  display: grid;
+  gap: var(--spacing-xs);
+  max-inline-size: 16em;
+  padding: var(--spacing-sm);
+  border: 0.0625em solid var(--color-br);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  box-shadow: var(--shadow-lg);
+  color: var(--color-bg-f);
+}
+.tooltipArrow { fill: var(--color-bg); }

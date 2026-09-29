@@ -6,52 +6,31 @@
  * ]
  */
 
-export { default as React } from 'react'
-export {
-  StrictMode,
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  useRef,
-  useId,
-} from 'react'
-export type {
-  FC,
-  ReactNode,
-  CSSProperties,
-  HTMLAttributes,
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  FormHTMLAttributes,
-  InputHTMLAttributes,
-  SelectHTMLAttributes,
-  LabelHTMLAttributes,
-  PropsWithChildren,
-  ImgHTMLAttributes,
-  Dispatch,
-  SetStateAction,
-} from 'react'
-export { createRoot } from 'react-dom/client'
 export { QueryClientProvider } from '@tanstack/react-query'
 export {
-  Outlet,
-  RouterProvider,
-  Link,
-  useNavigate,
-  useParams,
   createRootRoute,
   createRoute,
-  createRouter,
+  createRouter, Link, Outlet,
+  RouterProvider, useNavigate,
+  useParams
 } from '@tanstack/react-router'
+export {
+  default as React, StrictMode, useCallback, useEffect, useId, useMemo,
+  useRef, useState
+} from 'react'
+export type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes, CSSProperties, Dispatch, FC, FormHTMLAttributes, HTMLAttributes, ImgHTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, OptionHTMLAttributes, PropsWithChildren, ReactNode, SelectHTMLAttributes, SetStateAction
+} from 'react'
+export type { JSX } from 'react/jsx-runtime'
+
+export { createRoot } from 'react-dom/client'
 
 // zustand
 export { create } from 'zustand'
 export { persist } from 'zustand/middleware'
 
 // i18n
-export { useTranslation } from 'react-i18next'
 export { i18next } from '@/i18n/config'
+export { useTranslation } from 'react-i18next'
 
-// tooltip — [DISABLED] @radix-ui/react-tooltip غير مثبتة حالياً
-// export * as Tooltip from '@radix-ui/react-tooltip'

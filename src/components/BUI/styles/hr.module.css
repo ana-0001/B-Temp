@@ -1,0 +1,279 @@
+/**
+ * @file        : src/components/BUI/styles/hr.module.css
+ * @description : أنماط مكون Hr (فاصل أفقي/رأسي مع محتوى اختياري) — مبنية بالكامل على الـ Design Tokens المركزية
+ * @updated     : [
+ *   { "date": "29/09/2026", "version": "1.1.0", "by": ["BomBa"], "comment": "مراجعة: HSL فقط + em/rem + Logical Properties + ربط بالـ Tokens + إصلاح bugs" }
+ * ]
+ *
+ * @notes :
+ * - الألوان كلها من Tokens مركزية (--color-*) والـ Light/Dark بيتغيروا تلقائي — ممنوع تعريف لون محلي هنا.
+ * - لون --hr-custom-color لازم يتمرر بصيغة hsl()/hsla() فقط.
+ * - ترتيب الملف مهم: الـ modifiers (thickness / color / spacing) بنفس الـ specificity بتاعة .hr فلازم تيجي بعدها.
+ * - الاتجاه (RTL/LTR) بيتظبط تلقائي من flex و Logical Properties — الاستثناء الوحيد هو زاوية الـ gradient.
+ */
+
+/* ==========================================
+    الأساس (Base)
+   ========================================== */
+.hr {
+  /* الألوان — مربوطة بالـ Tokens المركزية */
+  --hr-color-default: var(--color-br);
+  --hr-color-primary: var(--color-py);
+  --hr-color-success: var(--color-ok);
+  --hr-color-warning: var(--color-war);
+  --hr-color-error: var(--color-err);
+  --hr-color-info: var(--color-inf);
+  --hr-color-muted: color-mix(in hsl, var(--color-br) 50%, transparent);
+
+  /* السماكة — em عشان الخط يفضل بنفس الوضوح مهما اتغير font-size المكون */
+  --hr-thin: 0.0625em;
+  --hr-medium: 0.125em;
+  --hr-thick: 0.1875em;
+  --hr-bold: 0.25em;
+
+  /* القيم الافتراضية (لازم تكون معرّفة، وإلا dashed/dotted/double مش هتترسم لو مفيش thickness class) */
+  --hr-thickness: var(--hr-thin);
+  --hr-thickness-factor: 1;
+  --hr-line-style: solid;
+  --hr-active-color: var(--hr-color-default);
+  --hr-spacing: 0;
+
+  /* زاوية الـ gradient داخل الفاصل بمحتوى — بتتقلب في RTL (تحت) */
+  --hr-fade-angle: 90deg;
+
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+/* ==========================================
+    الاتجاه (Orientation)
+   ========================================== */
+.orientation-horizontal {
+  inline-size: 100%;
+  margin-block: var(--hr-spacing);
+}
+
+.orientation-horizontal:not(.withContent) {
+  border-block-start: calc(var(--hr-thickness) * var(--hr-thickness-factor)) var(--hr-line-style) var(--hr-active-color);
+}
+
+.orientation-vertical {
+  display: inline-block;
+  align-self: stretch;
+  block-size: 100%;
+  min-block-size: 1em;
+  inline-size: 0;
+  margin-inline: var(--hr-spacing);
+  border-inline-start: calc(var(--hr-thickness) * var(--hr-thickness-factor)) var(--hr-line-style) var(--hr-active-color);
+  vertical-align: middle;
+}
+
+/* ==========================================
+    السماكة (Thickness)
+   ========================================== */
+.thickness-thin { --hr-thickness: var(--hr-thin); }
+.thickness-medium { --hr-thickness: var(--hr-medium); }
+.thickness-thick { --hr-thickness: var(--hr-thick); }
+.thickness-bold { --hr-thickness: var(--hr-bold); }
+
+/* ==========================================
+    الألوان (Colors)
+   ========================================== */
+.color-default { --hr-active-color: var(--hr-color-default); }
+.color-primary { --hr-active-color: var(--hr-color-primary); }
+.color-success { --hr-active-color: var(--hr-color-success); }
+.color-warning { --hr-active-color: var(--hr-color-warning); }
+.color-error { --hr-active-color: var(--hr-color-error); }
+.color-info { --hr-active-color: var(--hr-color-info); }
+.color-muted { --hr-active-color: var(--hr-color-muted); }
+
+/* لون مخصص — القيمة لازم تكون HSL/HSLA */
+.customColor { --hr-active-color: var(--hr-custom-color); }
+
+/* ==========================================
+    المسافات (Spacing) — من الـ Scale المركزي
+    بتتطبق كـ margin-block للأفقي و margin-inline للرأسي (فوق)
+   ========================================== */
+.spacing-none { --hr-spacing: 0; }
+.spacing-xs { --hr-spacing: var(--spacing-xs); }
+.spacing-sm { --hr-spacing: var(--spacing-sm); }
+.spacing-md { --hr-spacing: var(--spacing-md); }
+.spacing-lg { --hr-spacing: var(--spacing-lg); }
+.spacing-xl { --hr-spacing: var(--spacing-xl); }
+
+/* ==========================================
+    الأنماط البصرية (Variants)
+   ========================================== */
+
+/* solid / dashed / dotted / double: كلهم نفس الـ border، بيختلفوا في الـ style بس */
+.variant-solid { --hr-line-style: solid; }
+.variant-dashed { --hr-line-style: dashed; }
+.variant-dotted { --hr-line-style: dotted; }
+
+/* double محتاج 3 أضعاف السماكة عشان الخطين يظهروا */
+.variant-double {
+  --hr-line-style: double;
+  --hr-thickness-factor: 3;
+}
+
+/* gradient: بيستخدم background بدل border */
+.variant-gradient.orientation-horizontal:not(.withContent) {
+  border-block-start: 0;
+  block-size: var(--hr-thickness);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--hr-active-color) 20%,
+    var(--hr-active-color) 80%,
+    transparent 100%
+  );
+}
+
+.variant-gradient.orientation-vertical {
+  border-inline-start: 0;
+  inline-size: var(--hr-thickness);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--hr-active-color) 20%,
+    var(--hr-active-color) 80%,
+    transparent 100%
+  );
+}
+
+/* glow: ثابت بدون pulse (الحركة اللانهائية زخرفية ومخالفة لقواعد الحركة) */
+.variant-glow:not(.withContent),
+.variant-glow.withContent .line {
+  box-shadow:
+    0 0 0.25em var(--hr-active-color),
+    0 0 0.5em var(--hr-active-color),
+    0 0 0.75em var(--hr-active-color);
+}
+
+/* shadow: من Token الظل المركزي (بيتغير تلقائي في الـ Dark) */
+.variant-shadow:not(.withContent),
+.variant-shadow.withContent .line {
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================
+    الفاصل مع محتوى (Label / Icon)
+   ========================================== */
+.withContent {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.line {
+  flex: 1;
+  min-inline-size: 1em;
+  border-block-start: calc(var(--hr-thickness) * var(--hr-thickness-factor)) var(--hr-line-style) var(--hr-active-color);
+}
+
+/* gradient داخل الفاصل بمحتوى: كل خط بيتلاشى ناحية الطرف الخارجي */
+.variant-gradient.withContent .line {
+  border-block-start: 0;
+  block-size: var(--hr-thickness);
+  background: linear-gradient(var(--hr-fade-angle), transparent 0%, var(--hr-active-color) 100%);
+}
+
+.variant-gradient.withContent .line:last-child {
+  background: linear-gradient(var(--hr-fade-angle), var(--hr-active-color) 0%, transparent 100%);
+}
+
+/* النص بلون Foreground ثابت (تباين WCAG AA) — اللون الدلالي للخط والأيقونة بس */
+.content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-bg-f);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 1.25em;
+  block-size: 1.25em;
+  color: var(--hr-active-color);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+/* letter-spacing بيكسّر اتصال الحروف العربية */
+.label:lang(ar) {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ==========================================
+    المحاذاة (Alignment)
+    flex بيتعكس تلقائي في RTL — فمفيش حاجة لـ override
+   ========================================== */
+.align-start .line:first-child { flex: 0 0 var(--spacing-xl); }
+.align-end .line:last-child { flex: 0 0 var(--spacing-xl); }
+
+/* ==========================================
+    الحركة (Animation) — قصيرة ووظيفية (≤ 300ms)
+   ========================================== */
+.animated.orientation-horizontal:not(.withContent) {
+  animation: expandHorizontal var(--transition-normal);
+}
+
+.animated.orientation-vertical {
+  animation: expandVertical var(--transition-normal);
+}
+
+.animated.withContent .line {
+  animation: expandHorizontal var(--transition-normal);
+}
+
+.animated.withContent .content {
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes expandHorizontal {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes expandVertical {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-0.25em); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+    RTL — الاستثناء الوحيد: زاوية الـ gradient
+   ========================================== */
+[dir='rtl'] .hr {
+  --hr-fade-angle: 270deg;
+}
+
+/* ==========================================
+    Accessibility — تقليل الحركة
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .animated,
+  .animated .line,
+  .animated .content {
+    animation: none !important;
+  }
+}

@@ -6,7 +6,7 @@
  * ]
  */
 
-import { buildProps, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes, type SelectHTMLAttributes } from '@a'
+import { buildProps, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes, type OptionHTMLAttributes, type SelectHTMLAttributes } from '@a'
 
 /** @description غلاف عنصر div الأساسي في طبقة BUI-1. */
 export const Div = (props: HTMLAttributes<HTMLDivElement>) => <div {...buildProps(props)} />
@@ -32,6 +32,10 @@ export const H1 = (props: HTMLAttributes<HTMLHeadingElement>) => <h1 {...buildPr
 /** @description غلاف الفقرة. */
 export const P = (props: HTMLAttributes<HTMLParagraphElement>) => <p {...buildProps(props)} />
 
+/** @description غلاف الفقرة. */
+export const Strong = (props: HTMLAttributes<HTMLElement>) => <strong {...buildProps(props)} />
+
+
 /** @description غلاف الرابط. */
 export const A = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <a {...buildProps(props)} />
 
@@ -49,3 +53,6 @@ export const Label = (props: LabelHTMLAttributes<HTMLLabelElement>) => <label {.
 
 /** @description غلاف عنصر الاختيار الأساسي في طبقة BUI-1. */
 export const Select = (props: SelectHTMLAttributes<HTMLSelectElement>) => <select {...buildProps(props)} />
+
+/** @description غلاف عنصر الاختيار الأساسي في طبقة BUI-1. */
+export const Option = (props: OptionHTMLAttributes<HTMLOptionElement>) => <option {...buildProps(props)} />
