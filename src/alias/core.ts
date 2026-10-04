@@ -11,8 +11,8 @@ export {
   createRootRoute,
   createRoute,
   createRouter, Link, Outlet,
-  RouterProvider, useNavigate,
-  useParams
+  createMemoryHistory, RouterProvider, useNavigate,
+  useParams, useRouterState, redirect
 } from '@tanstack/react-router'
 export {
   default as React, StrictMode, useCallback, useEffect, useId, useMemo,

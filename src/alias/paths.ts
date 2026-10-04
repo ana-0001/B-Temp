@@ -11,6 +11,7 @@ export * from '@/app/providers/AppProviders'
 
 // Router
 export * from '@/app/router/router'
+export * from '@/app/router/router.config'
 
 // ------ ------ ------
 

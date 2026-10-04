@@ -12,7 +12,7 @@ export type T_BackgroundMotion = 'full' | 'calm' | 'off'
 export type T_TimeZone = 'Africa/Cairo' | 'Asia/Riyadh' | 'Europe/London' | 'America/New_York'
 
 /** @interface إعدادات المستخدم */
-export interface SettingsState {
+export interface I_SettingsState {
   theme: T_ThemePreference
   language: T_AppLanguage
   timeFormat: '12' | '24'
@@ -31,7 +31,7 @@ export interface SettingsState {
 }
 
 /** @hook مخزن إعدادات التطبيق */
-export const useSettingsStore = create<SettingsState>()(
+export const useSettingsStore = create<I_SettingsState>()(
   persist(
     (set) => ({
       theme: 'light',

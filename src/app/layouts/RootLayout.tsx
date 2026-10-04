@@ -7,20 +7,27 @@
  * ]
  */
 
-import { Div as Div1, Main, Outlet, StatusBar, i18next, useEffect, useSettingsStore } from '@a'
+import { Div as Div1, Main, Outlet, StatusBar, i18next, useEffect, useRouterState, useSettingsStore } from '@a'
+import { getRouteLanguage } from '@/app/router/router.config'
 
 /** @description يزامن اللغة والثيم مع وثيقة HTML ثم يعرض شجرة الراوتر. */
 export function RootLayout() {
   const language = useSettingsStore((state) => state.language)
+  const setLanguage = useSettingsStore((state) => state.setLanguage)
   const theme = useSettingsStore((state) => state.theme)
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
 
   useEffect(() => {
-    const documentLanguage = language === 'ar' ? 'ar' : 'en'
+    const documentLanguage = getRouteLanguage(pathname, language)
+    if (documentLanguage !== language) {
+      setLanguage(documentLanguage)
+      return
+    }
     document.documentElement.lang = documentLanguage
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
     document.documentElement.dataset.theme = theme
     void i18next.changeLanguage(documentLanguage)
-  }, [language, theme])
+  }, [language, pathname, setLanguage, theme])
 
   return (
     <Div1 className="flex min-h-screen flex-col">

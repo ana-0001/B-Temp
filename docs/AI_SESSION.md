@@ -41,6 +41,51 @@
 - إزالة الخاصية غير المدعومة `dismissible` من `Drawer.Root`.
 - نجاح فحص TypeScript وESLint.
 
+## 🤖 مراجعة وإعادة بناء Router — 2026-09-29
+
+### ✅ اتعمل
+
+- دراسة مجلد `src/app/router` والـ layouts والشاشات المرتبطة به.
+- حذف Router implementation قديم كان يستورد Auth/Health modules غير موجودة ويحتوي رموز TypeScript غير صالحة.
+- بناء Route Tree متوافق مع المشروع الحالي: Root → Public → Home.
+- تفعيل `SplashScreen` و`ErrorScreen` و`NotFoundScreen` على مستوى الراوتر.
+- إعادة تفعيل `AppHeader` داخل `PublicLayout`.
+- حذف `use-appShell.ts` الميت وتبسيط `router.config.ts` إلى helpers نقية للمسارات الحالية.
+- إصلاح خطأ `this.name` داخل StatusBar الذي كان يكسر TypeScript.
+- اختبار بصري ناجح للمسار الرئيسي، مسار 404، والعودة للرئيسية.
+
+## 🤖 اختبارات الراوتر واللغة — 2026-09-29
+
+### ✅ اتعمل
+
+- إضافة Vitest وأمر `pnpm test`.
+- إضافة اختبارات آلية لـ root route، language resolution، 404 boundary، وerror boundary.
+- إضافة `/ar` و`/en` للتحكم في اللغة من خلال المسار.
+- جعل `/` يستخدم اللغة المحفوظة في Zustand أو `en` كافتراضي.
+- جعل مزامنة URL واللغة والثيم وi18n مركزية داخل `RootLayout`.
+- إصلاح circular import داخل الراوتر باستخدام imports بنية محلية مستقلة.
+- نجاح الاختبارات: 5/5.
+- نجاح TypeScript وESLint وProduction Build.
+
+### 🔎 ملاحظات
+
+- تحذير حجم bundle وتحذيرات Rollup الخاصة بتعليقات Zod ما زالت من أدوات البناء/اعتمادات خارجية، وليست أخطاء في الراوتر.
+
+## 🤖 إصلاح تبديل اللغة داخل URL — 2026-09-29
+
+### ✅ اتعمل
+
+- إصلاح `ToggleLanguage` حتى يغيّر `/en` إلى `/ar` والعكس باستخدام TanStack Router.
+- الحفاظ على سلوك `/` بحيث يغيّر اللغة المحفوظة بدون تغيير المسار.
+- اختبار التبديل ذهابًا وإيابًا بصريًا من `/en` و`/ar`.
+- اختبار تبديل اللغة على `/` مع بقاء المسار الجذري.
+
+### ⏭️ الأولويات التالية
+
+- [30min] 🔴 HIGH → اعتماد عقد Authentication قبل بناء AuthLayout وroute guards.
+- [2hr] 🟡 MED → إضافة smoke tests آلية لمسارات `/` و404 وroute error.
+- [1day] 🟢 LOW → إضافة typed search params وlazy loading عند نمو عدد الشاشات.
+
 ## 🤖 استكمال مراجعة Status Bar — 2026-09-28
 
 ### ✅ اتعمل

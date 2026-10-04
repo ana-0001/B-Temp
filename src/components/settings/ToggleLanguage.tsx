@@ -4,14 +4,26 @@
  * @updated     : [{ "date": "2026-09-28", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الزر" }]
  */
 
-import { BTooltip, Button, cn, IconGlobe, P, useLanguage, useTranslation } from '@a'
+import { BTooltip, Button, cn, IconGlobe, P, useLanguage, useNavigate, useRouterState, useTranslation } from '@a'
 
 /** @description بيبدّل اللغة الحالية ويعرض اللغة التالية للمستخدم. */
 export function ToggleLanguage({ className = null }: { className?: string | null | undefined }) {
   const { t } = useTranslation('common')
   const { language, setLanguage } = useLanguage()
+  const navigate = useNavigate()
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
   const nextLanguage = language === 'en' ? 'ar' : 'en'
   const label = nextLanguage === 'ar' ? t('languages.ar') : t('languages.en')
+  const hasLanguageInPath = pathname === '/ar' || pathname === '/en'
+
+  /** @description بيغيّر المسار نفسه لو اللغة جزء من الـ URL، وإلا يحدّث اللغة المحفوظة فقط. */
+  const handleLanguageChange = () => {
+    if (hasLanguageInPath) {
+      void navigate({ to: nextLanguage === 'ar' ? '/ar' : '/en' })
+      return
+    }
+    setLanguage(nextLanguage)
+  }
 
   //   rounded border border-br bg-bg transition-colors hover:bg-py/10
   return (
@@ -30,7 +42,7 @@ export function ToggleLanguage({ className = null }: { className?: string | null
         )}
         aria-label={t('controls.language')}
         // title={t('controls.language')}
-        onClick={() => setLanguage(nextLanguage)}
+        onClick={handleLanguageChange}
       >
         <IconGlobe aria-hidden="true" className="size-4" />
       </Button>

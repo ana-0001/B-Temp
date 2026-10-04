@@ -6,15 +6,15 @@
  * ]
  */
 
-import { Button, cn, Div as Div1, Drawer, Hr, IconX, P, Popover, Tooltip, useTranslation } from "@a";
+import { Button, cn, Div as Div1, Drawer, Hr, IconX, P, Popover, React, Tooltip, useTranslation, type ReactNode } from '@a'
 
 
 // ==========================================
 // 1. المكون المغلف لـ Tooltip (Reusable Tooltip)
 // ==========================================
 interface BTooltipProps {
-  children: React.ReactNode
-  content: React.ReactNode
+  children: ReactNode
+  content: ReactNode
   side?: 'top' | 'right' | 'bottom' | 'left'
   align?: 'start' | 'center' | 'end'
   sideOffset?: number
@@ -112,8 +112,8 @@ export function Backdrop({
 // 2.1. المكون الذكي والمغلف لـ Popover (BPopover)
 // ==========================================
 interface BPopoverProps {
-  trigger: React.ReactNode
-  children: React.ReactNode
+  trigger: ReactNode
+  children: ReactNode
   open?: boolean
   onOpenChange?: (open: boolean) => void
   align?: 'start' | 'center' | 'end'
@@ -180,8 +180,8 @@ export function BPopover({
 // 2.2. المكون الذكي والمغلف لـ Drawer (BDrawer)
 // ==========================================
 interface BDrawerProps {
-  trigger: React.ReactNode
-  children: React.ReactNode
+  trigger: ReactNode
+  children: ReactNode
   title?: React.ReactNode
   description?: React.ReactNode
   open?: boolean

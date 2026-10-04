@@ -10,7 +10,9 @@
 
 ## 🟡 MED
 - [x] استكمال شاشات النظام الأساسية (SplashScreen, ErrorScreen, NotFoundScreen) — المرحلة 4.
-- [ ] استكمال TanStack Router tree وربطه بالـ layouts الإضافية عند الحاجة.
+- [x] إعادة بناء TanStack Router tree وربطه بالـ Root/Public layouts مع حالات Splash/Error/404.
+- [ ] إضافة AuthLayout وAuthenticatedLayout بعد اعتماد عقد Authentication.
+- [ ] إضافة route guards typed واختبارات smoke للمسارات بعد اعتماد Auth.
 - [ ] إضافة Sidebar أو Mobile Navigation فقط عند ظهور احتياج منتج واضح.
 - [ ] استكمال إعداد Day.js helpers وQuery policies حسب احتياج الـ Features.
 
@@ -18,6 +20,7 @@
 - [ ] استكمال مكونات BUI الإضافية حسب الاستخدام الفعلي فقط.
 - [ ] حسم أدوات الاختبار قبل المرحلة 10.
 - [ ] إضافة اختبارات Unit/E2E للمكونات والتفاعلات الحرجة.
+- [ ] إضافة اختبار آلي لمسار `/` ومسار 404 وحالة route error.
 
 ### قرارات مطلوبة قبل المرحلة 5
 - [ ] عقد Backend API.

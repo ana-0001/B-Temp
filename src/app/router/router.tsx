@@ -1,42 +1,75 @@
 /**
  * @file        : src/app/router/router.tsx
- * @description : إعداد شجرة TanStack Router الأساسية للتطبيق.
- * @updated     : [
- *   { "date": "2026-09-26T16:45:00Z", "version": "1.3.0", "by": ["BomBa"], "comment": "إضافة حالات التحميل والخطأ وإعدادات الراوتر" }
- * ]
+ * @description : تعريف شجرة الراوتر الأساسية للتطبيق وربطها بالـ layouts والشاشات الحالية.
+ * @updated     : [{ "date": "2026-09-29", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الراوتر بما يتوافق مع بنية المشروع الحالية" }]
  */
-
 
 import {
   createRootRoute,
   createRoute,
   createRouter,
+} from '@/alias/core'
+import { useSettingsStore } from '@/components/settings/settings.store'
+import { PublicLayout } from '@/app/layouts/PublicLayout'
+import { RootLayout } from '@/app/layouts/RootLayout'
+import { ErrorScreen } from '@/screens/ErrorScreen'
+import { HomeScreen } from '@/screens/HomeScreen'
+import { NotFoundScreen } from '@/screens/NotFoundScreen'
+import { SplashScreen } from '@/screens/SplashScreen'
 
-  // Components
-   RootLayout, PublicLayout, // app/layouts
+// ─────────────────────────────────────────────
+// 🧭 Root route
+// ─────────────────────────────────────────────
 
-  // Screens
-  HomeScreen, NotFoundScreen, ErrorScreen, SplashScreen
-} from '@a'
-
-
-// 1. تعريف جذر الراوتر الأساسي
-const root = createRootRoute({
+export const rootRoute = createRootRoute({
   component: RootLayout,
   pendingComponent: SplashScreen,
   errorComponent: ({ reset }) => <ErrorScreen onRetry={reset} />,
   notFoundComponent: NotFoundScreen,
-});
+})
 
-// 2. بناء المسارات الفرعية وتجميع الشجرة مباشرة
-const publicRoute = createRoute({ getParentRoute: () => root, id: 'public', component: PublicLayout });
-const homeRoute = createRoute({ getParentRoute: () => publicRoute, path: '/', component: HomeScreen });
+// ─────────────────────────────────────────────
+// 🌐 Public routes
+// ─────────────────────────────────────────────
 
-// 3. تصدير الراوتر النهائي وإعداداته
+const publicRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  id: 'public',
+  component: PublicLayout,
+})
+
+const homeRoute = createRoute({
+  getParentRoute: () => publicRoute,
+  path: '/',
+  component: HomeScreen,
+})
+
+const englishHomeRoute = createRoute({
+  getParentRoute: () => publicRoute,
+  path: '/en',
+  beforeLoad: () => useSettingsStore.getState().setLanguage('en'),
+  component: HomeScreen,
+})
+
+const arabicHomeRoute = createRoute({
+  getParentRoute: () => publicRoute,
+  path: '/ar',
+  beforeLoad: () => useSettingsStore.getState().setLanguage('ar'),
+  component: HomeScreen,
+})
+
+// ─────────────────────────────────────────────
+// 🧩 Route tree and router instance
+// ─────────────────────────────────────────────
+
+export const routeTree = rootRoute.addChildren([
+  publicRoute.addChildren([homeRoute, englishHomeRoute, arabicHomeRoute]),
+])
+
 export const appRouter = createRouter({
-  routeTree: root.addChildren([publicRoute.addChildren([homeRoute])]),
+  routeTree,
   defaultPreload: 'intent',
   defaultPendingComponent: SplashScreen,
   defaultNotFoundComponent: NotFoundScreen,
   scrollRestoration: true,
-});
+})

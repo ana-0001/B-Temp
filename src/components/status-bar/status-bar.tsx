@@ -34,8 +34,8 @@ import {
   useTimeFormat,
   useTranslation,
   type I_StatusBar
-} from '@a'
-import styles from './status-bar.module.css'
+} from '@a';
+import styles from './status-bar.module.css';
 
 // ==========================================
 // 000. المكون الرئيسي (StatusBar)
@@ -103,7 +103,7 @@ export function StatusBar({
 // ==========================================
 // 1. مكون الإشعارات (Notifications) باستخدام BPopover
 // ==========================================
-export function NotificationsPopover({
+function NotificationsPopover({
   open,
   onOpenChange,
 }: {
@@ -134,7 +134,7 @@ export function NotificationsPopover({
 // ==========================================
 // 2. مكون الإعدادات (Settings) باستخدام BDrawer
 // ==========================================
-export function SettingsDrawer({
+function SettingsDrawer({
   open,
   onOpenChange,
 }: {
@@ -180,7 +180,7 @@ export function SettingsDrawer({
 // ==========================================
 // 3. مكون الساعة والتلميح الخاص بها (Status Clock)
 // ==========================================
-export function StatusClock() {
+function StatusClock() {
   const { language } = useLanguage()
   const { timeFormat, timeZone } = useTimeFormat()
   const { t } = useTranslation('common')

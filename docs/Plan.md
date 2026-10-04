@@ -871,4 +871,77 @@ Requirements → Types/Schemas (Zod) → API/Repository → Queries/Mutations
 
 الخطة دي بتحوّل وثيقة المتطلبات العامة الأصلية لخطة **منضبطة 100% بنظام BomBa** في كل ما يخص التصميم والبنية والجودة والـ Git، مع الحفاظ على القرارات الوظيفية المحددة صراحةً في الوثيقة الأصلية (Router/State/Forms/...) كقرارات مشروع موثّقة ومقصودة، مش تعارضات مسكوت عنها.
 
-**الحالة الحالية:** تم تنفيذ Foundation وApp Shell وStatus Bar Footer وLogo المركزي والساعة والإعدادات الأساسية. الخطوات التالية الخاصة بالمكوّن هي Health API، مصدر Notifications حقيقي، واختبارات E2E.
+**الحالة الحالية:** تم تنفيذ Foundation وApp Shell وStatus Bar Footer وLogo المركزي والساعة والإعدادات الأساسية. تم أيضًا إعادة بناء TanStack Router ليتوافق مع الكود الحالي واختباره بصريًا.
+
+---
+
+## 26. خطة الراوتر المعتمدة — Router Implementation Plan
+
+### 26.1 الوضع الحالي بعد المراجعة
+
+- `RootLayout` هو الغلاف الجذري، ويحتوي على `Outlet` ثم `StatusBar` كـ Footer ثابت منطقيًا.
+- `PublicLayout` هو غلاف المسارات العامة، ويحتوي على `AppHeader` و`PageContainer` و`Outlet`.
+- المسارات الحالية المدعومة هي `/` و`/en` و`/ar`، وكلها تعرض `HomeScreen`.
+- حالات الراوتر الأساسية مفعلة: `SplashScreen` للتحميل، `ErrorScreen` لأخطاء route match، و`NotFoundScreen` للمسارات غير الموجودة.
+- تم حذف `use-appShell.ts` القديم لأنه كان يعتمد على Auth/Health modules غير موجودة ويسبب تعارضًا معماريًا.
+- تم توحيد تعريف شجرة الراوتر في `src/app/router/router.tsx` بدل خريطة شاشات يدوية خارج TanStack Router.
+
+### 26.2 القواعد التي يجب اتباعها داخل الراوتر
+
+1. أي Route جديد يُعرّف داخل `router.tsx` أو ملف route مستقل يتم ربطه من خلاله، وليس داخل Screen.
+2. الـ Layouts مسؤولة عن الهيكل العام فقط، والـ Screens مسؤولة عن محتوى الصفحة فقط.
+3. التنقل يتم عبر TanStack Router، وليس عبر `window.location` أو روابط يدوية غير معرفة.
+4. كل Route يحتاج حالة تحميل أو خطأ مناسبة عند وجود async data أو loader.
+5. Guards المصادقة تُضاف فقط بعد اعتماد عقد الـ Auth والـ Backend، ولا يتم اختراع Auth flow داخل الراوتر الحالي.
+6. أي import داخل الراوتر يمر من `@a`، مع تقسيم imports إلى مجموعات واضحة.
+7. كل مسار قابل للوصول يجب أن يملك حالة 404 أو fallback مفهومًا للمستخدم.
+8. المسارات والـ params والـ search params يجب أن تكون typed، مع تجنب `string` العام عند بدء تنفيذ Features حقيقية.
+
+### 26.3 مراحل التطوير حسب الأولوية
+
+#### 🔴 P0 — مكتمل في هذه المراجعة
+
+- إزالة imports والمكونات غير الموجودة.
+- إزالة الرموز غير الصالحة والكود القديم الخاص بـ Auth/Health.
+- إنشاء Root Route وPublic Route وHome Route بطريقة TanStack Router الصحيحة.
+- ربط `pendingComponent` و`errorComponent` و`notFoundComponent`.
+- إعادة تفعيل `AppHeader` داخل `PublicLayout`.
+- تصحيح أخطاء TypeScript المرتبطة بالـ Overlay وStatusBar التي كانت تمنع البناء.
+- اختبار `/` ومسار غير موجود والعودة للرئيسية بصريًا.
+- إضافة `/en` و`/ar` كمسارات لغة صريحة حتى لا يتم ابتلاع مسارات 404 بواسطة dynamic route.
+
+#### 🔴 P1 — يجب تنفيذه قبل Authentication
+
+- إضافة `AuthLayout` و`AuthenticatedLayout` فقط بعد اعتماد نموذج الجلسة والصلاحيات.
+- إنشاء route groups واضحة: Public / Auth / Protected.
+- إضافة typed route guards باستخدام `beforeLoad` مع redirect موحد.
+- اعتماد مسار افتراضي موثق للزائر والمستخدم المسجل.
+- إضافة اختبار route smoke آلي للمسارات الأساسية.
+
+#### 🟡 P2 — بعد تثبيت عقد الـ API
+
+- إضافة loaders أو TanStack Query integrations للبيانات الخاصة بكل Feature.
+- إضافة search params typed للفلاتر والصفحات عند الحاجة.
+- lazy loading للشاشات الثقيلة وتقسيم bundle.
+- إضافة breadcrumbs وdocument title من route metadata عند ظهور أكثر من شاشة.
+
+#### 🟢 P3 — تحسينات لاحقة
+
+- route-level analytics وmonitoring بدون تسريب بيانات حساسة.
+- prefetch مدروس للمسارات المتوقعة.
+- اختبار keyboard navigation وRTL لكل انتقال وDialog/Drawer مرتبط بالمسارات.
+
+### 26.4 معيار إكمال أي Route جديد
+
+```markdown
+□ المسار معرف في TanStack Router ومربوط بالـ parent الصحيح
+□ الـ path والـ params typed
+□ الـ Layout مناسب لنوع المسار
+□ Loading / Error / NotFound states موجودة عند الحاجة
+□ النصوص تمر عبر i18n
+□ RTL/LTR وdocument direction يعملان
+□ التنقل يعمل بالكيبورد والرابط قابل للوصول
+□ لا يوجد import مباشر خارج @a
+□ TypeScript وESLint وBuild ناجحين
+□ اختبار بصري للمسار الأساسي وحالة الخطأ أو 404
+```
