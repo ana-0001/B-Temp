@@ -3,7 +3,8 @@
  * @description : نقطة الاستيراد المركزية لأدوات React الأساسية والراوتر والترجمة.
  * @updated     : [
  *   { "date": "2026-09-26T17:33:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "توسيع Core ليشمل Hooks والترجمة والراوتر" },
- *   { "date": "2026-10-08", "version": "1.2.0", "by": ["BomBa"], "comment": "إضافة أنواع CanvasHTMLAttributes وChangeEvent وMouseEvent وRef لطبقة BombaSmart" }
+ *   { "date": "2026-10-08", "version": "1.2.0", "by": ["BomBa"], "comment": "إضافة أنواع CanvasHTMLAttributes وChangeEvent وMouseEvent وRef لطبقة BombaSmart" },
+ *   { "date": "2026-10-08", "version": "1.3.0", "by": ["BomBa"], "comment": "تصدير lazyRouteComponent لتقسيم الكود" }
  * ]
  */
 
@@ -12,7 +13,7 @@ export {
   createRootRoute,
   createRoute,
   createRouter, Link, Outlet,
-  createMemoryHistory, RouterProvider, useNavigate,
+  createMemoryHistory, RouterProvider, lazyRouteComponent, useNavigate,
   useParams, useRouterState, redirect
 } from '@tanstack/react-router'
 export {

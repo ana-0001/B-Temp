@@ -1,21 +1,25 @@
 /**
  * @file        : src/app/router/router.tsx
  * @description : تعريف شجرة الراوتر الأساسية للتطبيق وربطها بالـ layouts والشاشات الحالية.
- * @updated     : [{ "date": "2026-09-29", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الراوتر بما يتوافق مع بنية المشروع الحالية" }]
+ * @updated     : [{ "date": "2026-09-29", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الراوتر بما يتوافق مع بنية المشروع الحالية" }, { "date": "2026-10-08", "version": "1.1.0", "by": ["BomBa"], "comment": "تقسيم الكود — lazy loading للشاشات العامة عبر lazyRouteComponent" }]
  */
 
 import {
   createRootRoute,
   createRoute,
   createRouter,
+  lazyRouteComponent,
 } from '@/alias/core'
 import { useSettingsStore } from '@/components/settings/settings.store'
 import { PublicLayout } from '@/app/layouts/PublicLayout'
 import { RootLayout } from '@/app/layouts/RootLayout'
 import { ErrorScreen } from '@/screens/ErrorScreen'
-import { HomeScreen } from '@/screens/HomeScreen'
-import { NotFoundScreen } from '@/screens/NotFoundScreen'
 import { SplashScreen } from '@/screens/SplashScreen'
+
+// ⚡ تقسيم الكود — الشاشات العامة بتتحمل عند الحاجة والـ Splash بيظهر لحظة التحميل
+// ErrorScreen يفضل eager عمداً — حدود الأخطاء لازم تكون متاحة فوراً حتى لو الشبكة وقعت
+const HomeScreen = lazyRouteComponent(() => import('@/screens/HomeScreen'), 'HomeScreen')
+const NotFoundScreen = lazyRouteComponent(() => import('@/screens/NotFoundScreen'), 'NotFoundScreen')
 
 // ─────────────────────────────────────────────
 // 🧭 Root route
