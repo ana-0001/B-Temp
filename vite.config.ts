@@ -2,7 +2,8 @@
  * @file        : vite.config.ts
  * @description : إعداد Vite الأساسي للمشروع مع دعم Tailwind CSS 4 و نظام Alias.
  * @updated     : [
- *   { "date": "2026-09-26T17:31:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "تفعيل إضافة Tailwind CSS 4 وضبط مسارات Alias" }
+ *   { "date": "2026-09-26T17:31:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "تفعيل إضافة Tailwind CSS 4 وضبط مسارات Alias" },
+ *   { "date": "2026-10-04", "version": "1.2.0", "by": ["BomBa"], "comment": "السماح بـ host المعاينة (e2b.app) في سيرفر التطوير فقط" }
  * ]
  */
 
@@ -18,5 +19,9 @@ export default defineConfig({
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       '@a': fileURLToPath(new URL('./src/alias/index.ts', import.meta.url)),
     },
+  },
+  server: {
+    // السماح باستضافة نطاق المعاينة (sandbox) في وضع التطوير فقط — ما بيأثرش على الإنتاج
+    allowedHosts: ['.e2b.app'],
   },
 })
