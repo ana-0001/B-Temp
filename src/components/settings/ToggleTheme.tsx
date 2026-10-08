@@ -1,7 +1,8 @@
 /**
  * @file        : src/components/settings/ToggleTheme.tsx
  * @description : زر تبديل الثيم الفاتح والداكن.
- * @updated     : [{ "date": "2026-09-28", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الزر" }]
+ * @updated     : [{ "date": "2026-09-28", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الزر" },
+ *   { "date": "2026-10-04", "version": "1.0.1", "by": ["BomBa"], "comment": "إزالة كلاس text-md غير الموجود في Tailwind 4 — الظهور يظل text-xs كما كان" }]
  */
 
 import { BTooltip, Button, cn, IconMoon, IconSun, P, useSettingsStore, useTranslation } from '@a'
@@ -19,7 +20,7 @@ export function ToggleTheme({ className = null }: { className?: string | null | 
         <BTooltip
           side="top"
           align="center"
-          content={<P className="m-0 text-xs leading-normal text-md">{`${t('controls.theme')}: ${label}`}</P>}
+          content={<P className="m-0 text-xs leading-normal">{`${t('controls.theme')}: ${label}`}</P>}
         >
           <Button
             type="button"

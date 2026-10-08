@@ -2,7 +2,8 @@
  * @file        : src/components/BUI/styles/hr.module.css
  * @description : أنماط مكون Hr (فاصل أفقي/رأسي مع محتوى اختياري) — مبنية بالكامل على الـ Design Tokens المركزية
  * @updated     : [
- *   { "date": "29/09/2026", "version": "1.1.0", "by": ["BomBa"], "comment": "مراجعة: HSL فقط + em/rem + Logical Properties + ربط بالـ Tokens + إصلاح bugs" }
+ *   { "date": "29/09/2026", "version": "1.1.0", "by": ["BomBa"], "comment": "مراجعة: HSL فقط + em/rem + Logical Properties + ربط بالـ Tokens + إصلاح bugs" },
+ *   { "date": "2026-10-04", "version": "1.1.1", "by": ["BomBa"], "comment": "إصلاح أسماء Tokens الخاصة بالخطوط إلى --fs و --fw المتوافقة مع index.css" }
  * ]
  *
  * @notes :
@@ -191,8 +192,8 @@
   align-items: center;
   gap: var(--spacing-sm);
   padding-inline: var(--spacing-sm);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
   color: var(--color-bg-f);
   white-space: nowrap;
   flex-shrink: 0;
@@ -208,7 +209,7 @@
 }
 
 .label {
-  font-size: var(--font-size-xs);
+  font-size: var(--fs-xs);
   letter-spacing: 0.025em;
   text-transform: uppercase;
 }

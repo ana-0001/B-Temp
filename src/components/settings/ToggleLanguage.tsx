@@ -1,7 +1,8 @@
 /**
  * @file        : src/components/settings/ToggleLanguage.tsx
  * @description : زر تبديل اللغة بين الإنجليزية والعربية.
- * @updated     : [{ "date": "2026-09-28", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الزر" }]
+ * @updated     : [{ "date": "2026-09-28", "version": "1.0.0", "by": ["BomBa"], "comment": "إعادة بناء الزر" },
+ *   { "date": "2026-10-04", "version": "1.0.1", "by": ["BomBa"], "comment": "إزالة كلاس text-md غير الموجود في Tailwind 4 — الظهور يظل text-xs كما كان" }]
  */
 
 import { BTooltip, Button, cn, IconGlobe, P, useLanguage, useNavigate, useRouterState, useTranslation } from '@a'

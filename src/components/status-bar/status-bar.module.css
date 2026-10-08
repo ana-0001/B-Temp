@@ -1,14 +1,10 @@
-/* 
-[ ]- ToDO: Fix:-
-  - Background color
-  - Border
-  - Border radius
-  - shadow
-  - Border styles
-  - Animation
-  - Z-index
-*/
-/* status-bar.module.css — تصميم شريط الحالة (ألوان/حدود/ظلال عبر CSS Tokens) */
+/**
+ * @file        : src/components/status-bar/status-bar.module.css
+ * @description : تصميم شريط الحالة — ألوان/حدود/ظلال عبر CSS Tokens المركزية
+ * @updated     : [
+ *   { "date": "2026-10-04", "version": "1.1.0", "by": ["BomBa"], "comment": "إصلاح --font-family-mono إلى --ffy-mono وإزالة TODO قديم مكتمل فعلياً" }
+ * ]
+ */
 
 .statusBar { 
   position: relative; z-index: var(--z-sticky);
@@ -36,7 +32,7 @@
 .pulseError { background: var(--color-err); }
 .version, .brand { font-size: 0.9em; }
 .environment { padding: 0.25em 0.5em; border-radius: 0.25em; color: var(--color-sy); font-size: 0.9em; font-weight: 700; }
-.clock { position: relative; padding: 0.25em 0.5em;font-family: var(--font-family-mono, monospace); font-size: 1.2em; cursor: help; }
+.clock { position: relative; padding: 0.25em 0.5em;font-family: var(--ffy-mono); font-size: 1.2em; cursor: help; }
 
 /* --- */
 

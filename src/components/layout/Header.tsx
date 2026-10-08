@@ -2,7 +2,8 @@
  * @file        : src/components/layout/Header.tsx
  * @description : رأس التطبيق مع أدوات تغيير اللغة والثيم والأيقونات الدلالية عبر نظام Alias.
  * @updated     : [
- *   { "date": "2026-09-26T17:33:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "استخدام نظام Alias وتضمين الأيقونات ببادئة Icon" }
+ *   { "date": "2026-09-26T17:33:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "استخدام نظام Alias وتضمين الأيقونات ببادئة Icon" },
+ *   { "date": "2026-10-04", "version": "1.2.0", "by": ["BomBa"], "comment": "إصلاح z-sticky غير المولّدة في Tailwind 4 → B:z-sticky من الـ Custom Utilities" }
  * ]
  */
 
@@ -33,7 +34,7 @@ export const AppHeader = () => {
   const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light')
 
   return (
-    <Header1 className="sticky top-0 z-sticky border-b border-br bg-surface/90 backdrop-blur-sm">
+    <Header1 className="sticky top-0 B:z-sticky border-b border-br bg-surface/90 backdrop-blur-sm">
       <Div1 className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Span className="text-base font-bold text-te tracking-tight">{t('appName')}</Span>
         <Div1 className="flex items-center gap-2">
