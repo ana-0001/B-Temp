@@ -12,6 +12,20 @@
 - تصحيح z-index طبقة الخلفية لقيمة سالبة — `--z-base` (0) كان سيرسم الأجرام فوق المحتوى وليس خلفه (CSS Painting Order).
 - `PublicLayout` بقى شفافاً (إزالة `bg-bg`) لظهور طبقة الخلفية خلف المحتوى.
 
+### Changed
+- رفع شفافية أجرام الخلفية لـ 0.3 (فاتح) / 0.4 (داكن) بقرار المستخدم من المراجعة البصرية — كانت 0.12/0.18.
+
+### Refactored
+- إعادة تسمية `BUI-3.tsx` → `BUI-O.tsx` وفق الدستور الموثق في bomba-skills (BUI-1 → BUI-2 → BUI-O) — عبر `git mv` للحفاظ على التاريخ.
+
+### Performance
+- تقسيم الحزمة: الـ JS نزل من ملف واحد 627KB إلى **index 37KB** + chunks منفصلة (react-vendor 224KB · vendor 128KB · tanstack-vendor 107KB · radix-vendor 70KB · i18n-vendor 50KB · icons-vendor 8KB).
+- Lazy loading للشاشات عبر `lazyRouteComponent` (HomeScreen 5.2KB · NotFoundScreen 0.9KB) — ErrorScreen يفضل eager عمداً لأن حدود الأخطاء لازم تكون متاحة فوراً.
+- إصلاح دورة vendor↔react-vendor: المطابقة بالمسار الكامل — `@floating-ui/react-dom` كان بيطابق `react-dom` غلطاً.
+
+### Chores
+- تقييد لوحة ألوان Tailwind الافتراضية (`--color-*: initial` داخل `@theme`) — المصدر الوحيد توكنات المشروع؛ الفحص قبل التقييد أكد صفر استخدام لأي لون افتراضي.
+
 ## [Unreleased] — 2026-10-04
 ### Fixed
 - إصلاح Design Tokens المكسورة: تعريف `--color-te`/`--color-sn`/`--color-tt` بقيم HSL حقيقية تنقلب مع الوضع الداكن — كانت مراجع ذاتية دائرية داخل `@theme` لا تعمل.

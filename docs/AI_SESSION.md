@@ -1,5 +1,29 @@
 # 🤖 AI Session — 2026-10-08
 
+## 🤖 المراجعة البصرية + البنود المتوسطة — 2026-10-08 (الجزء الثاني)
+
+### ✅ اتعمل
+
+- **نتيجة المراجعة البصرية**: رفع شفافية الأجرام لـ 0.3 (فاتح) / 0.4 (داكن) بقرار المستخدم — خلفية أوضح.
+- **تسمية BUI-3**: القرار = إعادة تسمية إلى `BUI-O.tsx` وفق الدستور الموثق في bomba-skills (BUI-1 → BUI-2 → BUI-O) — `git mv` حافظ على التاريخ، والمرجع الوحيد اتحدث في index.ts.
+- **تقسيم الـ Bundle**: index نزل من 627KB إلى 37KB — lazy loading للشاشات (HomeScreen/NotFoundScreen) عبر `lazyRouteComponent` + `manualChunks` (react/tanstack/i18n/icons/radix). ErrorScreen يفضل eager عمداً.
+- **تقييد لوحة Tailwind**: `--color-*: initial` داخل `@theme` — الفحص قبل التقييد أكد صفر استخدام لألوان افتراضية، والتحقق بعد البناء أكد اختفاءها من الـ CSS النهائي مع بقاء كل توكنات المشروع.
+
+### 🐛 مشكلة اكتشفت وحُلت — دورة الـ chunks
+
+- تحذير `Circular chunk: vendor → react-vendor → vendor` بعد أول build مقسّم.
+- التشخيص عبر debug plugin مؤقت: `@floating-ui/react-dom` كان واقعاً في react-vendor لأن `id.includes('react-dom')` بيلتقط اسمه — وهو بيستورد أدوات floating-ui من vendor → دورة.
+- الحل: مطابقة بالمسار الكامل `/node_modules/react(-dom)?/` + ضم `@floating-ui` إلى radix-vendor. تحذير دورة اختفى تماماً.
+
+### 🧪 بوابات الجودة
+
+- `lint` صفر أخطاء ✓ · `test` 21/21 ✓ · `build` ناجح بدون تحذيرات دورة ✓ · تحقق CSS الإنتاجي: صفر ألوان افتراضية + كل التوكنات مولدة ✓
+
+### ⏭️ الخطوات الجاية
+
+- 🔴 عقد Backend API/Auth قبل المرحلة 5.
+- 🟢 combobox في SmartInput (أول مستهلك: شاشة Auth) · اختبارات مكونات (معلقة لموافقة).
+
 ## 🤖 تنفيذ ميزة BombaSmart&Background — 2026-10-08
 
 ### ✅ اتعمل

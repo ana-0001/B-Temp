@@ -27,6 +27,10 @@
 - توكنات الخلفية `--color-orb-a/b` و`--bg-orb-alpha` معرّفة في `index.css` لكل ثيم — ممنوع ألوان hardcoded داخل TS.
 - `src/components/smart/`: طبقة BombaSmart فوق BUI-2 — مكونات ذكية بدون API أو routing؛ `action-lock.ts` خدمة أقفال مستقلة بـ ownership token لمنع double-submit.
 - combobox داخل SmartInput مؤجل لأول مستهلك حقيقي (شاشة Auth) بقرار المستخدم 2026-10-08.
+- `BUI-3.tsx` أعيدت تسميته إلى `BUI-O.tsx` (2026-10-08) وفق الدستور في bomba-skills — Compound Components فوق BUI-2.
+- استراتيجية تقسيم الحزمة: lazy loading للشاشات عبر `lazyRouteComponent` + `manualChunks` لمكتبات الفرع (react/tanstack/i18n/icons/radix) — المطابقة لازم تكون بالمسار الكامل `/node_modules/<pkg>/` لأن مطابقة الاسم فقط تلتقط حزم مثل `@floating-ui/react-dom` وتسبب دورات بين الـ chunks.
+- لوحة ألوان Tailwind مقيدة بالكامل (`--color-*: initial` في `@theme`) — ممنوع استخدام أي لون افتراضي؛ المصدر الوحيد توكنات المشروع.
+- شفافية أجرام الخلفية `--bg-orb-alpha`: 0.3 فاتح / 0.4 داكن (بقرار المستخدم 2026-10-08).
 
 ### قرارات غير موثقة اتخذت أثناء التنفيذ
 - تم إنشاء ملفات الاستمرارية الأربعة في `docs/` لأن المشروع كان يحتوي على `Plan.md` و`SPECKIT.md` فقط.

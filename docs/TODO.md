@@ -16,9 +16,9 @@
 - [x] اعتماد Tailwind + CSS Modules ومراجعة مكونات وصفحات المشروع.
 
 ## 🟡 MED
-- [ ] **[Architecture]** حسم تسمية طبقة `BUI-3.tsx` — القواعد الموثقة تقول BUI-1 → BUI-2 → BUI-O، والملف الحالي (BTooltip/BPopover/BDrawer/Backdrop) هو فعلياً طبقة BUI-O؛ القرار: إعادة تسمية أو تحديث التوثيق (AI_CONTEXT.md).
-- [ ] **[Performance]** تقسيم الـ Bundle (613KB في ملف واحد) — lazy loading للشاشات عند نمو عددها + `manualChunks` لمكتبات الفرع (Radix/TanStack).
-- [ ] **[Design Rules]** تقييد لوحة Tailwind الافتراضية (blue/gray/white لسه مولدة في الـ CSS) عبر `@theme` block ليكون المصدر الوحيد هو Tokens المشروع — حسب design-rules §المكتبات الخارجية.
+- [x] **[Architecture]** حسم تسمية طبقة `BUI-3.tsx` — تم (2026-10-08): إعادة تسمية إلى `BUI-O.tsx` عبر `git mv` وفق الدستور الموثق في bomba-skills.
+- [x] **[Performance]** تقسيم الـ Bundle — تم (2026-10-08): lazy loading للشاشات + `manualChunks` (react/tanstack/i18n/icons/radix) — index نزل لـ 37KB.
+- [x] **[Design Rules]** تقييد لوحة Tailwind الافتراضية — تم (2026-10-08): `--color-*: initial` داخل `@theme` بعد فحص أكد صفر استخدام لأي لون افتراضي.
 - [x] استكمال شاشات النظام الأساسية (SplashScreen, ErrorScreen, NotFoundScreen) — المرحلة 4.
 - [x] إعادة بناء TanStack Router tree وربطه بالـ Root/Public layouts مع حالات Splash/Error/404.
 - [ ] إضافة AuthLayout وAuthenticatedLayout بعد اعتماد عقد Authentication.
