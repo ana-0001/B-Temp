@@ -1,4 +1,60 @@
-# 🤖 AI Session — 2026-09-28T00:10:00Z
+# 🤖 AI Session — 2026-10-04
+
+## 🤖 تنفيذ المرحلة أ — إصلاح الأساس — 2026-10-04
+
+### ✅ اتعمل
+
+- إصلاح Design Tokens المكسورة في `src/index.css`: تعريف `--color-te`/`--color-sn`/`--color-tt` بقيم HSL حقيقية (فاتح + داكن) بدل المراجع الذاتية الدائرية في `@theme`.
+- إضافة Custom Utilities جديدة `B:z-*` (above/sticky/overlay/modal/toast/tooltip) مربوطة بـ Tokens `--z-*` — لأن Tailwind 4 ما لهوش namespace للـ z-index.
+- تحويل `z-sticky` إلى `B:z-sticky` في `Header.tsx` (الكلاس القديمة لم تكن مولّدة أصلاً).
+- إصلاح FOUC في `index.html`: القراءة من المفتاح الفعال `vh-settings` + حل الثيم `system` عبر matchMedia قبل الرسم.
+- حذف المخزن الميت `src/stores/settingsStore.ts` — `settings.store.ts` هو المصدر الوحيد للإعدادات.
+- توحيد أسماء Tokens في `hr.module.css` و`status-bar.module.css` وإصلاح `--color-border-focus` → `--color-br-f`.
+- إزالة كلاس `text-md` الوهمية من `ToggleTheme`/`ToggleLanguage`.
+- تنظيف `.gitignore` وإزالة `dist` من تتبع Git وإنشاء `README.md`.
+- التحقق من CSS الإنتاجي: `.text-te/.text-sn/.text-tt` و`.B:z-sticky` تعمل بقيم فعلية في الوضعين.
+
+### 📁 الملفات المتأثرة
+
+- `src/index.css` · `src/components/BUI/styles/hr.module.css` · `src/components/status-bar/status-bar.module.css`
+- `src/components/layout/Header.tsx` · `src/components/settings/ToggleTheme.tsx` · `src/components/settings/ToggleLanguage.tsx`
+- `index.html` · `.gitignore` · `README.md` (جديد) · `src/stores/settingsStore.ts` (محذوف)
+
+### ⚠️ ملاحظة تشغيلية مهمة
+
+- اكتشفنا إن التعديلات المتوازية (parallel tool calls) على **نفس الملف** بتتكابل وتضيع — اتعملت إصلاحات ذرّية عبر سكربتات Python للتحقق. لازم أي تعديلات جاية على نفس الملف تكون تسلسلية.
+
+### 🧪 بوابات الجودة
+
+- `lint` صفر أخطاء ✓ · `build` ناجح ✓ · `test` 5/5 ✓
+
+## 🤖 فحص شامل للمشروع وتقييم الجودة — 2026-10-04
+
+### ✅ اتعمل
+
+- فحص كامل للتوثيق (AGENTS.md / bomba-skills / central-alias-system / design-rules / SPECKIT / Plan) وتطابقه مع الكود الفعلي.
+- فحص كل ملفات `src` (alias / BUI / app / components / stores / services / utils / i18n) بالتفصيل.
+- تشغيل بوابات الجودة الثلاثة بنجاح: `build` (Exit 0)، `lint` (Zero Errors)، `test` (5/5).
+- تحليل ملف CSS الإنتاجي وتأكيد وجود أخطاء تصميمية فعلية (تفاصيلها في TODO.md).
+
+### 🐛 مشاكل مكتشفة (موثقة بالتفصيل في TODO.md)
+
+- `--color-te` و `--color-sn` معرّفان بشكل دائري داخل `@theme` → كلاسات `.text-te/.text-sn` فعلياً لا تعمل.
+- `--color-tt` غير معرف نهائياً → `.text-tt` كلاس ميت (غير مولّدة في CSS النهائي) رغم استخدامها في 5 ملفات.
+- `z-sticky` في Header غير مولّدة لأن `--z-*` ليس namespace صحيحاً لـ z-index في Tailwind 4.
+- سكريبت منع الوميض في `index.html` يقرأ `spa-settings` بينما المخزن الفعال يكتب في `vh-settings` → FOUC حقيقي.
+- `src/stores/settingsStore.ts` مخزن ميت (dead code) لا يستورده أحد.
+- عدم تطابق أسماء Tokens في `hr.module.css` (`--font-size-*`/`--font-weight-*` مقابل `--fs-*`/`--fw-*`) وفي `index.css` (`--color-border-focus` غير معرف) وفي `status-bar.module.css` (`--font-family-mono` مقابل `--ffy-mono`).
+- `dist/` متتبع داخل Git رغم قاعدة "بيئة نظيفة"، و`.gitignore` لا يحتوي إلا `node_modules`.
+- `README.md` غير موجود رغم أنه إلزامي في ملفات الاستمرارية.
+- Bundle واحد 613KB بدون أي code-splitting.
+
+### 🔎 ملاحظات إيجابية مؤكدة
+
+- نظام Alias مطبق بانضباط (Icon prefix + `export type` + لا استيراد مباشر في الشاشات).
+- `buildProps` مستخدمة في كل مكونات BUI، وترويسات الملفات وJSDoc بالعربية المصرية موجودة في كل ملف.
+- عزل Radix خلف Adapter (`Overlays.tsx` + `alias/lib.ts`) مطبق كما هو موثق في القرارات المعمارية.
+- لا يوجد `any`، والـ ESLint نظيف تماماً، والاختبارات الخمسة للراوتر تمر.
 
 ## 🤖 إصلاحات فحص StatusBar — 2026-09-29
 

@@ -1,3 +1,22 @@
+## [Unreleased] — 2026-10-04
+### Fixed
+- إصلاح Design Tokens المكسورة: تعريف `--color-te`/`--color-sn`/`--color-tt` بقيم HSL حقيقية تنقلب مع الوضع الداكن — كانت مراجع ذاتية دائرية داخل `@theme` لا تعمل.
+- إصلاح كلاس `z-sticky` غير المولّدة في Tailwind 4 داخل Header → `B:z-sticky` من الـ Custom Utilities الجديدة.
+- إصلاح منع وميض الثيم (FOUC): `index.html` يقرأ المفتاح الفعلي `vh-settings` مع حل الثيم `system` قبل الرسم.
+- توحيد أسماء Tokens: `--fs-*`/`--fw-*` في `hr.module.css`، و`--ffy-mono` في `status-bar.module.css`، و`--color-br-f` في focus ring.
+- إزالة كلاس `text-md` غير الموجود في Tailwind 4 من تلميحات الثيم واللغة.
+
+### Added
+- `README.md` للمشروع.
+- Custom Utilities جديدة: `B:z-above` / `B:z-sticky` / `B:z-overlay` / `B:z-modal` / `B:z-toast` / `B:z-tooltip`.
+
+### Removed
+- حذف المخزن الميت `src/stores/settingsStore.ts` (`spa-settings`) — المصدر الوحيد الآن `settings.store.ts` (`vh-settings`).
+
+### Chores
+- تنظيف `.gitignore` وإزالة `dist` من تتبع Git.
+- إزالة TODO blocks قديمة مكتملة من `index.css` و`status-bar.module.css`.
+
 ## [Unreleased] — 2026-09-26
 ### Changed
 - اعتماد Tailwind CSS + CSS Modules رسميًا، ونقل أنماط StatusBar وLogo وRadix Overlays إلى CSS Modules مع إبقاء `index.css` للـ tokens والـ reset فقط.

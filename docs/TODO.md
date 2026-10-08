@@ -1,4 +1,11 @@
 ## 🔴 HIGH
+- [x] **[Design Tokens]** إصلاح التعريف الدائري لـ `--color-te`/`--color-sn` في `@theme` بـ `src/index.css` وتعريف `--color-tt` المفقود — كلاسات `text-te/text-sn/text-tt` لا تعمل الآن (مؤكد من فحص CSS الإنتاجي).
+- [x] **[Design Tokens]** توحيد أسماء المتغيرات: `--font-size-*`→`--fs-*` و `--font-weight-*`→`--fw-*` في `hr.module.css`، و`--color-border-focus`→`--color-br-f` في `index.css`، و`--font-family-mono`→`--ffy-mono` في `status-bar.module.css`.
+- [x] **[Layout]** إصلاح `z-sticky` في `Header.tsx` — الكلاس غير مولّدة في Tailwind 4 (`--z-*` ليس namespace لـ z-index)؛ الحل: `z-[100]` أو تسجيل namespace صحيح.
+- [x] **[FOUC]** مواءمة مفتاح التخزين: `index.html` يقرأ `spa-settings` والمخزن الفعال `settings.store.ts` يكتب في `vh-settings` — منع وميض الثيم معطوب فعلياً.
+- [x] **[Dead Code]** حسم مصير `src/stores/settingsStore.ts` (مخزن `spa-settings`) — إما حذفه أو دمجه مع `settings.store.ts` في مصدر واحد.
+- [x] **[Repo Hygiene]** إضافة `dist` إلى `.gitignore` وإزالته من تتبع Git (`git rm -r --cached dist`)، وإصلاح تكرار `node_modules` في الملف.
+- [x] **[Docs]** إنشاء `README.md` — إلزامي حسب AGENTS.md §2.
 - [x] تشغيل TypeScript وESLint والتحقق من توافق Foundation وBUI وApp Shell (ناجح 100%).
 - [x] إصلاح أخطاء بناء TypeScript في `tsconfig.node.json` وملف `src/alias/icons.ts`.
 - [x] تثبيت وتفعيل Tailwind CSS 4 مع `@tailwindcss/vite` وضبط ملف `src/index.css`.
@@ -9,6 +16,9 @@
 - [x] اعتماد Tailwind + CSS Modules ومراجعة مكونات وصفحات المشروع.
 
 ## 🟡 MED
+- [ ] **[Architecture]** حسم تسمية طبقة `BUI-3.tsx` — القواعد الموثقة تقول BUI-1 → BUI-2 → BUI-O، والملف الحالي (BTooltip/BPopover/BDrawer/Backdrop) هو فعلياً طبقة BUI-O؛ القرار: إعادة تسمية أو تحديث التوثيق (AI_CONTEXT.md).
+- [ ] **[Performance]** تقسيم الـ Bundle (613KB في ملف واحد) — lazy loading للشاشات عند نمو عددها + `manualChunks` لمكتبات الفرع (Radix/TanStack).
+- [ ] **[Design Rules]** تقييد لوحة Tailwind الافتراضية (blue/gray/white لسه مولدة في الـ CSS) عبر `@theme` block ليكون المصدر الوحيد هو Tokens المشروع — حسب design-rules §المكتبات الخارجية.
 - [x] استكمال شاشات النظام الأساسية (SplashScreen, ErrorScreen, NotFoundScreen) — المرحلة 4.
 - [x] إعادة بناء TanStack Router tree وربطه بالـ Root/Public layouts مع حالات Splash/Error/404.
 - [ ] إضافة AuthLayout وAuthenticatedLayout بعد اعتماد عقد Authentication.

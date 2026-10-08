@@ -21,6 +21,8 @@
 - تمت إضافة `EmptyState` و`ErrorState` كأول مكونات BUI-O، وتعتمدان على مكونات BUI-2.
 - لا يوجد Backend أو API contract منفّذ حاليًا.
 - `RootLayout` مسؤول عن مزامنة إعدادات HTML فقط، بينما `PublicLayout` يملك تركيب الصفحات العامة.
+- `src/components/settings/settings.store.ts` (مفتاح `vh-settings`) هو المخزن الوحيد للإعدادات — حُذف المخزن المكرر القديم `src/stores/settingsStore.ts` في 2026-10-04.
+- طبقات z-index تُستخدم عبر `B:z-*` Custom Utilities (مربوطة بـ Tokens `--z-*`) لأن Tailwind 4 لا يوفر namespace للـ z-index.
 
 ### قرارات غير موثقة اتخذت أثناء التنفيذ
 - تم إنشاء ملفات الاستمرارية الأربعة في `docs/` لأن المشروع كان يحتوي على `Plan.md` و`SPECKIT.md` فقط.
