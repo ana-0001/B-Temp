@@ -39,6 +39,20 @@
       "tokens": "Design Tokens متزامنة"
     }
   },
+  "background": {
+    "show": "إظهار الخلفية الزخرفية",
+    "motion": "حركة الخلفية",
+    "motionOptions": { "off": "ثابتة", "calm": "هادئة", "full": "كاملة" }
+  },
+  "smartInput": { "clear": "مسح الحقل", "showPassword": "إظهار كلمة المرور", "hidePassword": "إخفاء كلمة المرور" },
+  "smartDemo": {
+    "title": "عرض BombaSmart",
+    "inputLabel": "حقل إدخال ذكي",
+    "inputHint": "اكتب أي حاجة — زر المسح وعلامة النجاح هيشتغلوا تلقائيًا",
+    "passwordLabel": "كلمة المرور (زر الإظهار والإخفاء)",
+    "asyncAction": "إجراء غير متزامن",
+    "loading": "جارٍ التنفيذ…"
+  },
   "common": {
     "language": "اللغة",
     "language_ar": "التبديل للعربية",

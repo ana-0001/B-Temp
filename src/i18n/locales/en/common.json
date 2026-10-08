@@ -39,6 +39,20 @@
       "tokens": "Design tokens synced"
     }
   },
+  "background": {
+    "show": "Show decorative background",
+    "motion": "Background motion",
+    "motionOptions": { "off": "Static", "calm": "Calm", "full": "Full" }
+  },
+  "smartInput": { "clear": "Clear field", "showPassword": "Show password", "hidePassword": "Hide password" },
+  "smartDemo": {
+    "title": "BombaSmart showcase",
+    "inputLabel": "Smart input field",
+    "inputHint": "Type anything — the clear button and success mark react automatically",
+    "passwordLabel": "Password (visibility toggle)",
+    "asyncAction": "Async action",
+    "loading": "Working…"
+  },
   "common": {
     "language": "Language",
     "language_ar": "Switch to Arabic",

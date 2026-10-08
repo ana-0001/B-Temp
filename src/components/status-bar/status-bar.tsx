@@ -4,7 +4,8 @@
  * @updated     : [
  *   { "date": "2026-09-28", "version": "1.1.0", "by": ["BomBa"], "comment": "ضبط كلاسات Tailwind وإزالة الكلاسات غير المعرفة وربط ملف التصميم" },
  *   { "date": "2026-09-29", "version": "1.3.0", "by": ["BomBa"], "comment": "إنشاء مكونات مغلفة ذكية لـ BPopover و BDrawer لتسهيل الاستخدام وتقليل التكرار" },
- *   { "date": "2026-09-30", "version": "1.4.0", "by": ["BomBa"], "comment": "إضافة نظام Backdrop قابل للتحكم الكامل مع خلفية زجاجية شفافة" }
+ *   { "date": "2026-09-30", "version": "1.4.0", "by": ["BomBa"], "comment": "إضافة نظام Backdrop قابل للتحكم الكامل مع خلفية زجاجية شفافة" },
+ *   { "date": "2026-10-08", "version": "1.5.0", "by": ["BomBa"], "comment": "إضافة حقلَي إظهار الخلفية الزخرفية وحركتها في درج الإعدادات" }
  * ]
  */
 
@@ -18,6 +19,7 @@ import {
   Footer,
   IconBell,
   IconSettings,
+  Input,
   Label,
   Logo,
   Option,
@@ -27,13 +29,15 @@ import {
   Strong,
   ToggleLanguage,
   ToggleTheme,
+  useBackground,
   useLanguage,
   useLiveClock,
   useState,
   useSystemStatus,
   useTimeFormat,
   useTranslation,
-  type I_StatusBar
+  type I_StatusBar,
+  type T_BackgroundMotion
 } from '@a';
 import styles from './status-bar.module.css';
 
@@ -143,6 +147,7 @@ function SettingsDrawer({
 }) {
   const { t } = useTranslation('common')
   const { timeFormat, setTimeFormat, timeZone, setTimeZone } = useTimeFormat()
+  const { showBackground, setShowBackground, backgroundMotion, setBackgroundMotion } = useBackground()
 
   return (
     <BDrawer
@@ -171,6 +176,22 @@ function SettingsDrawer({
           <Option value="Asia/Riyadh">{t('statusBar.timeZones.riyadh')}</Option>
           <Option value="Europe/London">{t('statusBar.timeZones.london')}</Option>
           <Option value="America/New_York">{t('statusBar.timeZones.newYork')}</Option>
+        </Select>
+      </Label>
+      <Label className={'settingField'}>
+        <Span>{t('background.show')}</Span>
+        <Input
+          type="checkbox"
+          checked={showBackground}
+          onChange={(event) => setShowBackground(event.target.checked)}
+        />
+      </Label>
+      <Label className={'settingField'}>
+        <Span>{t('background.motion')}</Span>
+        <Select value={backgroundMotion} onChange={(event) => setBackgroundMotion(event.target.value as T_BackgroundMotion)}>
+          <Option value="off">{t('background.motionOptions.off')}</Option>
+          <Option value="calm">{t('background.motionOptions.calm')}</Option>
+          <Option value="full">{t('background.motionOptions.full')}</Option>
         </Select>
       </Label>
     </BDrawer>
