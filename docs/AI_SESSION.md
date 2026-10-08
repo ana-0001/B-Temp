@@ -1,4 +1,41 @@
-# 🤖 AI Session — 2026-10-04
+# 🤖 AI Session — 2026-10-08
+
+## 🤖 تنفيذ ميزة BombaSmart&Background — 2026-10-08
+
+### ✅ اتعمل
+
+- **AppBackground** (`src/components/app-background/`): محرك Canvas نقي قابل للاختبار (engine.ts بدون React/DOM) + مكون بيقرأ `useBackground` من مخزن الإعدادات مباشرة بدون props.
+  - مصفوفة سلوك PRD §13.1 كاملة: التعطيل = لا Canvas ولا Loop · reduced-motion (تفضيل النظام) = مشهد ثابت وبيتفوق على إعداد المستخدم · off/calm/full · إخفاء التبويب = إيقاف فوري واستئناف Loop واحد · resize بإعادة بناء المشهد بدون overflow · unmount cleanup متناظر لكل مورد.
+  - ثوابت الأداء: DPR clamp 1→1.5 · عدد الأجرام clamp(round(w/360), 2, 5) · 24 جزيئة حتمية · seed ثابت 20261008 · dt clamp 0.1s · parallax في الوضع الكامل فقط.
+  - توكنات جديدة في `index.css`: `--color-orb-a/b` و`--bg-orb-alpha` (فاتح 0.12 / داكن 0.18) — ما فيش ألوان hardcoded في TS.
+  - غلاف `Canvas` جديد في BUI-1 يقبل `ref` (React 19 ref-as-prop).
+  - **تصحيح مهم أثناء المراجعة**: z-index الطبقة اتحول لقيمة سالبة (-1) — القيمة `--z-base` (0) كانت هترسم الأجرام **فوق** المحتوى مش خلفه حسب CSS Painting Order.
+- **BombaSmart** (`src/components/smart/`): طبقة ذكية فوق BUI-2 بدون API أو routing.
+  - `action-lock.ts`: خدمة أقفال بـ ownership token — منع double-submit مستقلة عن أي مكون.
+  - `SmartButton`: loading تلقائي لأي handler بيرجع Promise + `aria-busy` + تحرير القفل في finally دايماً (نجاح أو فشل) + تحرير عند unmount.
+  - `SmartInput`: controlled/uncontrolled بدون منافسة state + زر مسح (يظهر فقط مع onClear) + إظهار كلمة المرور + error/success مربوطة بالـ ARIA.
+- **التكامل**: AppBackground في RootLayout · PublicLayout بقى شفاف (إزالة bg-bg) · حقلا "إظهار الخلفية" و"حركة الخلفية" في SettingsDrawer · كارد عرض تجريبي في HomeScreen (حقل مسح + password + زر async) · مفاتيح i18n: `background.*` / `smartInput.*` / `smartDemo.*`.
+- **الاختبارات**: 16 اختبار جديد (12 للمحرك النقي + 4 للأقفال) — الإجمالي 21/21.
+
+### 📁 الملفات المتأثرة
+
+- جديد: `src/components/app-background/*` (types/engine/component/css/index/test) · `src/components/smart/*` (action-lock/test · smart-button · smart-input · index).
+- معدّل: `src/index.css` · `BUI-1.tsx` · `alias/{core,icons,ui}.ts` · `settings.store.ts` · `settings/index.ts` · `RootLayout.tsx` · `PublicLayout.tsx` · `HomeScreen.tsx` · `status-bar.tsx` · `locales/{ar,en}/common.json`.
+
+### ⚠️ ملاحظات تشغيلية
+
+- إعادة clone النهاردة كانت من نقطة الأساس `5fc627b` (مش آخر push `938e0e1`) — الحل الآمن: `git fetch origin <branch>` ثم `git reset origin/<branch>` (mixed) للحفاظ على working tree مع استرجاع الـ history — بدون فقدان أي تعديلات.
+- خطأ TS اصطلاحي: الاسم `I_MotionPolicy` غلط لأن النوع alias مش interface — التصحيح لـ `T_MotionPolicy` في engine.ts وindex.ts.
+
+### 🧪 بوابات الجودة
+
+- `lint` صفر أخطاء ✓ · `test` 21/21 ✓ · `build` ناجح ✓ · معاينة dev server: `/` و`/ar` و`/en` كلها 200 ✓
+
+### ⏭️ الخطوات الجاية
+
+- combobox في SmartInput مؤجل لأول مستهلك حقيقي (شاشة Auth).
+- اختبارات مكونات testing-library/jsdom معلقة لموافقة المستخدم (dependency جديدة).
+
 
 ## 🤖 تنفيذ المرحلة أ — إصلاح الأساس — 2026-10-04
 

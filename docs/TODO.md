@@ -26,6 +26,10 @@
 - [ ] إضافة Sidebar أو Mobile Navigation فقط عند ظهور احتياج منتج واضح.
 - [ ] استكمال إعداد Day.js helpers وQuery policies حسب احتياج الـ Features.
 
+- [ ] **[BombaSmart]** إضافة combobox داخل SmartInput — مؤجل عمداً لأول مستهلك حقيقي (شاشة Auth) بقرار المستخدم 2026-10-08.
+- [ ] **[Testing]** اختبارات تفاعل للمكونات (testing-library + jsdom) — معلقة لموافقة المستخدم لأنها dependency جديدة (SPECKIT §13).
+- [x] **[Feature]** تنفيذ AppBackground وBombaSmart (SmartButton/SmartInput/ActionLock) وفق PRD/SPECKIT المعتمدين — 2026-10-08.
+
 ## 🟢 LOW
 - [ ] استكمال مكونات BUI الإضافية حسب الاستخدام الفعلي فقط.
 - [ ] حسم أدوات الاختبار قبل المرحلة 10.

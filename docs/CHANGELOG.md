@@ -1,3 +1,17 @@
+## [Unreleased] — 2026-10-08
+### Added
+- **AppBackground**: محرك خلفية زخرفية Canvas خلف المحتوى (`src/components/app-background/`) — سلوك كامل حسب PRD §13.1 (disabled = لا Canvas ولا Loop · reduced-motion = مشهد ثابت · off/calm/full · إيقاف عند إخفاء التبويب · cleanup كامل) مع محرك نقي قابل للاختبار و12 اختبار وحدة.
+- توكنات الخلفية في `index.css`: `--color-orb-a/b` و`--bg-orb-alpha` (فاتح 0.12 / داكن 0.18).
+- غلاف `Canvas` في BUI-1 يقبل `ref` (React 19 ref-as-prop).
+- hook `useBackground` في `settings.store.ts` مع تصديره من `settings/index.ts`.
+- **BombaSmart** (`src/components/smart/`): `SmartButton` (loading تلقائي + ActionLock يمنع double-submit + aria-busy) و`SmartInput` (controlled/uncontrolled + مسح + إظهار كلمة مرور + حالات ARIA) و`action-lock.ts` (أقفال بـ ownership token) مع 4 اختبارات.
+- حقلا إظهار الخلفية وحركتها في SettingsDrawer + كارد عرض تجريبي في HomeScreen + مفاتيح i18n `background.*` / `smartInput.*` / `smartDemo.*` بالعربية والإنجليزية.
+- أيقونات `IconEye`/`IconEyeOff` وأنواع `CanvasHTMLAttributes`/`ChangeEvent`/`MouseEvent`/`Ref` في نظام Alias.
+
+### Fixed
+- تصحيح z-index طبقة الخلفية لقيمة سالبة — `--z-base` (0) كان سيرسم الأجرام فوق المحتوى وليس خلفه (CSS Painting Order).
+- `PublicLayout` بقى شفافاً (إزالة `bg-bg`) لظهور طبقة الخلفية خلف المحتوى.
+
 ## [Unreleased] — 2026-10-04
 ### Fixed
 - إصلاح Design Tokens المكسورة: تعريف `--color-te`/`--color-sn`/`--color-tt` بقيم HSL حقيقية تنقلب مع الوضع الداكن — كانت مراجع ذاتية دائرية داخل `@theme` لا تعمل.

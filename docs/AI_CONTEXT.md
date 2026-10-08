@@ -1,5 +1,5 @@
 ## 🤖 AI Context — SPA Frontend
-> آخر تحديث: 2026-09-28T00:00:00Z
+> آخر تحديث: 2026-10-08T00:00:00Z
 
 ### Stack المعتمد
 - React 19 + TypeScript strict + Vite 6.
@@ -23,6 +23,10 @@
 - `RootLayout` مسؤول عن مزامنة إعدادات HTML فقط، بينما `PublicLayout` يملك تركيب الصفحات العامة.
 - `src/components/settings/settings.store.ts` (مفتاح `vh-settings`) هو المخزن الوحيد للإعدادات — حُذف المخزن المكرر القديم `src/stores/settingsStore.ts` في 2026-10-04.
 - طبقات z-index تُستخدم عبر `B:z-*` Custom Utilities (مربوطة بـ Tokens `--z-*`) لأن Tailwind 4 لا يوفر namespace للـ z-index.
+- `src/components/app-background/`: محرك خلفية Canvas نقي (engine.ts قابل للاختبار بدون DOM) — AppBackground يقرأ `useBackground` من المخزن مباشرة بدون props، وz-index الطبقة سالب (-1) لرسمها خلف محتوى التدفق الطبيعي.
+- توكنات الخلفية `--color-orb-a/b` و`--bg-orb-alpha` معرّفة في `index.css` لكل ثيم — ممنوع ألوان hardcoded داخل TS.
+- `src/components/smart/`: طبقة BombaSmart فوق BUI-2 — مكونات ذكية بدون API أو routing؛ `action-lock.ts` خدمة أقفال مستقلة بـ ownership token لمنع double-submit.
+- combobox داخل SmartInput مؤجل لأول مستهلك حقيقي (شاشة Auth) بقرار المستخدم 2026-10-08.
 
 ### قرارات غير موثقة اتخذت أثناء التنفيذ
 - تم إنشاء ملفات الاستمرارية الأربعة في `docs/` لأن المشروع كان يحتوي على `Plan.md` و`SPECKIT.md` فقط.
