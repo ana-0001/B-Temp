@@ -1,2 +1,14 @@
+# ─── Dependencies ─────────────────────────────
 node_modules
-node_modules
+
+# ─── Build Output ─────────────────────────────
+dist
+
+# ─── Environment ──────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ─── Coverage & Tooling Cache ─────────────────
+coverage
+*.tsbuildinfo
