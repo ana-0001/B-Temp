@@ -11,7 +11,7 @@
 
 export * from './BUI-1'
 export * from './BUI-2'
-export * from './BUI-3'
+export * from './BUI-O'
 
 export { Drawer, Popover, Tooltip } from './Overlays'
 export { EmptyState, ErrorState, type I_EmptyStateProps, type I_ErrorStateProps } from './States'

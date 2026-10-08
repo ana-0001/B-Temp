@@ -1,8 +1,9 @@
 /**
- * @file        : src/components/BUI-3.tsx
- * @description : مكونات واجهة قابلة لإعادة الاستخدام مبنية فوق أغلفة BUI-1.
+ * @file        : src/components/BUI/BUI-O.tsx
+ * @description : مكونات مركبة (Compound) فوق BUI-2 — التسمية وفق الدستور الموثق BUI-1 → BUI-2 → BUI-O.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء أول دفعة من مكونات BUI-3" }
+ *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء أول دفعة من مكونات BUI-3" },
+ *   { "date": "2026-10-08", "version": "0.2.0", "by": ["BomBa"], "comment": "إعادة تسمية BUI-3 إلى BUI-O وفق القواعد الموثقة في bomba-skills" }
  * ]
  */
 
