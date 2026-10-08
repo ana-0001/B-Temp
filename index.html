@@ -16,13 +16,17 @@
     />
     <title>B-Temp</title>
     <!-- cspell:ignore FOUC -->
-    <script>// تطبيق الثيم واللغة فوراً لتجنب وميض الشاشة
+    <script>// تطبيق الثيم واللغة فوراً لتجنب وميض الشاشة — بيقرأ من نفس مفتاح المخزن الفعال (vh-settings)
       (() => {
         try {
-          const { language: lang = "en", theme = "light" } = JSON.parse(localStorage.getItem('spa-settings'))?.state || {};
+          const { language: lang = "en", theme = "light" } = JSON.parse(localStorage.getItem('vh-settings'))?.state || {};
+          // لو الثيم "system" بنحله فوراً قبل الرسم — بنفس منطق getResolvedTheme في settings.store.ts
+          const resolvedTheme = theme === "system"
+            ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+            : theme;
           const doc = document.documentElement;
           doc.lang = lang; doc.dir = lang === "ar" ? "rtl" : "ltr";
-          doc.dataset.theme = theme;
+          doc.dataset.theme = resolvedTheme;
         } catch {}
       })();
     </script>
