@@ -2,7 +2,8 @@
  * @file        : src/alias/icons.ts
  * @description : نقطة التصدير المركزية للأيقونات مع بادئة Icon الإلزامية.
  * @updated     : [
- *   { "date": "2026-09-26T17:29:00+03:00", "version": "1.0.0", "by": ["BomBa"], "comment": "تصدير الأيقونات الأساسية ببادئة Icon" }
+ *   { "date": "2026-09-26T17:29:00+03:00", "version": "1.0.0", "by": ["BomBa"], "comment": "تصدير الأيقونات الأساسية ببادئة Icon" },
+ *   { "date": "2026-10-08", "version": "1.1.0", "by": ["BomBa"], "comment": "إضافة أيقونات العين لزر إظهار كلمة المرور في SmartInput" }
  * ]
  */
 
@@ -21,6 +22,8 @@ export {
   ChevronUp as IconChevronUp,
   ChevronLeft as IconChevronLeft,
   ChevronRight as IconChevronRight,
+  Eye as IconEye,
+  EyeOff as IconEyeOff,
   Home as IconHome,
   Settings as IconSettings,
   User as IconUser,
