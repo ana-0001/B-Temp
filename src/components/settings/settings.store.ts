@@ -1,7 +1,7 @@
 /**
  * @file        : src/components/settings/settings.store.ts
  * @description : مخزن Zustand لحفظ الثيم واللغة بين جلسات التطبيق.
- * @updated     : [{ "date": "27/08/2026", "version": "1.0.0", "by": ["BomBa"], "comment": "إضافة إعدادات الثيم واللغة" }]
+ * @updated     : [{ "date": "27/08/2026", "version": "1.0.0", "by": ["BomBa"], "comment": "إضافة إعدادات الثيم واللغة" }, { "date": "2026-10-08", "version": "1.1.0", "by": ["BomBa"], "comment": "إضافة hook useBackground لمستهلكي إعدادات الخلفية" }]
  */
 
 import { create, persist } from '@a'
@@ -95,4 +95,13 @@ export function useTimeFormat() {
   const timeZone = useSettingsStore((state) => state.timeZone)
   const setTimeZone = useSettingsStore((state) => state.setTimeZone)
   return { timeFormat, setTimeFormat, timeZone, setTimeZone }
+}
+
+/** @hook استخدام إعدادات الخلفية الزخرفية مع المُحرّر */
+export function useBackground() {
+  const showBackground = useSettingsStore((state) => state.showBackground)
+  const setShowBackground = useSettingsStore((state) => state.setShowBackground)
+  const backgroundMotion = useSettingsStore((state) => state.backgroundMotion)
+  const setBackgroundMotion = useSettingsStore((state) => state.setBackgroundMotion)
+  return { showBackground, setShowBackground, backgroundMotion, setBackgroundMotion }
 }

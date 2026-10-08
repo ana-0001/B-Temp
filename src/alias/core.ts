@@ -2,7 +2,8 @@
  * @file        : src/alias/core.ts
  * @description : نقطة الاستيراد المركزية لأدوات React الأساسية والراوتر والترجمة.
  * @updated     : [
- *   { "date": "2026-09-26T17:33:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "توسيع Core ليشمل Hooks والترجمة والراوتر" }
+ *   { "date": "2026-09-26T17:33:00+03:00", "version": "1.1.0", "by": ["BomBa"], "comment": "توسيع Core ليشمل Hooks والترجمة والراوتر" },
+ *   { "date": "2026-10-08", "version": "1.2.0", "by": ["BomBa"], "comment": "إضافة أنواع CanvasHTMLAttributes وChangeEvent وMouseEvent وRef لطبقة BombaSmart" }
  * ]
  */
 
@@ -20,7 +21,7 @@ export {
 } from 'react'
 export type {
   AnchorHTMLAttributes,
-  ButtonHTMLAttributes, CSSProperties, Dispatch, FC, FormHTMLAttributes, HTMLAttributes, ImgHTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, OptionHTMLAttributes, PropsWithChildren, ReactNode, SelectHTMLAttributes, SetStateAction
+  ButtonHTMLAttributes, CSSProperties, CanvasHTMLAttributes, ChangeEvent, Dispatch, FC, FormHTMLAttributes, HTMLAttributes, ImgHTMLAttributes, InputHTMLAttributes, LabelHTMLAttributes, MouseEvent, OptionHTMLAttributes, PropsWithChildren, ReactNode, Ref, SelectHTMLAttributes, SetStateAction
 } from 'react'
 export type { JSX } from 'react/jsx-runtime'
 

@@ -2,7 +2,8 @@
  * @file        : src/components/settings/index.ts
  * @description : ملف تصدير مكونات/ملحقات الضبط
  * @updated     : [
- *   { "date": "2026-09-27", "version": "1.0.0", "by": ["BomBa"], "comment": "توحيد الاستيراد من Core" }
+ *   { "date": "2026-09-27", "version": "1.0.0", "by": ["BomBa"], "comment": "توحيد الاستيراد من Core" },
+ *   { "date": "2026-10-08", "version": "1.1.0", "by": ["BomBa"], "comment": "تصدير hook إعدادات الخلفية useBackground" }
  * ] 
  */
 
@@ -18,6 +19,7 @@ export {
   getResolvedTheme,
   applySettingsToDocument,
   useTheme,
+  useBackground,
   useLanguage,
   useTimeFormat,
   type T_ThemePreference,

@@ -1,0 +1,18 @@
+/**
+ * @file        : src/components/app-background/app-background.module.css
+ * @description : تموضع طبقة الخلفية الزخرفية — ثابتة خلف المحتوى بدون تفاعل أو تمرير (PRD §13.3).
+ * @updated     : [
+ *   { "date": "2026-10-08", "version": "1.0.0", "by": ["BomBa"], "comment": "إنشاء أنماط طبقة الخلفية" },
+ *   { "date": "2026-10-08", "version": "1.0.1", "by": ["BomBa"], "comment": "تصحيح z-index لقيمة سالبة — الطبقة ترسم خلف المحتوى وليست فوقه" }
+ * ]
+ */
+
+.background {
+  position: fixed;
+  inset: 0;
+  /* z-index سالب — الطبقة ترسم خلف كل محتوى التدفق الطبيعي (CSS Painting Order) */
+  z-index: -1;
+  inline-size: 100%;
+  block-size: 100%;
+  pointer-events: none;
+}

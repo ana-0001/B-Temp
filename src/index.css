@@ -5,7 +5,8 @@
 * 📦 BomBa Design System Tokens (index.css)
 * ─────────────────────────────────────────────
 * @updated : [
-*   { "date": "2026-10-04", "version": "1.1.0", "by": ["BomBa"], "comment": "إصلاح Tokens النصوص (te/sn/tt) وإضافة B:z-* utilities وإصلاح focus ring" }
+*   { "date": "2026-10-04", "version": "1.1.0", "by": ["BomBa"], "comment": "إصلاح Tokens النصوص (te/sn/tt) وإضافة B:z-* utilities وإصلاح focus ring" },
+*   { "date": "2026-10-08", "version": "1.2.0", "by": ["BomBa"], "comment": "إضافة توكنات أجرام الخلفية الزخرفية orb-a/orb-b وشفافيتها لكل ثيم" }
 * ]
 */
 
@@ -67,6 +68,11 @@
   --color-hover: hsla(40 0% 4% / 0.04);
   --color-active: hsla(40 0% 4% / 0.08);
   --color-overlay: hsla(40 0% 4% / 0.5);
+
+  /* Decorative Background Orbs — AppBackground Engine (PRD BombaSmart&Background) */
+  --color-orb-a: hsl(40 80% 60%);
+  --color-orb-b: hsl(200 80% 60%);
+  --bg-orb-alpha: 0.12;
 
   /* Radius */
   --radius: 1;
@@ -163,6 +169,11 @@
   --color-hover: hsla(40 0% 94% / 0.05);
   --color-active: hsla(40 0% 94% / 0.1);
   --color-overlay: hsla(40 0% 4% / 0.7);
+
+  /* Decorative Background Orbs — نفس درجات الثيم بإضاءة أخف وشفافية أعلى */
+  --color-orb-a: hsl(40 80% 30%);
+  --color-orb-b: hsl(200 80% 30%);
+  --bg-orb-alpha: 0.18;
 
   --shadow-sm: 0 0.0625em 0.125em hsla(40 0% 0% / 0.3);
   --shadow-md: 0 0.25em 0.75em hsla(40 0% 0% / 0.4);

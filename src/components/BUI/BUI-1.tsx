@@ -2,11 +2,12 @@
  * @file        : src/components/BUI-1.tsx
  * @description : أغلفة HTML نقية بدون حالة أو Hooks أو منطق عرض.
  * @updated     : [
- *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء طبقة BUI-1 الأساسية" }
+ *   { "date": "2026-09-24T00:00:00Z", "version": "0.1.0", "by": ["AI"], "comment": "إنشاء طبقة BUI-1 الأساسية" },
+ *   { "date": "2026-10-08", "version": "0.2.0", "by": ["BomBa"], "comment": "إضافة غلاف Canvas يقبل ref (React 19 ref-as-prop) لمحرك الخلفية" }
  * ]
  */
 
-import { buildProps, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes, type OptionHTMLAttributes, type SelectHTMLAttributes } from '@a'
+import { buildProps, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type CanvasHTMLAttributes, type FormHTMLAttributes, type HTMLAttributes, type InputHTMLAttributes, type LabelHTMLAttributes, type OptionHTMLAttributes, type Ref, type SelectHTMLAttributes } from '@a'
 
 /** @description غلاف عنصر div الأساسي في طبقة BUI-1. */
 export const Div = (props: HTMLAttributes<HTMLDivElement>) => <div {...buildProps(props)} />
@@ -44,6 +45,9 @@ export const Input = (props: InputHTMLAttributes<HTMLInputElement>) => <input {.
 
 /** @description غلاف الزر. */
 export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => <button {...buildProps(props)} />
+
+/** @description غلاف عنصر canvas — يقبل ref كخاصية عادية (React 19 ref-as-prop) لمحرك الخلفية الزخرفية. */
+export const Canvas = (props: CanvasHTMLAttributes<HTMLCanvasElement> & { ref?: Ref<HTMLCanvasElement> }) => <canvas {...buildProps(props)} />
 
 /** @description غلاف النموذج. */
 export const Form = (props: FormHTMLAttributes<HTMLFormElement>) => <form {...buildProps(props)} />
